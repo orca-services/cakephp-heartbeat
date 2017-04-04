@@ -2,7 +2,7 @@
 /**
  * The heartbeat status page
  *
- * Loads the actaul view, which makes it extensible.
+ * Loads the actual view, which makes it extensible.
  */
 
 $this->extend('Heartbeat.heartbeat');
