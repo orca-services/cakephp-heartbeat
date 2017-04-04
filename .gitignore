@@ -15,6 +15,7 @@
 # PHP Tools #
 #############
 /*.phar
+vendor
 
 # OS generated files #
 ######################
