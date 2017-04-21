@@ -9,6 +9,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-## [0.1.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/0.1.0) - YYYY-MM-DD
+## [0.1.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/0.1.0) - 2017-04-21
 ### Added
-- Initial functionality with Heartbeat controller proving a HTML & JSON template, the core logic and some built-in sensors
+- Initial functionality with Heartbeat controller providing a HTML & JSON template, the core logic and some built-in sensors
