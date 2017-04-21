@@ -31,19 +31,13 @@ See [CHANGELOG.md](CHANGELOG.md)
 - Add badges
 - Unit Tests
 - Documentation
-    - Installation
-    - Configuration
-        - Sensors including caching
-        - Layout overriding
     - Usage
         - Controller incl. cache reset
         - Shell
     - How to write a sensor
-    - View extending
 - Console shell
 - Support for separate status text
 - Flexible routing
-- JSON view
 - CI integrations
 - CakePHP 3.x support
 
