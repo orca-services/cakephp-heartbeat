@@ -31,11 +31,8 @@ See [CHANGELOG.md](CHANGELOG.md)
 - Add badges
 - Unit Tests
 - Documentation
-    - Usage
-        - Controller incl. cache reset
-        - Shell
     - How to write a sensor
-- Console shell
+- Console shell & related docs
 - Support for separate status text
 - Flexible routing
 - CI integrations
