@@ -62,7 +62,7 @@ abstract class Sensor {
 		}
 
 		$settings = array_merge(
-			\Configure::read('Cache.default'),
+			\Cache::settings(),
 			array('duration' => $duration)
 		);
 
