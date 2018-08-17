@@ -14,7 +14,7 @@ An example configuration would look like this:
 ```php
 'Heartbeat' => array(
 	'name' => 'My App',
-	'layout' => 'heartbeat'
+	'layout' => 'heartbeat',
 	'Sensors' => array(
 		'Debug-Level' => array(
 			'enabled' => true,
