@@ -32,11 +32,10 @@ See [CHANGELOG.md](CHANGELOG.md)
 - Unit Tests
 - Documentation
     - How to write a sensor
-- Console shell & related docs
+- Console application & related docs
 - Support for separate status text
 - Flexible routing
 - CI integrations
-- CakePHP 3.x support
 
 ## License
 
