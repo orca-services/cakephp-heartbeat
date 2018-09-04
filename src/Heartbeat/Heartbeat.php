@@ -1,10 +1,10 @@
 <?php
 
-namespace OrcaServices\Heartbeat;
+namespace OrcaServices\Heartbeat\Heartbeat;
 
 use Cake\Chronos\Chronos;
-use Configure;
-use OrcaServices\Heartbeat\Sensor\Status;
+use Cake\Core\Configure;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 /**
  * The Heartbeat
@@ -95,7 +95,7 @@ class Heartbeat {
 		$sensorStatuses = $this->getSensorStatuses();
 
 		$systemStatus = !$sensorStatuses->some(function ($sensorStatus) {
-			/** @var \OrcaServices\Heartbeat\Sensor\Status $sensorStatus */
+			/** @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status $sensorStatus */
 			if ($sensorStatus->getSeverity() === Status::STATUS_CRITICAL) {
 				return $sensorStatus->getStatus() === false;
 			}

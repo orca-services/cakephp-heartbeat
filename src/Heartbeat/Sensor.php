@@ -1,10 +1,13 @@
 <?php
 
-namespace OrcaServices\Heartbeat;
+namespace OrcaServices\Heartbeat\Heartbeat;
 
 use Cake\Chronos\Chronos;
-use OrcaServices\Heartbeat\Sensor\Config;
-use OrcaServices\Heartbeat\Sensor\Status;
+use Cake\Utility\Text;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
+use Cake\Utility\Inflector;
+use Cake\Cache\Cache;
 
 /**
  * A Heartbeat Sensor
@@ -53,7 +56,7 @@ abstract class Sensor {
 	 * @return bool|Status The cached status or false.
 	 */
 	protected function _getCachedStatus() {
-		$cacheKey = 'heartbeat_' . strtolower(\Inflector::slug($this->config->getName()));
+		$cacheKey = 'heartbeat_' . strtolower(Text::slug($this->config->getName()));
 		$cached = $this->config->getCached();
 
 		$duration = '+30 seconds';
@@ -62,18 +65,21 @@ abstract class Sensor {
 		}
 
 		$settings = array_merge(
-			\Cache::settings(),
+			Cache::getConfig('default'),
 			array('duration' => $duration)
 		);
 
-		\Cache::config('heartbeat', $settings);
+		$heartbeatConfig = Cache::getConfig('heartbeat');
+		if($heartbeatConfig === null){
+            Cache::setConfig('heartbeat', $settings);
+        }
 
 		if ($cached === false) {
-			\Cache::delete($cacheKey, 'heartbeat');
+			Cache::delete($cacheKey, 'heartbeat');
 			return false;
 		}
 
-		$cachedStatus = \Cache::remember($cacheKey, function () {
+		$cachedStatus = Cache::remember($cacheKey, function () {
 			return $this->_getNonCachedStatus();
 		}, 'heartbeat');
 

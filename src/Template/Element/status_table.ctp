@@ -6,12 +6,12 @@
  * @var \OrcaServices\Heartbeat\Sensor\Status $systemStatus The system status.
  */
 
-use OrcaServices\Heartbeat\Sensor\Status;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 echo '<table class="table table-bordered table-responsive table-striped table-hover table-condensed">';
 
 $sensorStatuses->some(function ($sensorStatus) {
-	/** @var \OrcaServices\Heartbeat\Sensor\Status $sensorStatus */
+	/** @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status $sensorStatus */
 	$name = $sensorStatus->getName();
 	$status = $sensorStatus->getStatus();
 	$severity = $sensorStatus->getSeverity();

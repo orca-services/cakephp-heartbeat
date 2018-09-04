@@ -5,4 +5,4 @@
  * Loads the actual view, which makes it extensible.
  */
 
-$this->extend('Heartbeat.heartbeat');
+$this->extend('OrcaServices/Heartbeat.heartbeat');

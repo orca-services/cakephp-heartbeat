@@ -1,6 +1,6 @@
 <?php
 
-namespace OrcaServices\Heartbeat\Sensor;
+namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 use Cake\Chronos\Chronos;
 

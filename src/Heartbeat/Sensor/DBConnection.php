@@ -1,10 +1,9 @@
 <?php
 
-namespace OrcaServices\Heartbeat\Sensor;
+namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
-\App::uses('ConnectionManager', 'Model');
-
-use OrcaServices\Heartbeat\Sensor;
+use OrcaServices\Heartbeat\Heartbeat\Sensor;
+use Cake\Datasource\ConnectionManager;
 
 /**
  * DB Connection Sensor
@@ -16,7 +15,7 @@ class DBConnection extends Sensor {
 	 */
 	protected function _getStatus() {
 		try {
-			\ConnectionManager::getDataSource('default');
+			ConnectionManager::get('default');
 			$hasDBConnection = true;
 		} catch (\Exception $e) {
 			$hasDBConnection = false;
