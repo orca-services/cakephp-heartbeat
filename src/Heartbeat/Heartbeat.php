@@ -25,7 +25,7 @@ class Heartbeat {
 	 *
 	 * @var array
 	 */
-	protected $sensorStatuses = array();
+	protected $sensorStatuses = [];
 
 	/**
 	 * Executes the sensor checks an populates their statuses.
@@ -35,7 +35,7 @@ class Heartbeat {
 	public function check() {
 		$sensors = $this->_getEnabledSensors();
 
-		$this->sensorStatuses = array();
+		$this->sensorStatuses = [];
 		foreach ($sensors as $sensorName => $sensorConfig) {
 			$sensor = $this->_getSensor($sensorName, $sensorConfig);
 			$this->sensorStatuses[] = $sensor->getStatus();

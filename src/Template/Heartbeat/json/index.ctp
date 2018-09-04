@@ -9,7 +9,7 @@
 $systemStatusName = $systemStatus->getName();
 $systemStatusText = ($systemStatus->getStatus()) ? __('OK') : __('FAILED');
 
-$system = array($systemStatusName => $systemStatusText);
+$system =[$systemStatusName => $systemStatusText];
 
 $statuses = $sensorStatuses->map(function ($sensorStatus) {
 	/** @var \OrcaServices\Heartbeat\Sensor\Status $sensorStatus */
@@ -30,9 +30,9 @@ $statuses = $sensorStatuses->map(function ($sensorStatus) {
 	return compact('name', 'status', 'statusText', 'severity', 'duration', 'lastExecuted');
 });
 
-$heartbeat = array(
+$heartbeat = [
 	'system' => $system,
 	'sensors' => $statuses,
-);
+	];
 
 echo json_encode($heartbeat, JSON_PRETTY_PRINT);

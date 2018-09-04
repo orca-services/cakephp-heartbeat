@@ -27,38 +27,38 @@ $sensorStatuses->some(function ($sensorStatus) {
 	}
 
 	if ($status !== false) {
-		if ($severity ===  Status::STATUS_INFORMATIONAL) {
+		if ($severity === Status::STATUS_INFORMATIONAL) {
 			$tableClass = 'info';
 		} else {
 			$tableClass = 'success';
 		}
 	} else {
-		if ($severity ===  Status::STATUS_CRITICAL) {
+		if ($severity === Status::STATUS_CRITICAL) {
 			$tableClass = 'danger';
-		} elseif ($severity ===  Status::STATUS_NONCRITICAL) {
+		} elseif ($severity === Status::STATUS_NONCRITICAL) {
 			$tableClass = 'warning';
 		} else {
 			$tableClass = 'info';
 		}
 	}
 
-	echo $this->Html->tableCells(array(
-		array(
+	echo $this->Html->tableCells([
+		[
 			$name,
-			array(
+			[
 				$statusText,
-				array('class' => $tableClass),
-			),
-			array(
+				['class' => $tableClass],
+			],
+			[
 				sprintf('%s s', $duration),
-				array('class' => $tableClass),
-			),
-			array(
+				['class' => $tableClass],
+			],
+			[
 				$lastExecuted,
-				array('class' => $tableClass),
-			),
-		),
-	));
+				['class' => $tableClass],
+			],
+		],
+	]);
 });
 
 echo '</table>';

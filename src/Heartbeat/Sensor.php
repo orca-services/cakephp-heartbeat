@@ -66,7 +66,7 @@ abstract class Sensor {
 
 		$settings = array_merge(
 			Cache::getConfig('default'),
-			array('duration' => $duration)
+			['duration' => $duration]
 		);
 
 		$heartbeatConfig = Cache::getConfig('heartbeat');

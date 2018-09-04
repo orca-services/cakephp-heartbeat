@@ -48,12 +48,12 @@ class Config {
 	 *
 	 * @var array
 	 */
-	protected $defaultConfig = array(
+	protected $defaultConfig = [
 		'enabled' => true,
 		'severity' => Status::STATUS_NONCRITICAL,
 		'class' => null,
 		'cached' => false,
-	);
+	];
 
 	/**
 	 * Config constructor.
