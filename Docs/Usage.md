@@ -19,8 +19,8 @@ The data can also be requested as JSON, e.g. for monitoring. Just append `.json`
 
 To reset the cached sensor status results and to force to load the status page without caching, you can add ``?reset-cache=true`` to the URL, e.g. http://www.example.com/heartbeat?reset-cache=true.
 
-Shell
------
+Console Application
+-------------------
 
 TODO Not yet implemented.
 

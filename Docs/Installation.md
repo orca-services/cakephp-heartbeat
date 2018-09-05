@@ -21,7 +21,7 @@ composer require orca-services/cakephp-heartbeat
 Then load the plugin in your application's bootstrap.php:
 
 ````
-Plugin::load('OrcaServices/Heartbeat', ['routes' => true]);
+$this->addPlugin('OrcaServices/Heartbeat');
 ````
 
 ### Installation alternatives
