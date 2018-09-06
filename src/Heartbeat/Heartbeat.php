@@ -59,7 +59,7 @@ class Heartbeat
             return $sensor['enabled'] === true;
         });
 
-        return $sensors;
+        return $sensors->toArray();
     }
 
     /**

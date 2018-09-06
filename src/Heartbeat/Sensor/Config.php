@@ -152,11 +152,10 @@ class Config
     }
 
     /**
-     * Set the severity level
+     * Set the class
      *
-     * @param int $class The severity level.
+     * @param string $class The class name.
      * @return void
-     * @throws \InvalidArgumentException If not valid severity level was given.
      */
     protected function setClass($class)
     {
@@ -167,9 +166,9 @@ class Config
     /**
      * Get the class name
      *
-     * @return int The class name.
+     * @return string The class name.
      */
-    public function getClass(): int
+    public function getClass(): string
     {
         return $this->class;
     }
