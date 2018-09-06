@@ -5,6 +5,7 @@ namespace OrcaServices\Heartbeat\Controller;
 use Cake\Core\Configure;
 use Cake\Event\Event;
 use OrcaServices\Heartbeat\Heartbeat\Heartbeat;
+
 /**
  * Heartbeat Controller
  */

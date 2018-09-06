@@ -12,6 +12,7 @@
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace OrcaServices\Heartbeat\Controller;
 
 use Cake\Controller\Controller;

@@ -16,10 +16,10 @@ An example configuration would look like this:
         'name' => 'My App',
         'layout' => 'heartbeat',
         'Sensors' => [
-            'Debug-Level' => [
+            'Debug-Mode' => [
                 'enabled' => true,
                 'severity' => 1,
-                'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DebugLevel::class,
+                'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode::class,
             ],
             'DB Connection' => [
                 'enabled' => true,

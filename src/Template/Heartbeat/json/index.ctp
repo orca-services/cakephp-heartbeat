@@ -2,37 +2,38 @@
 /**
  * The Heartbeat Status JSON Page
  *
- * @var \OrcaServices\Heartbeat\Sensor\Status[]|\Cake\Collection\Collection $sensorStatuses The sensor statuses.
- * @var \OrcaServices\Heartbeat\Sensor\Status $systemStatus The system status.
+ * @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status[]|\Cake\Collection\Collection $sensorStatuses The sensor
+ *     statuses.
+ * @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status $systemStatus The system status.
  */
 
 $systemStatusName = $systemStatus->getName();
-$systemStatusText = ($systemStatus->getStatus()) ? __('OK') : __('FAILED');
+$systemStatusText = $systemStatus->getStatus() ? __('OK') : __('FAILED');
 
-$system =[$systemStatusName => $systemStatusText];
+$system = [$systemStatusName => $systemStatusText];
 
 $statuses = $sensorStatuses->map(function ($sensorStatus) {
-	/** @var \OrcaServices\Heartbeat\Sensor\Status $sensorStatus */
-	$name = $sensorStatus->getName();
-	$status = $sensorStatus->getStatus();
-	$severity = $sensorStatus->getSeverity();
-	$duration = $sensorStatus->getDuration();
-	$lastExecuted = $sensorStatus->getLastExecuted()->format('Y-m-d H:i:s');
+    /** @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status $sensorStatus */
+    $name = $sensorStatus->getName();
+    $status = $sensorStatus->getStatus();
+    $severity = $sensorStatus->getSeverity();
+    $duration = $sensorStatus->getDuration();
+    $lastExecuted = $sensorStatus->getLastExecuted()->format('Y-m-d H:i:s');
 
-	if ($status === true) {
-		$statusText = 'OK';
-	} elseif ($status === false) {
-		$statusText = 'FAILED';
-	} else {
-		$statusText = $status;
-	}
+    if ($status === true) {
+        $statusText = 'OK';
+    } elseif ($status === false) {
+        $statusText = 'FAILED';
+    } else {
+        $statusText = $status;
+    }
 
-	return compact('name', 'status', 'statusText', 'severity', 'duration', 'lastExecuted');
+    return compact('name', 'status', 'statusText', 'severity', 'duration', 'lastExecuted');
 });
 
 $heartbeat = [
-	'system' => $system,
-	'sensors' => $statuses,
-	];
+    'system' => $system,
+    'sensors' => $statuses,
+];
 
 echo json_encode($heartbeat, JSON_PRETTY_PRINT);

@@ -8,20 +8,22 @@ use Cake\Datasource\ConnectionManager;
 /**
  * DB Connection Sensor
  */
-class DBConnection extends Sensor {
+class DBConnection extends Sensor
+{
 
-	/**
-	 * @inheritdoc
-	 */
-	protected function _getStatus() {
-		try {
-			ConnectionManager::get('default');
-			$hasDBConnection = true;
-		} catch (\Exception $e) {
-			$hasDBConnection = false;
-		}
+    /**
+     * @inheritdoc
+     */
+    protected function _getStatus()
+    {
+        try {
+            ConnectionManager::get('default');
+            $hasDBConnection = true;
+        } catch (\Exception $e) {
+            $hasDBConnection = false;
+        }
 
-		return $hasDBConnection;
-	}
+        return $hasDBConnection;
+    }
 
 }
