@@ -8,6 +8,10 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 /**
  * DB Up to Date Sensor
+ *
+ * This sensor depends on the CakePHP Migrations plugin
+ *
+ * @link https://github.com/cakephp/migrations/
  */
 class DBUpToDate extends Sensor
 {
