@@ -7,6 +7,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Support for CakePHP Version 3.x
 
 ### Changed
+- Load CakePHP Migrations plugin in DBUpToDate sensor, if not loaded already
 
 ### Fixed
 - Update minimum required PHP Version to PHP 5.4

@@ -2,6 +2,7 @@
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
+use Cake\Core\Plugin;
 use Migrations\Migrations;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
@@ -20,6 +21,10 @@ class DBUpToDate extends Sensor
      */
     protected function _getStatus()
     {
+        if (!Plugin::loaded('Migrations')) {
+            Plugin::load('Migrations');
+        }
+
         $dbMigrated = true;
         try {
             $migrations = new Migrations();
