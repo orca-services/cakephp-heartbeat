@@ -12,29 +12,29 @@ It takes the following subkeys:
 
 An example configuration would look like this:
 ```php
-    'Heartbeat' => [
-        'name' => 'My App',
-        'layout' => 'heartbeat',
-        'Sensors' => [
-            'Debug-Mode' => [
-                'enabled' => true,
-                'severity' => 1,
-                'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode::class,
-            ],
-            'DB Connection' => [
-                'enabled' => true,
-                'severity' => 3,
-                'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
-                'cached' => true,
-            ],
-            'DB up to date' => [
-                'enabled' => false,
-                'severity' => 3,
-                'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
-                'cached' => '+10 minutes',
-            ],
+$config['App'['Heartbeat'] = [
+    'name' => 'My App',
+    'layout' => 'heartbeat',
+    'Sensors' => [
+        'Debug-Mode' => [
+            'enabled' => true,
+            'severity' => 1,
+            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode::class,
+        ],
+        'DB Connection' => [
+            'enabled' => true,
+            'severity' => 3,
+            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
+            'cached' => true,
+        ],
+        'DB up to date' => [
+            'enabled' => false,
+            'severity' => 3,
+            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
+            'cached' => '+10 minutes',
         ],
     ],
+];
 ```
 
 
