@@ -4,15 +4,15 @@
 
 ## Installation
 
-See the [installation documentation](Docs/Installation.md) .
+See the [installation documentation](docs/Installation.md) .
 
 ## Configuration
 
-See the [configuration documentation](Docs/Configuration.md) .
+See the [configuration documentation](docs/Configuration.md) .
 
 ## How to use
 
-See the [usage guide](Docs/Usage.md) and [how to write heartbeat sensors](Docs/Sensors.md).
+See the [usage guide](docs/Usage.md) and [how to write heartbeat sensors](docs/Sensors.md).
 
 ## Versioning
 
