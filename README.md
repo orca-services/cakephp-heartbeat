@@ -29,13 +29,14 @@ See [CHANGELOG.md](CHANGELOG.md)
 ## TODOs
 
 - Add badges
-- Unit Tests
-- Documentation
+- Fix & extend Unit Tests
+- Extend Documentation
     - How to write a sensor
-- Console application & related docs
+- Add Console application incl. related docs
 - Support for separate status text
-- Flexible routing
+- Add flexible routing
 - CI integrations
+- See [the issues](https://github.com/orca-services/cakephp-heartbeat/issues)
 
 ## License
 
