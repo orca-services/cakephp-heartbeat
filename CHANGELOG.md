@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/0.1.1...master)
 ### Added
+- Add cakephp/cakephp as dependency, fixated at 2.x
 
 ### Changed
 
