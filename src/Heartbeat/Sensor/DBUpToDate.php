@@ -10,6 +10,10 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
  */
 class DBUpToDate extends Sensor
 {
+    /**
+     * Migration status indicating the migration was executed successfully
+     */
+    const MIGRATION_STATUS_UP = 'up';
 
     /**
      * @inheritdoc
@@ -21,7 +25,7 @@ class DBUpToDate extends Sensor
             $migrations = new Migrations();
             $status = $migrations->status();
             $lastStatus = array_pop($status);
-            if ($lastStatus['status'] === 'down') {
+            if ($lastStatus['status'] !== self::MIGRATION_STATUS_UP) {
                 $dbMigrated = false;
             }
         } catch (\Exception $e) {
