@@ -12,7 +12,7 @@ It takes the following subkeys:
 
 An example configuration would look like this:
 ```php
-$config['App'['Heartbeat'] = [
+$config['App']['Heartbeat'] = [
     'name' => 'My App',
     'layout' => 'heartbeat',
     'Sensors' => [
