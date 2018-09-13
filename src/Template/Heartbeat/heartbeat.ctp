@@ -12,7 +12,7 @@
 $systemStatusLabel = $this->Html->tag(
     'span',
     $systemStatus->getStatus() ? __('OK') : __('FAILED'),
-    ['class' => 'label label-' . ($systemStatus->getStatus() ? __('success') : __('danger'))]);
+    ['class' => 'label label-' . ($systemStatus->getStatus() ? 'success' : 'danger')]);
 
 echo sprintf('<h1>' . $systemStatus->getName() . ' %s</h1>', $systemStatusLabel);
 ?>
