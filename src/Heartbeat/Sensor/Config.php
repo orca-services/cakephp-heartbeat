@@ -166,9 +166,9 @@ class Config
     /**
      * Get the class name
      *
-     * @return string The class name.
+     * @return null|string The class name or null.
      */
-    public function getClass(): string
+    public function getClass()
     {
         return $this->class;
     }

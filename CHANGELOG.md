@@ -5,8 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/0.1.1...master)
 ### Added
 - Support for CakePHP Version 3.x
+- Add CakePHP Migrations plugin as development dependency
 
 ### Changed
+- Load CakePHP Migrations plugin in DBUpToDate sensor, if not loaded already
 
 ### Fixed
 - Update minimum required PHP Version to PHP 5.4

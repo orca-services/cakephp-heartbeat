@@ -4,15 +4,15 @@
 
 ## Installation
 
-See the [installation documentation](Docs/Installation.md) .
+See the [installation documentation](docs/Installation.md) .
 
 ## Configuration
 
-See the [configuration documentation](Docs/Configuration.md) .
+See the [configuration documentation](docs/Configuration.md) .
 
 ## How to use
 
-See the [usage guide](Docs/Usage.md) and [how to write heartbeat sensors](Docs/Sensors.md).
+See the [usage guide](docs/Usage.md) and [how to write heartbeat sensors](docs/Sensors.md).
 
 ## Versioning
 
@@ -29,13 +29,14 @@ See [CHANGELOG.md](CHANGELOG.md)
 ## TODOs
 
 - Add badges
-- Unit Tests
-- Documentation
+- Fix & extend Unit Tests
+- Extend Documentation
     - How to write a sensor
-- Console application & related docs
+- Add Console application incl. related docs
 - Support for separate status text
-- Flexible routing
+- Add flexible routing
 - CI integrations
+- See [the issues](https://github.com/orca-services/cakephp-heartbeat/issues)
 
 ## License
 
