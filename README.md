@@ -40,8 +40,6 @@ See [CHANGELOG.md](CHANGELOG.md)
 
 - Add badges
 - Fix & extend Unit Tests
-- Extend Documentation
-    - How to write a sensor
 - Add Console application incl. related docs
 - Support for separate status text
 - Add flexible routing
