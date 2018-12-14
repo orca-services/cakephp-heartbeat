@@ -1,3 +1,16 @@
+Built-in Sensors
+================
+
+#### DB Connection
+Checks whether a connection to the database server can be established.
+
+#### DB Up to date
+Uses the Migrations Plugin to check whether all migrations have been run.
+
+#### Debug Mode
+Outputs the configuration for the debug mode.
+
+
 How to Write a Heartbeat Sensor
 ===============================
 
