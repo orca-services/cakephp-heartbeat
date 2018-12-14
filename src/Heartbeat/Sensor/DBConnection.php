@@ -7,6 +7,9 @@ use Cake\Datasource\ConnectionManager;
 
 /**
  * DB Connection Sensor
+ *
+ * Returns true if a connection to the database server can be established
+ * or false otherwise.
  */
 class DBConnection extends Sensor
 {
@@ -20,10 +23,8 @@ class DBConnection extends Sensor
             $connection = ConnectionManager::get('default');
             return $connection->connect();
         } catch (\Exception $e) {
-            $hasDBConnection = false;
+            return false;
         }
-
-        return $hasDBConnection;
     }
 
 }
