@@ -2,14 +2,14 @@
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
-use Cake\Core\Plugin;
 use Migrations\Migrations;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 /**
  * DB Up to Date Sensor
  *
- * This sensor depends on the CakePHP Migrations plugin
+ * This sensor depends on the CakePHP Migrations plugin.
+ * Make sure the plugin is loaded before calling this sensor.
  *
  * @link https://github.com/cakephp/migrations/
  */
@@ -25,10 +25,6 @@ class DBUpToDate extends Sensor
      */
     protected function _getStatus()
     {
-        if (!Plugin::loaded('Migrations')) {
-            Plugin::load('Migrations');
-        }
-
         $dbMigrated = true;
         try {
             $migrations = new Migrations();
