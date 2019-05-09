@@ -54,7 +54,7 @@ class SensorTest extends TestCase
      */
     public function testGetStatus()
     {
-        $this->markTestIncomplete('TODO: Fix this test. Something about cache seems broken.');
+        //$this->markTestIncomplete('TODO: Fix this test. Something about cache seems broken.');
 
         Chronos::setTestNow('2017-03-30 12:45:37');
         $sensorName = 'Dummy Sensor';

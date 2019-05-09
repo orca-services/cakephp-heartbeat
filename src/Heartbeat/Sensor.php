@@ -2,11 +2,11 @@
 
 namespace OrcaServices\Heartbeat\Heartbeat;
 
+use Cake\Cache\Cache;
 use Cake\Chronos\Chronos;
 use Cake\Utility\Text;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
-use Cake\Cache\Cache;
 
 /**
  * A Heartbeat Sensor
@@ -68,8 +68,8 @@ abstract class Sensor
         }
 
         $settings = array_merge(
-            Cache::getConfig('default'),
-            ['duration' => $duration]
+            (array)Cache::getConfig('default'),
+            ['duration' => $duration, 'className' => 'File']
         );
 
         $heartbeatConfig = Cache::getConfig('heartbeat');
@@ -78,7 +78,10 @@ abstract class Sensor
         }
 
         if ($cached === false) {
-            Cache::delete($cacheKey, 'heartbeat');
+            $cached = Cache::read($cacheKey, 'heartbeat');
+            if (!empty($cached)) {
+                Cache::delete($cacheKey, 'heartbeat');
+            }
 
             return false;
         }
@@ -121,5 +124,4 @@ abstract class Sensor
      * @return mixed The sensor status.
      */
     abstract protected function _getStatus();
-
 }
