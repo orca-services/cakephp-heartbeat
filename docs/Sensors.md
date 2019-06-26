@@ -7,6 +7,8 @@ Checks whether a connection to the database server can be established.
 #### DB Up to date
 Uses the Migrations Plugin to check whether all migrations have been run.
 
+This sensor requires you to either load the cakephp/migrations plugin before the sensor is called or to use cakephp/migrations:^2.2 once released.
+
 #### Debug Mode
 Outputs the configuration for the debug mode.
 
