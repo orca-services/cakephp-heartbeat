@@ -8,6 +8,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Added documentation about built-in sensors
 
 ### Changed
+
+### Dependencies
+- cakephp/cakephp updated from 3.7.3 to 3.8.4
 - doctrine/instantiator updated from 1.1.0 to 1.2.0
 - theseer/tokenizer updated from 1.1.0 to 1.1.2
 - symfony/polyfill-ctype updated from v1.9.0 to v1.11.0
@@ -18,7 +21,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - zendframework/zend-diactoros updated from 1.8.5 to 1.8.6
 - psr/log updated from 1.0.2 to 1.1.0
 - cakephp/chronos updated from 1.2.2 to 1.2.5
-- cakephp/cakephp updated from 3.7.3 to 3.7.7
 - symfony/yaml downgraded from v4.1.4 to v3.4.27
 - symfony/polyfill-mbstring updated from v1.9.0 to v1.11.0
 - symfony/debug installed in version v3.4.27
