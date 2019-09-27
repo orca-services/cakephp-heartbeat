@@ -18,6 +18,7 @@ $sensorStatuses->some(function ($sensorStatus) {
     $severity = $sensorStatus->getSeverity();
     $duration = $sensorStatus->getDuration();
     $lastExecuted = $sensorStatus->getLastExecuted();
+    $wasCheckFromCache = $sensorStatus->wasCheckCached();
 
     if ($status === true) {
         $statusText = 'OK';
@@ -57,6 +58,10 @@ $sensorStatuses->some(function ($sensorStatus) {
             [
                 $lastExecuted,
                 ['class' => $tableClass],
+            ],
+            [
+                $wasCheckFromCache ? 'Cached' : 'Not cached',
+                ['class' => $wasCheckFromCache ? 'primary' : 'secondary']
             ],
         ],
     ]);
