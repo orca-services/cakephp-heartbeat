@@ -19,6 +19,7 @@ $statuses = $sensorStatuses->map(function ($sensorStatus) {
     $severity = $sensorStatus->getSeverity();
     $duration = $sensorStatus->getDuration();
     $lastExecuted = $sensorStatus->getLastExecuted()->format('Y-m-d H:i:s');
+    $wasCheckFromCache = $sensorStatus->wasCheckCached();
 
     if ($status === true) {
         $statusText = 'OK';
@@ -28,7 +29,7 @@ $statuses = $sensorStatuses->map(function ($sensorStatus) {
         $statusText = $status;
     }
 
-    return compact('name', 'status', 'statusText', 'severity', 'duration', 'lastExecuted');
+    return compact('name', 'status', 'statusText', 'severity', 'duration', 'lastExecuted', 'wasCheckFromCache');
 });
 
 $heartbeat = [
