@@ -88,14 +88,16 @@ abstract class Sensor
 
         $cachedStatus = Cache::read($cacheKey, 'heartbeat');
 
-        if($cachedStatus === false) {
-            $nonCachedStatus = $this->_getNonCachedStatus();
-            Cache::write($cacheKey, $nonCachedStatus, 'heartbeat');
-            return $nonCachedStatus;
+        if($cachedStatus !== false) {
+            $cachedStatus->setCheckWasCached(true);
+
+            return $cachedStatus;
         }
 
-        $cachedStatus->setCheckWasCached(true);
-        return $cachedStatus;
+        $nonCachedStatus = $this->_getNonCachedStatus();
+        Cache::write($cacheKey, $nonCachedStatus, 'heartbeat');
+
+        return $nonCachedStatus;
     }
 
     /**
