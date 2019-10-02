@@ -223,7 +223,7 @@ class Config
     }
 
     /**
-     * Set the addition settings of the sensor
+     * Set the additional settings of the sensor
      *
      * @param array $settings The settings of the sensor.
      */
