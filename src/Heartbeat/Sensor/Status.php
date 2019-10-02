@@ -140,7 +140,7 @@ class Status
      *
      * @param bool $wasCached
      */
-    public function setCheckWasCached(bool $wasCached): void {
+    public function setCheckWasCached(bool $wasCached) {
 
         $this->checkCached = $wasCached;
     }
