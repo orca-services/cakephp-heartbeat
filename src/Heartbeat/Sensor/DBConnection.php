@@ -22,8 +22,7 @@ class DBConnection extends Sensor
     protected function _getStatus()
     {
         try {
-            $settings = $this->config->getSettings();
-            $connectionName = Hash::get($settings, 'connection_name', 'default');
+            $connectionName = $this->getConnectionName();
 
             /** @var DriverInterface $connection */
             $connection = ConnectionManager::get($connectionName);
@@ -34,4 +33,18 @@ class DBConnection extends Sensor
         }
     }
 
+    /**
+     * Get the connection name
+     *
+     * Either the one configured or simply the default one.
+     *
+     * @return string The name of the connection to check.
+     */
+    protected function getConnectionName(): string
+    {
+        $settings = $this->config->getSettings();
+        $connectionName = Hash::get($settings, 'connection_name', 'default');
+
+        return $connectionName;
+    }
 }
