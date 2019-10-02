@@ -24,6 +24,7 @@ class DBConnection extends Sensor
             $settings = $this->config->getSettings();
             $connectionName = Hash::get($settings, 'connection_name', 'default');
             $connection = ConnectionManager::get($connectionName);
+
             return $connection->connect();
         } catch (\Exception $e) {
             return false;
