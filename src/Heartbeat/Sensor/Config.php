@@ -61,9 +61,7 @@ class Config
         'severity' => Status::STATUS_NONCRITICAL,
         'class' => null,
         'cached' => false,
-        'settings' => [
-            'connection_name' => 'default',
-        ],
+        'settings' => [],
     ];
 
     /**
