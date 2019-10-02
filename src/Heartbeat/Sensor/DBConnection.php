@@ -2,6 +2,7 @@
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
+use Cake\Database\DriverInterface;
 use Cake\Utility\Hash;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use Cake\Datasource\ConnectionManager;
@@ -23,6 +24,8 @@ class DBConnection extends Sensor
         try {
             $settings = $this->config->getSettings();
             $connectionName = Hash::get($settings, 'connection_name', 'default');
+
+            /** @var DriverInterface $connection */
             $connection = ConnectionManager::get($connectionName);
 
             return $connection->connect();
