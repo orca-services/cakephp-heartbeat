@@ -227,7 +227,7 @@ class Config
      *
      * @param array $settings The settings of the sensor.
      */
-    public function setSettings($settings)
+    public function setSettings(array $settings)
     {
         $this->settings = $settings;
     }
