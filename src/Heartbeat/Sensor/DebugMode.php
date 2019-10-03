@@ -20,5 +20,4 @@ class DebugMode extends Sensor
 
         return $debugMode;
     }
-
 }

@@ -49,5 +49,4 @@ class HeartbeatController extends AppController
 
         $this->set(compact('systemStatus', 'sensorStatuses'));
     }
-
 }

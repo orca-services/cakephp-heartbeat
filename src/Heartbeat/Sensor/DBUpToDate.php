@@ -39,5 +39,4 @@ class DBUpToDate extends Sensor
 
         return $dbMigrated;
     }
-
 }
