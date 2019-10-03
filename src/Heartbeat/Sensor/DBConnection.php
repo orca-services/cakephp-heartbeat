@@ -2,6 +2,7 @@
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
+use Cake\Database\DriverInterface;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use Cake\Datasource\ConnectionManager;
 
@@ -20,11 +21,14 @@ class DBConnection extends Sensor
     protected function _getStatus()
     {
         try {
-            $connection = ConnectionManager::get('default');
+            $connectionName = $this->_getSetting('connection_name', 'default');
+
+            /** @var DriverInterface $connection */
+            $connection = ConnectionManager::get($connectionName);
+
             return $connection->connect();
         } catch (\Exception $e) {
             return false;
         }
     }
-
 }

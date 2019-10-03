@@ -4,6 +4,21 @@ Built-in Sensors
 #### DB Connection
 Checks whether a connection to the database server can be established.
 
+To check a different connection than ``default``, e.g. ``external``, 
+the ``connection_name``setting can be used.
+
+ ```php
+$config['App']['Heartbeat']['Sensors']['DB Connection'] = [
+    'enabled' => true,
+    'severity' => 3,
+    'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
+    'cached' => true,
+    'settings' => [
+        'connection_name' => 'external'
+    ],
+];
+```
+
 #### DB Up to date
 Uses the Migrations Plugin to check whether all migrations have been run.
 

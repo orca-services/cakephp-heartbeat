@@ -4,6 +4,7 @@ namespace OrcaServices\Heartbeat\Heartbeat;
 
 use Cake\Cache\Cache;
 use Cake\Chronos\Chronos;
+use Cake\Utility\Hash;
 use Cake\Utility\Text;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
@@ -124,4 +125,20 @@ abstract class Sensor
      * @return mixed The sensor status.
      */
     abstract protected function _getStatus();
+
+    /**
+     * Get the given setting or an optional default value
+     *
+     * @param string $name The name of the setting to retrieve.
+     * @param null|mixed $default The optional default value, if the setting is not set.
+     * @return string The name of the connection to check.
+     * @todo Cover by a test.
+     */
+    protected function _getSetting(string $name, $default = null): string
+    {
+        $settings = $this->config->getSettings();
+        $setting = Hash::get($settings, $name, $default);
+
+        return $setting;
+    }
 }

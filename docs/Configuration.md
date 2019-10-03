@@ -4,7 +4,7 @@ Configuration
 General
 -------
 
-The configuration can be set in `App.Heartbeat`.  
+The configuration can be set in `App.Heartbeat`.
 It takes the following subkeys:
 - `name` The name of your application (will be used for the title of the hearbeat status page)
 - `layout` To override the layout (see below)
@@ -26,6 +26,9 @@ $config['App']['Heartbeat'] = [
             'severity' => 3,
             'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
             'cached' => true,
+            'settings' => [
+                'connection_name' => 'default',
+            ],
         ],
         'DB up to date' => [
             'enabled' => false,
@@ -41,7 +44,7 @@ $config['App']['Heartbeat'] = [
 Sensors
 -------
 
-You can add your own sensor to your heartbeat status. See [How to write a Sensor](Sensors.md) for details.  
+You can add your own sensor to your heartbeat status. See [How to write a Sensor](Sensors.md) for details. 
 To add your sensor to your status page, you have to add it to your configuration array.
 The sensor array takes the names of your registered sensors as subkeys, which in turn contain configuration arrays.
 
@@ -56,6 +59,7 @@ Those take the following subkeys:
 	 - If set to false, the value will not be cached.
 	 - If set to true, the value will be cached for 30 seconds (by default).
 	 - Can be set to a relative time string e.g. '+10 minutes' to cache the value for 10 minutes.
+- `settings` Additional settings for the sensor. e.g. the name of the database connection to test.
 
 Layout overriding
 -----------------

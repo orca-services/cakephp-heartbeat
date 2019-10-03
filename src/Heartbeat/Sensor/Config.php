@@ -45,6 +45,13 @@ class Config
     protected $cached = false;
 
     /**
+     * Additional settings
+     *
+     * @var array
+     */
+    protected $settings = [];
+
+    /**
      * The default config
      *
      * @var array
@@ -54,6 +61,7 @@ class Config
         'severity' => Status::STATUS_NONCRITICAL,
         'class' => null,
         'cached' => false,
+        'settings' => [],
     ];
 
     /**
@@ -72,6 +80,7 @@ class Config
         $this->setSeverity($config['severity']);
         $this->setClass($config['class']);
         $this->setCached($config['cached']);
+        $this->setSettings($config['settings']);
     }
 
     /**
@@ -199,6 +208,28 @@ class Config
         }
 
         $this->cached = $cached;
+    }
+
+    /**
+     * Get additional settings for the sensor
+     *
+     * @return array The settings of the sensor.
+     * @todo Cover by a test.
+     */
+    public function getSettings(): array
+    {
+        return $this->settings;
+    }
+
+    /**
+     * Set the additional settings of the sensor
+     *
+     * @param array $settings The settings of the sensor.
+     * @todo Cover by a test.
+     */
+    public function setSettings(array $settings)
+    {
+        $this->settings = $settings;
     }
 
 }
