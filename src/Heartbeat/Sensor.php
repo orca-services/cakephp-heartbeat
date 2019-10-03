@@ -26,7 +26,7 @@ abstract class Sensor
     /**
      * Construct the status
      *
-     * @param Config $config
+     * @param Config $config The sensor configuration to set.
      */
     public function __construct(Config $config)
     {

@@ -88,6 +88,7 @@ class Config
      * Set the name of the sensor
      *
      * @param string $name The name of the sensor.
+     * @return void
      */
     public function setName($name)
     {
@@ -105,7 +106,8 @@ class Config
     {
         if (!is_bool($enabled)) {
             throw new \InvalidArgumentException(sprintf(
-                'Enabled must be a boolean, got "%s" instead.', $enabled
+                'Enabled must be a boolean, got "%s" instead.',
+                $enabled
             ));
         }
 
@@ -131,10 +133,13 @@ class Config
      */
     protected function setSeverity($severity)
     {
-        if (!in_array($severity,
-            array(Status::STATUS_CRITICAL, Status::STATUS_NONCRITICAL, Status::STATUS_INFORMATIONAL))) {
+        if (!in_array(
+            $severity,
+            [Status::STATUS_CRITICAL, Status::STATUS_NONCRITICAL, Status::STATUS_INFORMATIONAL]
+        )) {
             throw new \InvalidArgumentException(sprintf(
-                'Severity must be a valid severity level, got "%s" instead.', $severity
+                'Severity must be a valid severity level, got "%s" instead.',
+                $severity
             ));
         }
 
@@ -183,7 +188,7 @@ class Config
         return $this->cached;
     }
 
-    /*
+    /**
      * Set whether or how long the status should be cached
      *
      * @param bool|string $cached Whether or how long the status should be cached.
@@ -194,11 +199,12 @@ class Config
     public function setCached($cached)
     {
         if (!is_bool($cached) && !is_string($cached)) {
-            throw new \InvalidArgumentException(sprintf('Cached must be either a bool or a string, "%s" given instead',
-                $cached));
+            throw new \InvalidArgumentException(sprintf(
+                'Cached must be either a bool or a string, "%s" given instead',
+                $cached
+            ));
         }
 
         $this->cached = $cached;
     }
-
 }

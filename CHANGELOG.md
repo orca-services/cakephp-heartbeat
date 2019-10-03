@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Added documentation on how to write a sensor
 - Added documentation about built-in sensors
+- Added CakePHP Codesniffer (PHPCS) as dev dependency
+- Added Composer commands for executing PHPCS & PHPUnit
 
 ### Changed
 
