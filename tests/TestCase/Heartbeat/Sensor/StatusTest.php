@@ -37,7 +37,7 @@ class StatusTest extends TestCase
      * Tests whether the check result was fetched from cache or by running the check now
      *
      * @return void
-     * @covers Status::wasCheckCached
+     * @covers ::wasCheckCached
      */
     public function testWasCheckCached()
     {
