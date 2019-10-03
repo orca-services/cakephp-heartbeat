@@ -66,6 +66,48 @@ class SensorTest extends TestCase
     }
 
     /**
+     * Tests whether the check result was fetched from cache or by running the check now
+     *
+     * @return void
+     * @covers ::_getCachedStatus
+     * @covers ::_getNonCachedStatus
+     */
+    public function testWasCheckCached()
+    {
+        Chronos::setTestNow('2017-03-30 12:45:37');
+        $sensorName = 'Cached Sensor';
+        $sensorConfig = [
+            'enabled' => true,
+            'severity' => 1,
+            'class' => DummySensor::class,
+            'cached' => "+1 seconds"
+        ];
+        $sensorConfig = new Config($sensorName, $sensorConfig);
+        $sensorClassName = $sensorConfig->getClass();
+
+        /** @var DummySensor $sensor */
+        $sensor = new $sensorClassName($sensorConfig);
+        $status = $sensor->getStatus();
+
+        // Assert that result was not cached
+        $this->assertFalse($status->wasCheckCached());
+
+        // Get status again and assert that result was cached
+        /** @var DummySensor $sensor */
+        $status = $sensor->getStatus();
+        $this->assertTrue($status->wasCheckCached());
+
+        // Get status again after slightly more than a second and assert that result was not cached
+        sleep(2);
+        /** @var DummySensor $sensor */
+        $status = $sensor->getStatus();
+        $this->assertFalse($status->wasCheckCached());
+
+        //// Wait another second to let the cache be reset
+        sleep(1);
+    }
+
+    /**
      * Tests whether the check result was fetched from cache when cache is disabled
      *
      * @return void
