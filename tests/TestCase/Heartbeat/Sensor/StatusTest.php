@@ -5,7 +5,7 @@ namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 use Cake\Chronos\Chronos;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
-use OrcaServices\Heartbeat\Test\TestCase\Heartbeat\DummySensor;
+use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
 use PHPUnit\Framework\TestCase;
 
 /**
