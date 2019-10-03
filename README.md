@@ -44,6 +44,7 @@ See [CHANGELOG.md](CHANGELOG.md)
 - Support for separate status text
 - Add flexible routing
 - CI integrations
+- Update screenshots in [How to Use](docs/Usage.md) with new cache indicator
 - See [the issues](https://github.com/orca-services/cakephp-heartbeat/issues)
 
 ## License
