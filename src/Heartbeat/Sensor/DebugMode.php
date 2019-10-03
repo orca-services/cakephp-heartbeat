@@ -12,7 +12,7 @@ class DebugMode extends Sensor
 {
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function _getStatus()
     {
@@ -20,5 +20,4 @@ class DebugMode extends Sensor
 
         return $debugMode;
     }
-
 }

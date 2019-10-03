@@ -6,11 +6,13 @@
 
 | Plugin Version | CakePHP Compatibility | Branch      | Status    |
 | -------------- | --------------------- | ----------- | --------- |
-| 2.x            | 3.6+                  | cakephp-3.x | Supported |
+| 2.x            | 3.7+                  | cakephp-3.x | Supported |
 | 1.x            | 2.x                   | cakephp-2.x | Supported |
 | 0.x            | 2.x                   | -           | EOL       |
 
-Note: There is no plugin version for CakePHP 3.0-3.5.
+Note:
+- There is no plugin version for CakePHP 3.0-3.5.
+- Previous versions of the plugin that supported previous versions of CakePHP are not supported anymore
 
 ## Installation
 

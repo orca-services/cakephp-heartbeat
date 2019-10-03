@@ -2,8 +2,8 @@
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
-use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use Cake\Datasource\ConnectionManager;
+use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 /**
  * DB Connection Sensor
@@ -15,16 +15,16 @@ class DBConnection extends Sensor
 {
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function _getStatus()
     {
         try {
             $connection = ConnectionManager::get('default');
+
             return $connection->connect();
         } catch (\Exception $e) {
             return false;
         }
     }
-
 }

@@ -4,7 +4,7 @@ Installation
 ### Requirements
 
 - PHP >= 7.0
-- CakePHP 3.6+
+- CakePHP 3.7+
 
 ### CakePHP Version Support
 
