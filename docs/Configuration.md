@@ -46,16 +46,16 @@ To add your sensor to your status page, you have to add it to your configuration
 The sensor array takes the names of your registered sensors as subkeys, which in turn contain configuration arrays.
 
 Those take the following subkeys:
-- `enabled` true or false, to enable or disable a sensor
+- `enabled` can be `true` or `false`; to enable or disable a sensor
 - `severity` can be:
-	- 1: Informational
-	- 2: Non critical
-	- 3: Critical
+	- `1`: Informational
+	- `2`: Non critical
+	- `3`: Critical
 - `class` The fully qualified class name (FQCN)
-- `chached` true, false or a string.
-	 - If set to false, the value will not be cached.
-	 - If set to true, the value will be cached for 30 seconds (by default).
-	 - Can be set to a relative time string e.g. '+10 minutes' to cache the value for 10 minutes.
+- `chached` `true`, `false` or a string
+	 - If set to `false`, the value will not be cached.
+	 - If set to `true`, the value will be cached for 30 seconds (by default).
+	 - Can be set to a relative time string e.g. `+10 minutes` to cache the value for 10 minutes.
 
 Layout overriding
 -----------------
