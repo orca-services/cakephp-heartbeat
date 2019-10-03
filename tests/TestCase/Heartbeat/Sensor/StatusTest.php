@@ -25,6 +25,7 @@ class StatusTest extends TestCase
      * @covers ::getDuration
      * @covers ::getLastExecuted
      * @covers ::getSeverity
+     * @covers ::wasCheckCached
      */
     public function testStatus()
     {
@@ -36,6 +37,7 @@ class StatusTest extends TestCase
         $this->assertEquals(0, $status->getDuration());
         $this->assertEquals('2017-03-30 12:45:37', $status->getLastExecuted());
         $this->assertEquals(1, $status->getSeverity());
+        $this->assertEquals(false, $status->wasCheckCached());
     }
 
     /**
