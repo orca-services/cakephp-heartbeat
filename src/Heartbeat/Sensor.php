@@ -59,26 +59,14 @@ abstract class Sensor
      */
     protected function _getCachedStatus()
     {
+        $sensorCaching = $this->config->getCached();
+
+        $this->_resetCacheConfig($sensorCaching);
+
         $cacheKey = 'heartbeat_' . strtolower(Text::slug($this->config->getName()));
-        $cached = $this->config->getCached();
-
-        Cache::drop('heartbeat');
-
-        $duration = '+30 seconds';
-        if (is_string($cached)) {
-            $duration = $cached;
-        }
-
-        $settings = array_merge(
-            (array)Cache::getConfig('default'),
-            ['duration' => $duration, 'className' => 'File']
-        );
-
-        Cache::setConfig('heartbeat', $settings);
-
-        if ($cached === false) {
-            $cached = Cache::read($cacheKey, 'heartbeat');
-            if (!empty($cached)) {
+        if ($sensorCaching === false) {
+            $cachedStatus = Cache::read($cacheKey, 'heartbeat');
+            if (!empty($cachedStatus)) {
                 Cache::delete($cacheKey, 'heartbeat');
             }
 
@@ -86,7 +74,6 @@ abstract class Sensor
         }
 
         $cachedStatus = Cache::read($cacheKey, 'heartbeat');
-
         if($cachedStatus !== false) {
             $cachedStatus->setCheckWasCached(true);
 
@@ -97,6 +84,29 @@ abstract class Sensor
         Cache::write($cacheKey, $nonCachedStatus, 'heartbeat');
 
         return $nonCachedStatus;
+    }
+
+    /**
+     * Reset the cache configuration
+     *
+     * @param bool|string $sensorCaching The sensor cache configuration, either a bool or a relative time string.
+     * @return void
+     */
+    protected function _resetCacheConfig($sensorCaching)
+    {
+        Cache::drop('heartbeat');
+
+        $duration = '+30 seconds';
+        if (is_string($sensorCaching)) {
+            $duration = $sensorCaching;
+        }
+
+        $settings = array_merge(
+            (array)Cache::getConfig('default'),
+            ['duration' => $duration, 'className' => 'File']
+        );
+
+        Cache::setConfig('heartbeat', $settings);
     }
 
     /**

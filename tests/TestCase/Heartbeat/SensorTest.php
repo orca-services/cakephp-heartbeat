@@ -70,6 +70,7 @@ class SensorTest extends TestCase
      *
      * @return void
      * @covers ::_getCachedStatus
+     * @covers ::_resetCacheConfig
      * @covers ::_getNonCachedStatus
      */
     public function testWasCheckCached()
@@ -112,6 +113,7 @@ class SensorTest extends TestCase
      *
      * @return void
      * @covers ::_getCachedStatus
+     * @covers ::_resetCacheConfig
      * @covers ::_getNonCachedStatus
      */
     public function testWasCheckCachedWhenCacheDisabled()
