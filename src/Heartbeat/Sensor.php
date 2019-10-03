@@ -62,6 +62,8 @@ abstract class Sensor
         $cacheKey = 'heartbeat_' . strtolower(Text::slug($this->config->getName()));
         $cached = $this->config->getCached();
 
+        Cache::drop('heartbeat');
+
         $duration = '+30 seconds';
         if (is_string($cached)) {
             $duration = $cached;
@@ -72,10 +74,7 @@ abstract class Sensor
             ['duration' => $duration, 'className' => 'File']
         );
 
-        $heartbeatConfig = Cache::getConfig('heartbeat');
-        if ($heartbeatConfig === null) {
-            Cache::setConfig('heartbeat', $settings);
-        }
+        Cache::setConfig('heartbeat', $settings);
 
         if ($cached === false) {
             $cached = Cache::read($cacheKey, 'heartbeat');
