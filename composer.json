@@ -53,6 +53,16 @@
 			"Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
 		}
 	},
+    "scripts": {
+        "check": [
+            "@test",
+            "@cs-check"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit",
+        "test-coverage": "phpunit  --coverage-html build/coverage"
+    },
     "config": {
         "sort-packages": true
     }
