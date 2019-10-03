@@ -6,6 +6,9 @@ use Cake\Chronos\Chronos;
 use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
+/**
+ * A Dummy Sensor for testing purposes
+ */
 class DummySensor extends Sensor
 {
     /**
