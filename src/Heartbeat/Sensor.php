@@ -15,6 +15,15 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
  */
 abstract class Sensor
 {
+    /**
+     * Cache name used throughout the plugin
+     */
+    const CACHE_NAME = 'heartbeat';
+
+    /**
+     * Default cache duration
+     */
+    const CACHE_DEFAULT_DURATION = '+30 seconds';
 
     /**
      * The sensor config
@@ -59,12 +68,46 @@ abstract class Sensor
      */
     protected function _getCachedStatus()
     {
-        $cacheKey = 'heartbeat_' . strtolower(Text::slug($this->config->getName()));
-        $cached = $this->config->getCached();
+        $sensorCaching = $this->config->getCached();
 
-        $duration = '+30 seconds';
-        if (is_string($cached)) {
-            $duration = $cached;
+        $this->_resetCacheConfig($sensorCaching);
+
+        $cacheKey =  self::CACHE_NAME . '_' . strtolower(Text::slug($this->config->getName()));
+        if ($sensorCaching === false) {
+            $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
+            if (!empty($cachedStatus)) {
+                Cache::delete($cacheKey, self::CACHE_NAME);
+            }
+
+            return false;
+        }
+
+        $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
+        if($cachedStatus !== false) {
+            $cachedStatus->setCheckWasCached(true);
+
+            return $cachedStatus;
+        }
+
+        $nonCachedStatus = $this->_getNonCachedStatus();
+        Cache::write($cacheKey, $nonCachedStatus, self::CACHE_NAME);
+
+        return $nonCachedStatus;
+    }
+
+    /**
+     * Reset the cache configuration
+     *
+     * @param bool|string $sensorCaching The sensor cache configuration, either a bool or a relative time string.
+     * @return void
+     */
+    protected function _resetCacheConfig($sensorCaching)
+    {
+        Cache::drop(self::CACHE_NAME);
+
+        $duration = self::CACHE_DEFAULT_DURATION;
+        if (is_string($sensorCaching)) {
+            $duration = $sensorCaching;
         }
 
         $settings = array_merge(
@@ -72,25 +115,7 @@ abstract class Sensor
             ['duration' => $duration, 'className' => 'File']
         );
 
-        $heartbeatConfig = Cache::getConfig('heartbeat');
-        if ($heartbeatConfig === null) {
-            Cache::setConfig('heartbeat', $settings);
-        }
-
-        if ($cached === false) {
-            $cached = Cache::read($cacheKey, 'heartbeat');
-            if (!empty($cached)) {
-                Cache::delete($cacheKey, 'heartbeat');
-            }
-
-            return false;
-        }
-
-        $cachedStatus = Cache::remember($cacheKey, function () {
-            return $this->_getNonCachedStatus();
-        }, 'heartbeat');
-
-        return $cachedStatus;
+        Cache::setConfig(self::CACHE_NAME, $settings);
     }
 
     /**

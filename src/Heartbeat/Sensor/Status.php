@@ -61,6 +61,13 @@ class Status
     protected $severity;
 
     /**
+     * Whether sensor status was fetched from cache
+     *
+     * @var bool
+     */
+    protected $checkCached = false;
+
+    /**
      * Status construction
      *
      * @param string $name The name of the sensor
@@ -126,5 +133,25 @@ class Status
     public function getSeverity()
     {
         return $this->severity;
+    }
+
+    /**
+     * Set whether the sensor status was fetched from cache
+     *
+     * @param bool $wasCached
+     */
+    public function setCheckWasCached(bool $wasCached) {
+
+        $this->checkCached = $wasCached;
+    }
+
+    /**
+     * Check whether sensor status was fetched from cache
+     *
+     * @return bool Whether status was cached
+     */
+    public function wasCheckCached(): bool
+    {
+        return $this->checkCached;
     }
 }

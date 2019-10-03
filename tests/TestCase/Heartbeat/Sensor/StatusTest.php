@@ -6,6 +6,11 @@ use Cake\Chronos\Chronos;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Status Tests
+ *
+ * @coversDefaultClass \OrcaServices\Heartbeat\Heartbeat\Sensor\Status
+ */
 class StatusTest extends TestCase
 {
     /**
@@ -18,6 +23,7 @@ class StatusTest extends TestCase
      * @covers ::getDuration
      * @covers ::getLastExecuted
      * @covers ::getSeverity
+     * @covers ::wasCheckCached
      */
     public function testStatus()
     {
@@ -29,5 +35,24 @@ class StatusTest extends TestCase
         $this->assertEquals(0, $status->getDuration());
         $this->assertEquals('2017-03-30 12:45:37', $status->getLastExecuted());
         $this->assertEquals(1, $status->getSeverity());
+        $this->assertEquals(false, $status->wasCheckCached());
+    }
+
+    /**
+     * Tests setting & getting whether the check was cached
+     *
+     * @return void
+     * @covers ::setCheckWasCached
+     * @covers ::wasCheckCached
+     */
+    public function testSetGetCheckWasCached()
+    {
+        $status = new Status('Dummy Sensor', true, 0, Chronos::now(), 1);
+        $this->assertFalse($status->wasCheckCached());
+        $status->setCheckWasCached(true);
+        $this->assertTrue($status->wasCheckCached());
+        $status->setCheckWasCached(false);
+        $this->assertFalse($status->wasCheckCached());
+
     }
 }

@@ -6,6 +6,11 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Test\TestCase\Heartbeat\DummySensor;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Config Tests
+ *
+ * @coversDefaultClass \OrcaServices\Heartbeat\Heartbeat\Sensor\Config
+ */
 class ConfigTest extends TestCase
 {
     /**
