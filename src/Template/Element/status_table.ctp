@@ -61,7 +61,7 @@ $sensorStatuses->some(function ($sensorStatus) {
             ],
             [
                 $wasCheckFromCache ? 'Cached' : 'Not cached',
-                ['class' => $wasCheckFromCache ? 'primary' : 'secondary']
+                ['class' => $wasCheckFromCache ? 'success' : 'info']
             ],
         ],
     ]);
