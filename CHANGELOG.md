@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Added documentation on how to write a sensor
 - Added documentation about built-in sensors
+- Added cache indicator to sensor status #7
 
 ### Changed
 
@@ -32,6 +33,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Fixed DB Connection Sensor
+- Always reset cache config
 
 ## [2.0.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/2.0.0) - 2018-10-01
 ### Added
