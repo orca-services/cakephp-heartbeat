@@ -3,9 +3,7 @@
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 
 use Cake\Chronos\Chronos;
-use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
-use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -41,35 +39,20 @@ class StatusTest extends TestCase
     }
 
     /**
-     * Tests whether the check result was fetched from cache or by running the check now
+     * Tests setting & getting whether the check was cached
      *
      * @return void
+     * @covers ::setCheckWasCached
      * @covers ::wasCheckCached
      */
-    public function testWasCheckCached()
+    public function testSetGetCheckWasCached()
     {
-        Chronos::setTestNow('2017-03-30 12:45:37');
-        $sensorName = 'Cached Sensor';
-        $sensorConfig = [
-            'enabled' => true,
-            'severity' => 1,
-            'class' => DummySensor::class,
-            'cached' => "+1 seconds"
-        ];
-        $sensorConfig = new Config($sensorName, $sensorConfig);
-        $sensorClassName = $sensorConfig->getClass();
-
-        /** @var DummySensor $sensor */
-        $sensor = new $sensorClassName($sensorConfig);
-        $status = $sensor->getStatus();
-
-        // Assert that result was not cached
+        $status = new Status('Dummy Sensor', true, 0, Chronos::now(), 1);
+        $this->assertFalse($status->wasCheckCached());
+        $status->setCheckWasCached(true);
+        $this->assertTrue($status->wasCheckCached());
+        $status->setCheckWasCached(false);
         $this->assertFalse($status->wasCheckCached());
 
-        // Get status again and assert that result was cached
-        /** @var DummySensor $sensor */
-        $sensor = new $sensorClassName($sensorConfig);
-        $status = $sensor->getStatus();
-        $this->assertTrue($status->wasCheckCached());
     }
 }
