@@ -1,7 +1,7 @@
 Extending the View
 ==================
 
-If you need to extend the exiting heartbeat status page slightly
+If you need to extend the existing heartbeat status page slightly
 but to not want to write your own view template to override the exiting,
 you can extend the existing view.
 
