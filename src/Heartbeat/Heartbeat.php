@@ -127,6 +127,7 @@ class Heartbeat
      * Set whether the Heartbeat sensor statuses should be cached by default
      *
      * @param bool $cached True if yes, else false.
+     * @return void
      * @throws \InvalidArgumentException If not a valid boolean was given.
      * @todo Cover set & exception.
      */

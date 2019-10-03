@@ -88,6 +88,7 @@ class Config
      * Set the name of the sensor
      *
      * @param string $name The name of the sensor.
+     * @return void
      */
     public function setName($name)
     {
@@ -187,7 +188,7 @@ class Config
         return $this->cached;
     }
 
-    /*
+    /**
      * Set whether or how long the status should be cached
      *
      * @param bool|string $cached Whether or how long the status should be cached.

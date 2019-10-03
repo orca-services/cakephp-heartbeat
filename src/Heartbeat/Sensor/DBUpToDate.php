@@ -21,7 +21,7 @@ class DBUpToDate extends Sensor
     const MIGRATION_STATUS_UP = 'up';
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     protected function _getStatus()
     {
