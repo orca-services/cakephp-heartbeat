@@ -8,6 +8,11 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 use OrcaServices\Heartbeat\Test\TestCase\Heartbeat\DummySensor;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Status Tests
+ *
+ * @coversDefaultClass \OrcaServices\Heartbeat\Heartbeat\Sensor\Status
+ */
 class StatusTest extends TestCase
 {
     /**
