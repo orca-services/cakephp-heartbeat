@@ -21,6 +21,11 @@ abstract class Sensor
     const CACHE_NAME = 'heartbeat';
 
     /**
+     * Default cache duration
+     */
+    const CACHE_DEFAULT_DURATION = '+30 seconds';
+
+    /**
      * The sensor config
      *
      * @var Config
@@ -100,7 +105,7 @@ abstract class Sensor
     {
         Cache::drop(self::CACHE_NAME);
 
-        $duration = '+30 seconds';
+        $duration = self::CACHE_DEFAULT_DURATION;
         if (is_string($sensorCaching)) {
             $duration = $sensorCaching;
         }
