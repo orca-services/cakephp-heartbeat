@@ -8,7 +8,7 @@ The configuration can be set in `App.Heartbeat`.
 It takes the following subkeys:
 - `name` The name of your application (will be used for the title of the hearbeat status page)
 - `layout` To override the layout (see below)
-- `Sensors` an array of sensors (see below)
+- `Sensors` An array of sensors (see below)
 
 An example configuration would look like this:
 ```php
