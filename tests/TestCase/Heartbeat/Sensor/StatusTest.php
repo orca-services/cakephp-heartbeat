@@ -42,7 +42,7 @@ class StatusTest extends TestCase
     public function testWasCheckCached()
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
-        $sensorName = 'Cache Sensor';
+        $sensorName = 'Cached Sensor';
         $sensorConfig = [
             'enabled' => true,
             'severity' => 1,
