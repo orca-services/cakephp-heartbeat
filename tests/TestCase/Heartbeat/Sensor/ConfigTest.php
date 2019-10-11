@@ -6,6 +6,11 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Test\TestCase\Heartbeat\DummySensor;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * Config Test
+ *
+ * @coversDefaultClass \OrcaServices\Heartbeat\Heartbeat\Sensor\Config
+ */
 class ConfigTest extends TestCase
 {
     /**
@@ -17,10 +22,12 @@ class ConfigTest extends TestCase
      * @covers ::setEnabled
      * @covers ::setSeverity
      * @covers ::setClass
+     * @covers ::setSettings
      * @covers ::getName
      * @covers ::getEnabled
      * @covers ::getSeverity
      * @covers ::getClass
+     * @covers ::getSettings
      */
     public function testCreateConfig()
     {
@@ -29,12 +36,16 @@ class ConfigTest extends TestCase
             'enabled' => true,
             'severity' => 1,
             'class' => DummySensor::class,
+            'settings' => [
+                'connection_name' => 'test',
+            ],
         ];
         $sensorConfig = new Config($sensorName, $sensorConfigArray);
         $this->assertEquals($sensorName, $sensorConfig->getName());
         $this->assertEquals($sensorConfigArray['enabled'], $sensorConfig->getEnabled());
         $this->assertEquals($sensorConfigArray['severity'], $sensorConfig->getSeverity());
         $this->assertEquals($sensorConfigArray['class'], $sensorConfig->getClass());
+        $this->assertEquals($sensorConfigArray['settings'], $sensorConfig->getSettings());
     }
 
     /**
@@ -46,10 +57,12 @@ class ConfigTest extends TestCase
      * @covers ::setEnabled
      * @covers ::setSeverity
      * @covers ::setClass
+     * @covers ::setSettings
      * @covers ::getName
      * @covers ::getEnabled
      * @covers ::getSeverity
      * @covers ::getClass
+     * @covers ::getSettings
      */
     public function testDefaultConfig()
     {
@@ -60,6 +73,7 @@ class ConfigTest extends TestCase
         $this->assertEquals(true, $sensorConfig->getEnabled());
         $this->assertEquals(2, $sensorConfig->getSeverity());
         $this->assertEquals(null, $sensorConfig->getClass());
+        $this->assertEquals([], $sensorConfig->getSettings());
     }
 
     /**

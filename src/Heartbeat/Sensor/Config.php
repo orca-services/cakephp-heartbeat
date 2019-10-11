@@ -214,7 +214,6 @@ class Config
      * Get additional settings for the sensor
      *
      * @return array The settings of the sensor.
-     * @todo Cover by a test.
      */
     public function getSettings(): array
     {
@@ -225,7 +224,6 @@ class Config
      * Set the additional settings of the sensor
      *
      * @param array $settings The settings of the sensor.
-     * @todo Cover by a test.
      */
     public function setSettings(array $settings)
     {

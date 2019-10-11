@@ -2,9 +2,9 @@
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
+use Cake\Datasource\ConnectionManager;
 use Cake\Database\DriverInterface;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
-use Cake\Datasource\ConnectionManager;
 
 /**
  * DB Connection Sensor
