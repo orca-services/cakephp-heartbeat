@@ -15,7 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Dependencies
 - cakephp/cakephp updated from 3.7.3 to 3.8.5
 - phpunit/phpunit updated from 6.5.12 to 6.5.14
-- cakephp/migrations updated from 2.0.0 to 2.1.1
+- cakephp/migrations updated from 2.0.0 to 2.3.0
 
 ### Fixed
 - Fixed DB Connection Sensor
