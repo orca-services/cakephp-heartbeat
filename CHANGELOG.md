@@ -14,8 +14,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Dependencies
 - composer/installers updated from v1.4.0 to v1.9.0
 - cakephp/chronos updated from 1.1.2 to 1.3.0
-- cakephp/collection updated from 3.5.3 to 3.8.11
-- cakephp/cakephp updated from 2.10.12 to 2.10.20
+- cakephp/collection updated from 3.5.3 to 3.8.12
+- cakephp/cakephp updated from 2.10.12 to 2.10.21
 
 ## [0.1.1](https://github.com/orca-services/cakephp-heartbeat/releases/tag/0.1.1) - 2017-07-20
 ### Changed
