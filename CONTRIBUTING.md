@@ -17,7 +17,7 @@ chance of keeping on top of things.
 
 * Submit an issue, but:
   * Make sure it does not already exist.
-  * Clearly describe the issue including steps to reproduce, when it is a bug.
+  * Clearly describe the issue including steps to reproduce, if it is a bug.
   * Make sure you mention the version and configuration of all software that could be relevant.
 
 ## Coding Standard
