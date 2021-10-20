@@ -32,7 +32,7 @@ The releases of this plugin are versioned using [SemVer](http://semver.org/).
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md)
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
 ## Changelog
 
