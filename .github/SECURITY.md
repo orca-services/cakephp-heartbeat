@@ -18,7 +18,7 @@ Next, for each report, we try to confirm the vulnerability.
 Once confirmed, we will do the following:
 
 * Acknowledge to the reporter that we’ve confirmed the issue, and are
-  working on a fix. We ask that the reporter keep the issue confidential
+  working on a fix. We ask the reporter to keep the issue confidential
   until we announce a solution.
 * Get a fix/patch or workaround/guidance prepared.
 * Release new versions of all affected versions, if applicable.
