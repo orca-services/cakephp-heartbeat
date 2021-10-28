@@ -14,6 +14,11 @@ Note:
 - There is no plugin version for CakePHP 3.0-3.5.
 - Previous versions of the plugin that supported previous versions of CakePHP are not supported anymore
 
+## Security
+
+If you've found a security vulnerability, please follow the procedure
+described in [SECURITY.md](.github/SECURITY.md).
+
 ## Installation
 
 See the [installation documentation](docs/Installation.md) .
