@@ -43,6 +43,11 @@ See [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
 See [CHANGELOG.md](CHANGELOG.md)
 
+## Security
+
+If you've found a security vulnerability, please follow the procedure
+described in [SECURITY.md](.github/SECURITY.md).
+
 ## TODOs
 
 - Add badges
