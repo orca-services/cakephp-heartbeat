@@ -13,7 +13,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Dependencies
-- Multiple sub dependencies
 - cakephp/cakephp updated from 3.10.2 to 3.10.3
 - Downgrade numerous dependencies to be compatible with PHP >= 7.0 as stated in Installation.md
 - phpunit/phpunit updated from 6.5.12 to 6.5.14
@@ -21,6 +20,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - cakephp/cakephp-codesniffer updated from 3.1.2 to 3.3.3
 - robmorgan/phinx updated from 0.11.6 to 0.11.7
 - cakephp/cakephp updated from 3.10.3 to 3.10.4
+- Various sub dependencies
 
 ### Fixed
 - Fixed DB Connection Sensor
