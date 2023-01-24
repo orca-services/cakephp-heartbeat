@@ -13,7 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Dependencies
-- cakephp/cakephp updated from 3.10.4 to 3.10.5 patch
+- cakephp/cakephp updated from 3.10.2 to 3.10.5 patch
 - Downgrade numerous dependencies to be compatible with PHP >= 7.0 as stated in Installation.md
 - phpunit/phpunit updated from 6.5.12 to 6.5.14
 - cakephp/migrations updated from 2.0.0 to 2.4.1
