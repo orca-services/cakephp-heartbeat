@@ -19,7 +19,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - cakephp/migrations updated from 2.0.0 to 2.4.1
 - cakephp/cakephp-codesniffer updated from 3.1.2 to 3.3.3
 - robmorgan/phinx updated from 0.11.6 to 0.11.7
-- cakephp/cakephp updated from 3.10.3 to 3.10.4
 - Various sub dependencies
 
 ### Fixed
