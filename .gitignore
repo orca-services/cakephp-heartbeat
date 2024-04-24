@@ -16,6 +16,9 @@
 #############
 /*.phar
 vendor
+phpcs.xml
+pdepend.xml
+phpunit.xml
 
 # OS generated files #
 ######################
