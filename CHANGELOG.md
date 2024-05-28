@@ -20,7 +20,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - cakephp/cakephp-codesniffer updated from 3.1.2 to 3.3.3
 - robmorgan/phinx updated from 0.11.6 to 0.11.7
 - Various sub dependencies
-- squizlabs/php_codesniffer updated from 3.8.1 to 3.9.2 minor
+- squizlabs/php_codesniffer updated from 3.8.1 to 3.10.1 minor
 
 
 ### Fixed
