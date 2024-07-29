@@ -4,14 +4,21 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/2.0.0...cakephp-3.x)
 ### Added
-- Added cache indicator to sensor status #7
-- Added CakePHP Codesniffer (PHPCS) as dev dependency
-- Added Composer commands for executing PHPCS & PHPUnit
 
 ### Changed
 
 ### Dependencies
-- cakephp/cakephp updated from 3.10.2 to 3.10.5 patch
+
+### Fixed
+
+## [2.2.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/2.2.0) - 2024-7-29
+### Added
+- Added cache indicator to sensor status #7
+- Added CakePHP Codesniffer (PHPCS) as dev dependency
+- Added Composer commands for executing PHPCS & PHPUnit
+
+### Dependencies
+- cakephp/cakephp updated from 3.7.7 to 3.10.5 minor
 - Downgrade numerous dependencies to be compatible with PHP >= 7.0 as stated in Installation.md
 - cakephp/migrations updated from 2.0.0 to 2.4.1
 - cakephp/cakephp-codesniffer updated from 3.1.2 to 3.3.3
