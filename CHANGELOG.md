@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Dependencies
 
 ### Fixed
+- Set table cell options for cache indicator
 
 ## [2.2.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/2.2.0) - 2024-7-29
 ### Added

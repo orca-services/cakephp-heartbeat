@@ -60,7 +60,8 @@ $sensorStatuses->some(function ($sensorStatus) {
                 ['class' => $tableClass],
             ],
             [
-                $wasCheckFromCache ? 'Cached' : 'Not cached'
+                $wasCheckFromCache ? 'Cached' : 'Not cached',
+                ['class' => $tableClass],
             ],
         ],
     ]);
