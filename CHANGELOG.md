@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Dependencies
+- squizlabs/php_codesniffer updated from 3.10.2 to 3.10.3 patch
 
 ### Fixed
 
