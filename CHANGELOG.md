@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Dependencies
 - squizlabs/php_codesniffer updated from 3.10.2 to 3.11.3 minor
+- phpstan/phpdoc-parser updated from 2.0.0 to 2.1.0 minor
 
 ### Fixed
 
