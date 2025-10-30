@@ -4,12 +4,44 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/2.0.0...cakephp-3.x)
 ### Added
+- Support for CakePHP Version 4.x
 
 ### Changed
 
 ### Dependencies
 - squizlabs/php_codesniffer updated from 3.10.2 to 3.13.4 minor
 - phpstan/phpdoc-parser updated from 2.0.0 to 2.2.0 minor
+- dealerdirect/phpcodesniffer-composer-installer installed in version v1.1.2
+- phpstan/phpdoc-parser downgraded from 2.3.0 to 1.33.0 major
+- slevomat/coding-standard installed in version 8.15.0
+- cakephp/cakephp-codesniffer updated from 3.3.0 to 5.1.0 major
+- cakephp/chronos updated from 1.3.0 to 2.4.5 major
+- symfony/service-contracts downgraded from v2.5.4 to v1.1.2 major
+- psr/container updated from 1.1.2 to 2.0.2 major
+- psr/http-server-handler installed in version 1.0.2
+- psr/http-server-middleware installed in version 1.0.2
+- psr/http-client installed in version 1.0.3
+- league/container installed in version 4.2.5
+- psr/http-factory installed in version 1.1.0
+- laminas/laminas-diactoros updated from 1.8.7p2 to 2.17.0 major
+- laminas/laminas-httphandlerrunner installed in version 2.2.0
+- composer/ca-bundle installed in version 1.5.8
+- cakephp/cakephp updated from 3.10.5 to 4.6.2 major
+- robmorgan/phinx updated from 0.11.7 to 0.13.4 minor
+- cakephp/migrations updated from 2.4.2 to 3.9.0 major
+- phpunit/php-token-stream updated from 2.0.2 to 4.0.4 major
+- sebastian/type installed in version 1.1.5
+- sebastian/resource-operations updated from 1.0.0 to 2.0.3 major
+- sebastian/global-state updated from 2.0.0 to 3.0.6 major
+- sebastian/environment updated from 3.1.0 to 4.2.5 major
+- sebastian/diff updated from 2.0.1 to 3.0.6 major
+- sebastian/comparator updated from 2.1.3 to 3.0.6 major
+- phpunit/php-timer updated from 1.0.9 to 2.1.4 major
+- phpunit/php-file-iterator updated from 1.4.5 to 2.0.6 major
+- phpunit/php-code-coverage updated from 5.3.2 to 7.0.17 major
+- phar-io/version updated from 1.0.1 to 3.2.1 major
+- phar-io/manifest updated from 1.0.1 to 2.0.4 major
+- phpunit/phpunit updated from 6.5.14 to 8.5.48 major
 
 ### Fixed
 

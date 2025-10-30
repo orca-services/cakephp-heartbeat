@@ -6,6 +6,10 @@
  * has been installed as a dependency of the plugin, or the plugin is itself
  * installed as a dependency of an application.
  */
+
+// phpunit/phpunit 8.x has many deprecations
+error_reporting(E_ALL & ~E_USER_DEPRECATED);
+
 $findRoot = function ($root) {
     do {
         $lastRoot = $root;

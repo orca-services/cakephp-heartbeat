@@ -83,7 +83,7 @@ abstract class Sensor
         }
 
         $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
-        if($cachedStatus !== false) {
+        if(!empty($cachedStatus)) {
             $cachedStatus->setCheckWasCached(true);
 
             return $cachedStatus;
