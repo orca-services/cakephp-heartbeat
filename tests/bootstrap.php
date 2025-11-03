@@ -7,7 +7,7 @@
  * installed as a dependency of an application.
  */
 
-// phpunit/phpunit 8.x has many deprecations
+// CakePHP 4 has some deprecations, e.g. "4.5.0 - TestListenerTrait is deprecated, as PHPUnit is removing support for listeners."
 error_reporting(E_ALL & ~E_USER_DEPRECATED);
 
 $findRoot = function ($root) {

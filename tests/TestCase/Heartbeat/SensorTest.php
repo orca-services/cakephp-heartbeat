@@ -7,6 +7,7 @@ use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
+use ReflectionException;
 
 /**
  * Sensor Test
@@ -33,7 +34,7 @@ class SensorTest extends TestCase
         $sensorClassName = $sensorConfig->getClass();
         /** @var Sensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
-        $this->assertAttributeEquals($sensorConfig, 'config', $sensor);
+        $this->assertEquals($sensorConfig, $this->getProperty($sensor, 'config'));
     }
 
     /**
@@ -136,5 +137,22 @@ class SensorTest extends TestCase
         $this->assertFalse($status->wasCheckCached());
         $status = $sensor->getStatus();
         $this->assertFalse($status->wasCheckCached());
+    }
+
+    /**
+     * Returns value of private and protected properties.
+     *
+     * @param mixed $object The object
+     * @param string $property The property name
+     * @return mixed The value
+     * @throws ReflectionException
+     */
+    public static function getProperty($object, string $property)
+    {
+        $reflectedClass = new \ReflectionClass($object);
+        $reflection = $reflectedClass->getProperty($property);
+        $reflection->setAccessible(true);
+
+        return $reflection->getValue($object);
     }
 }
