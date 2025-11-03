@@ -10,14 +10,11 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
  */
 class DebugMode extends Sensor
 {
-
     /**
      * {@inheritdoc}
      */
     protected function _getStatus()
     {
-        $debugMode = (string)Configure::read('debug');
-
-        return $debugMode;
+        return (string)Configure::read('debug');
     }
 }

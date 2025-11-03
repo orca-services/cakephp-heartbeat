@@ -2,12 +2,13 @@
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
+use InvalidArgumentException;
+
 /**
  * Heartbeat Sensor Config
  */
 class Config
 {
-
     /**
      * The name of the sensor
      *
@@ -33,7 +34,7 @@ class Config
     /**
      * The class name
      *
-     * @var string|null
+     * @var string
      */
     protected $class;
 
@@ -52,7 +53,6 @@ class Config
     protected $defaultConfig = [
         'enabled' => true,
         'severity' => Status::STATUS_NONCRITICAL,
-        'class' => null,
         'cached' => false,
     ];
 
@@ -62,7 +62,7 @@ class Config
      * @param string $name The name of the sensor.
      * @param array $config The config to use.
      */
-    public function __construct($name, array $config)
+    public function __construct(string $name, array $config)
     {
         $this->setName($name);
 
@@ -90,7 +90,7 @@ class Config
      * @param string $name The name of the sensor.
      * @return void
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -100,24 +100,17 @@ class Config
      *
      * @param bool $enabled Whether the sensor is enabled.
      * @return void
-     * @throws \InvalidArgumentException If not valid severity level was given.
+     * @throws InvalidArgumentException If not valid severity level was given.
      */
-    protected function setEnabled($enabled)
+    protected function setEnabled(bool $enabled): void
     {
-        if (!is_bool($enabled)) {
-            throw new \InvalidArgumentException(sprintf(
-                'Enabled must be a boolean, got "%s" instead.',
-                $enabled
-            ));
-        }
-
         $this->enabled = $enabled;
     }
 
     /**
-     * Get whether the sensor is enable
+     * Get whether the sensor is enabled
      *
-     * @return bool Whether the sensor is enable.
+     * @return bool Whether the sensor is enabled.
      */
     public function getEnabled(): bool
     {
@@ -129,15 +122,12 @@ class Config
      *
      * @param int $severity The severity level.
      * @return void
-     * @throws \InvalidArgumentException If not valid severity level was given.
+     * @throws InvalidArgumentException If not valid severity level was given.
      */
-    protected function setSeverity($severity)
+    protected function setSeverity(int $severity): void
     {
-        if (!in_array(
-            $severity,
-            [Status::STATUS_CRITICAL, Status::STATUS_NONCRITICAL, Status::STATUS_INFORMATIONAL]
-        )) {
-            throw new \InvalidArgumentException(sprintf(
+        if (!in_array($severity, [Status::STATUS_CRITICAL, Status::STATUS_NONCRITICAL, Status::STATUS_INFORMATIONAL], true)) {
+            throw new InvalidArgumentException(sprintf(
                 'Severity must be a valid severity level, got "%s" instead.',
                 $severity
             ));
@@ -162,7 +152,7 @@ class Config
      * @param string $class The class name.
      * @return void
      */
-    protected function setClass($class)
+    protected function setClass(string $class): void
     {
         // TODO Consider checking for valid class name.
         $this->class = $class;
@@ -173,7 +163,7 @@ class Config
      *
      * @return null|string The class name or null.
      */
-    public function getClass()
+    public function getClass(): string
     {
         return $this->class;
     }
@@ -193,13 +183,13 @@ class Config
      *
      * @param bool|string $cached Whether or how long the status should be cached.
      * @return void
-     * @throws \InvalidArgumentException If not a valid boolean or string was given.
+     * @throws InvalidArgumentException If not a valid boolean or string was given.
      * @todo Cover the exception.
      */
-    public function setCached($cached)
+    public function setCached($cached): void
     {
         if (!is_bool($cached) && !is_string($cached)) {
-            throw new \InvalidArgumentException(sprintf(
+            throw new InvalidArgumentException(sprintf(
                 'Cached must be either a bool or a string, "%s" given instead',
                 $cached
             ));

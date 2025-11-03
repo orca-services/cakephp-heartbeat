@@ -2,24 +2,30 @@
 
 namespace OrcaServices\Heartbeat;
 
+use Cake\Console\CommandCollection;
 use Cake\Core\BasePlugin;
 use Cake\Core\PluginApplicationInterface;
+use Cake\Http\MiddlewareQueue;
+use Cake\Routing\RouteBuilder;
 
+/**
+ * CakePHP Heartbeat Plugin
+ */
 class Plugin extends BasePlugin
 {
     /**
      * {@inheritdoc}
      */
-    public function middleware($middleware)
+    public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
     {
         // Add middleware here.
-        return $middleware;
+        return $middlewareQueue;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function console($commands)
+    public function console(CommandCollection $commands): CommandCollection
     {
         // Add console commands here.
         return $commands;
@@ -28,7 +34,7 @@ class Plugin extends BasePlugin
     /**
      * {@inheritdoc}
      */
-    public function bootstrap(PluginApplicationInterface $app)
+    public function bootstrap(PluginApplicationInterface $app): void
     {
         // Add constants, load configuration defaults.
         // By default will load `config/bootstrap.php` in the plugin.
@@ -38,7 +44,7 @@ class Plugin extends BasePlugin
     /**
      * {@inheritdoc}
      */
-    public function routes($routes)
+    public function routes(RouteBuilder $routes): void
     {
         // Add routes.
         // By default will load `config/routes.php` in the plugin.

@@ -9,21 +9,20 @@ use Cake\Chronos\Chronos;
  */
 class Status
 {
-
     /**
      * Informational status
      */
-    const STATUS_INFORMATIONAL = 1;
+    public const STATUS_INFORMATIONAL = 1;
 
     /**
      * Noncritical status
      */
-    const STATUS_NONCRITICAL = 2;
+    public const STATUS_NONCRITICAL = 2;
 
     /**
      * Critical status
      */
-    const STATUS_CRITICAL = 3;
+    public const STATUS_CRITICAL = 3;
 
     /**
      * The name of the sensor
@@ -49,7 +48,7 @@ class Status
     /**
      * The date/time when the sensor check was last executed
      *
-     * @var \Cake\Chronos\Chronos
+     * @var Chronos
      */
     protected $lastExecuted;
 
@@ -140,8 +139,8 @@ class Status
      *
      * @param bool $wasCached
      */
-    public function setCheckWasCached(bool $wasCached) {
-
+    public function setCheckWasCached(bool $wasCached): void
+    {
         $this->checkCached = $wasCached;
     }
 

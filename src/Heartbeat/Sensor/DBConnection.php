@@ -13,17 +13,14 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
  */
 class DBConnection extends Sensor
 {
-
     /**
      * {@inheritdoc}
      */
     protected function _getStatus()
     {
         try {
-            $connection = ConnectionManager::get('default');
-
-            return $connection->connect();
-        } catch (\Exception $e) {
+            return ConnectionManager::get('default')->connect();
+        } catch (\Exception $exception) {
             return false;
         }
     }

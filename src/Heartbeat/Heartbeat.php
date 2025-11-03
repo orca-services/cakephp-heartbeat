@@ -3,7 +3,9 @@
 namespace OrcaServices\Heartbeat\Heartbeat;
 
 use Cake\Chronos\Chronos;
+use Cake\Collection\Collection;
 use Cake\Core\Configure;
+use InvalidArgumentException;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 /**
@@ -13,7 +15,6 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
  */
 class Heartbeat
 {
-
     /**
      * Whether the Heartbeat sensor statuses should be cached by default. Can be overridden. Defaults to true.
      *
@@ -69,15 +70,15 @@ class Heartbeat
      * @param array $sensorConfig The sensor configuration.
      * @return Sensor The configures sensor.
      */
-    protected function _getSensor($sensorName, $sensorConfig): Sensor
+    protected function _getSensor(string $sensorName, array $sensorConfig): Sensor
     {
-        $sensorConfig = new Sensor\Config($sensorName, $sensorConfig);
+        $config = new Sensor\Config($sensorName, $sensorConfig);
         if (!$this->cached) {
-            $sensorConfig->setCached(false);
+            $config->setCached(false);
         }
-        $sensorClassName = $sensorConfig->getClass();
+        $sensorClassName = $config->getClass();
         /** @var Sensor $sensor */
-        $sensor = new $sensorClassName($sensorConfig);
+        $sensor = new $sensorClassName($config);
 
         return $sensor;
     }
@@ -85,9 +86,9 @@ class Heartbeat
     /**
      * Get the sensor statuses
      *
-     * @return Status[]|\Cake\Collection\Collection The sensor statuses.
+     * @return Collection The sensor statuses.
      */
-    public function getSensorStatuses()
+    public function getSensorStatuses(): Collection
     {
         return collection($this->sensorStatuses);
     }
@@ -102,7 +103,7 @@ class Heartbeat
         $sensorStatuses = $this->getSensorStatuses();
 
         $systemStatus = !$sensorStatuses->some(function ($sensorStatus) {
-            /** @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status $sensorStatus */
+            /** @var Status $sensorStatus */
             if ($sensorStatus->getSeverity() === Status::STATUS_CRITICAL) {
                 return $sensorStatus->getStatus() === false;
             }
@@ -128,15 +129,11 @@ class Heartbeat
      *
      * @param bool $cached True if yes, else false.
      * @return void
-     * @throws \InvalidArgumentException If not a valid boolean was given.
+     * @throws InvalidArgumentException If not a valid boolean was given.
      * @todo Cover set & exception.
      */
-    public function setCached($cached)
+    public function setCached(bool $cached): void
     {
-        if (!is_bool($cached)) {
-            throw new \InvalidArgumentException(sprintf('Cached must be a bool, "%s" given instead', $cached));
-        }
-
         $this->cached = $cached;
     }
 }

@@ -18,12 +18,12 @@ abstract class Sensor
     /**
      * Cache name used throughout the plugin
      */
-    const CACHE_NAME = 'heartbeat';
+    public const CACHE_NAME = 'heartbeat';
 
     /**
      * Default cache duration
      */
-    const CACHE_DEFAULT_DURATION = '+30 seconds';
+    public const CACHE_DEFAULT_DURATION = '+30 seconds';
 
     /**
      * The sensor config
@@ -54,9 +54,7 @@ abstract class Sensor
             return $cachedStatus;
         }
 
-        $status = $this->_getNonCachedStatus();
-
-        return $status;
+        return $this->_getNonCachedStatus();
     }
 
     /**
@@ -101,7 +99,7 @@ abstract class Sensor
      * @param bool|string $sensorCaching The sensor cache configuration, either a bool or a relative time string.
      * @return void
      */
-    protected function _resetCacheConfig($sensorCaching)
+    protected function _resetCacheConfig($sensorCaching): void
     {
         Cache::drop(self::CACHE_NAME);
 
