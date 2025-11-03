@@ -9,7 +9,7 @@ use Cake\Http\MiddlewareQueue;
 use Cake\Routing\RouteBuilder;
 
 /**
- * Plugin
+ * CakePHP Heartbeat Plugin
  */
 class Plugin extends BasePlugin
 {
