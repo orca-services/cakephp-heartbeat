@@ -5,7 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/2.0.0...cakephp-3.x)
 ### Added
 - Upgrade to CakePHP version 4.x
-- Strict variable typing and declaration
+- Add visibility for constants
+- Add data type hints for parameters & return values
 
 ### Changed
 - Refactoring code according to the code style
