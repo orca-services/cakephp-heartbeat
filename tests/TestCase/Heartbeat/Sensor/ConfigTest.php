@@ -27,19 +27,21 @@ class ConfigTest extends TestCase
      * @covers ::getSeverity
      * @covers ::getClass
      */
-    public function testCreateConfig()
+    public function testCreateConfig(): void
     {
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => true,
             'severity' => 1,
             'class' => DummySensor::class,
+            'cached' => true,
         ];
         $sensorConfig = new Config($sensorName, $sensorConfigArray);
-        $this->assertEquals($sensorName, $sensorConfig->getName());
-        $this->assertEquals($sensorConfigArray['enabled'], $sensorConfig->getEnabled());
-        $this->assertEquals($sensorConfigArray['severity'], $sensorConfig->getSeverity());
-        $this->assertEquals($sensorConfigArray['class'], $sensorConfig->getClass());
+        static::assertEquals($sensorName, $sensorConfig->getName());
+        static::assertEquals($sensorConfigArray['enabled'], $sensorConfig->getEnabled());
+        static::assertEquals($sensorConfigArray['severity'], $sensorConfig->getSeverity());
+        static::assertEquals($sensorConfigArray['class'], $sensorConfig->getClass());
+        static::assertTrue($sensorConfig->getCached());
     }
 
     /**
@@ -56,15 +58,18 @@ class ConfigTest extends TestCase
      * @covers ::getSeverity
      * @covers ::getClass
      */
-    public function testDefaultConfig()
+    public function testDefaultConfig(): void
     {
         $sensorName = 'Dummy Sensor';
-        $sensorConfigArray = [];
+        $sensorConfigArray = [
+            'class' => DummySensor::class
+        ];
         $sensorConfig = new Config($sensorName, $sensorConfigArray);
-        $this->assertEquals($sensorName, $sensorConfig->getName());
-        $this->assertEquals(true, $sensorConfig->getEnabled());
-        $this->assertEquals(2, $sensorConfig->getSeverity());
-        $this->assertEquals(null, $sensorConfig->getClass());
+        static::assertEquals($sensorName, $sensorConfig->getName());
+        static::assertTrue($sensorConfig->getEnabled());
+        static::assertEquals(2, $sensorConfig->getSeverity());
+        static::assertEquals($sensorConfigArray['class'], $sensorConfig->getClass());
+        static::assertFalse($sensorConfig->getCached());
     }
 
     /**
@@ -73,7 +78,7 @@ class ConfigTest extends TestCase
      * @return void
      * @covers ::setSeverity
      */
-    public function testInvalidSeverity()
+    public function testInvalidSeverity(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $sensorName = 'Dummy Sensor';
@@ -86,19 +91,20 @@ class ConfigTest extends TestCase
     }
 
     /**
-     * Test Invalid Enabled
+     * Test Invalid Cached
      *
      * @return void
      * @covers ::setEnabled
      */
-    public function testInvalidEnabled()
+    public function testInvalidCached(): void
     {
         $this->expectException(\InvalidArgumentException::class);
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
-            'enabled' => 3,
+            'enabled' => true,
             'severity' => 1,
             'class' => DummySensor::class,
+            'cached' => 1,
         ];
         new Config($sensorName, $sensorConfigArray);
     }

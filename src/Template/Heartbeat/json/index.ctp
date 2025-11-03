@@ -2,10 +2,13 @@
 /**
  * The Heartbeat Status JSON Page
  *
- * @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status[]|\Cake\Collection\Collection $sensorStatuses The sensor
+ * @var Status[]|Collection $sensorStatuses The sensor
  *     statuses.
- * @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status $systemStatus The system status.
+ * @var Status $systemStatus The system status.
  */
+
+use Cake\Collection\Collection;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 $systemStatusName = $systemStatus->getName();
 $systemStatusText = $systemStatus->getStatus() ? __('OK') : __('FAILED');
@@ -13,7 +16,7 @@ $systemStatusText = $systemStatus->getStatus() ? __('OK') : __('FAILED');
 $system = [$systemStatusName => $systemStatusText];
 
 $statuses = $sensorStatuses->map(function ($sensorStatus) {
-    /** @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status $sensorStatus */
+    /** @var Status $sensorStatus */
     $name = $sensorStatus->getName();
     $status = $sensorStatus->getStatus();
     $severity = $sensorStatus->getSeverity();

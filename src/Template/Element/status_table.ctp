@@ -2,17 +2,17 @@
 /**
  * The Heartbeat Sensor Status Table
  *
- * @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status[]|\Cake\Collection\Collection $sensorStatuses The sensor
- *     statuses.
- * @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status $systemStatus The system status.
+ * @var Status[]|Collection $sensorStatuses The sensor statuses.
+ * @var Status $systemStatus The system status.
  */
 
+use Cake\Collection\Collection;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 echo '<table class="table table-bordered table-responsive table-striped table-hover table-condensed">';
 
 $sensorStatuses->some(function ($sensorStatus) {
-    /** @var \OrcaServices\Heartbeat\Heartbeat\Sensor\Status $sensorStatus */
+    /** @var Status $sensorStatus */
     $name = $sensorStatus->getName();
     $status = $sensorStatus->getStatus();
     $severity = $sensorStatus->getSeverity();

@@ -18,7 +18,7 @@ class DBUpToDate extends Sensor
     /**
      * Migration status indicating the migration was executed successfully
      */
-    const MIGRATION_STATUS_UP = 'up';
+    public const MIGRATION_STATUS_UP = 'up';
 
     /**
      * {@inheritdoc}
@@ -33,7 +33,7 @@ class DBUpToDate extends Sensor
             if ($lastStatus['status'] !== self::MIGRATION_STATUS_UP) {
                 $dbMigrated = false;
             }
-        } catch (\Exception $e) {
+        } catch (\Exception $exception) {
             $dbMigrated = false;
         }
 
