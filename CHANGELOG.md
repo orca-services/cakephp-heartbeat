@@ -4,12 +4,57 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/2.0.0...cakephp-3.x)
 ### Added
+- Support for CakePHP Version 4.x
 
 ### Changed
 
 ### Dependencies
+- cakephp/cakephp updated from 3.10.5 to 4.6.2 major
+- cakephp/cakephp-codesniffer updated from 3.3.0 to 5.1.0 major
+- cakephp/chronos updated from 1.3.0 to 2.4.5 major
+- cakephp/migrations updated from 2.4.2 to 3.9.0 major
+- composer/ca-bundle installed in version 1.5.8
+- dealerdirect/phpcodesniffer-composer-installer installed in version v1.1.2
+- laminas/laminas-diactoros updated from 1.8.7p2 to 2.17.0 major
+- laminas/laminas-httphandlerrunner installed in version 2.2.0
+- league/container installed in version 4.2.5
+- nikic/php-parser installed in version v5.6.2
+- phar-io/manifest updated from 1.0.1 to 2.0.4 major
+- phar-io/version updated from 1.0.1 to 3.2.1 major
+- phpstan/phpdoc-parser downgraded from 2.0.0 to 1.33.0 major
+- phpunit/php-code-coverage updated from 5.3.2 to 9.2.32 major
+- phpunit/php-code-coverage updated from 7.0.17 to 9.2.32 major
+- phpunit/php-file-iterator updated from 1.4.5 to 3.0.6 major
+- phpunit/php-invoker installed in version 3.1.1
+- phpunit/php-text-template updated from 1.2.1 to 2.0.4 major
+- phpunit/php-timer updated from 1.0.9 to 5.0.3 major
+- phpunit/php-token-stream removed (installed version was 2.0.2)
+- phpunit/phpunit updated from 6.5.14 to 9.6.29 major
+- psr/container updated from 1.1.2 to 2.0.2 major
+- psr/http-client installed in version 1.0.3
+- psr/http-factory installed in version 1.1.0
+- psr/http-server-handler installed in version 1.0.2
+- psr/http-server-middleware installed in version 1.0.2
+- robmorgan/phinx updated from 0.11.7 to 0.13.4 minor
+- sebastian/cli-parser installed in version 1.0.2
+- sebastian/code-unit installed in version 1.0.8
+- sebastian/code-unit-reverse-lookup updated from 1.0.3 to 2.0.3 major
+- sebastian/comparator updated from 2.1.3 to 4.0.9 major
+- sebastian/complexity installed in version 2.0.3
+- sebastian/diff updated from 2.0.1 to 4.0.6 major
+- sebastian/environment updated from 3.1.0 to 5.1.5 major
+- sebastian/exporter updated from 3.1.8 to 4.0.8 major
+- sebastian/global-state updated from 2.0.0 to 5.0.8 major
+- sebastian/lines-of-code installed in version 1.0.4
+- sebastian/object-enumerator updated from 3.0.5 to 4.0.4 major
+- sebastian/object-reflector updated from 1.1.3 to 2.0.4 major
+- sebastian/recursion-context updated from 3.0.3 to 4.0.6 major
+- sebastian/resource-operations updated from 1.0.0 to 3.0.4 major
+- sebastian/type installed in version 3.2.1
+- sebastian/version updated from 2.0.1 to 3.0.2 major
+- slevomat/coding-standard installed in version 8.15.0
 - squizlabs/php_codesniffer updated from 3.10.2 to 3.13.4 minor
-- phpstan/phpdoc-parser updated from 2.0.0 to 2.2.0 minor
+- symfony/service-contracts downgraded from v2.5.4 to v1.1.2 major
 
 ### Fixed
 

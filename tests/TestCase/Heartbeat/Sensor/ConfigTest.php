@@ -3,7 +3,7 @@
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
-use OrcaServices\Heartbeat\Test\TestCase\Heartbeat\DummySensor;
+use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -72,10 +72,10 @@ class ConfigTest extends TestCase
      *
      * @return void
      * @covers ::setSeverity
-     * @expectedException \InvalidArgumentException
      */
     public function testInvalidSeverity()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => true,
@@ -90,10 +90,10 @@ class ConfigTest extends TestCase
      *
      * @return void
      * @covers ::setEnabled
-     * @expectedException \InvalidArgumentException
      */
     public function testInvalidEnabled()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => 3,
