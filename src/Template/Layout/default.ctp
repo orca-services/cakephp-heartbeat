@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Heartbeat view template
+ * Heartbeat default layout template
  *
  * @var View $this View
  */
