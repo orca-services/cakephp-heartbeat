@@ -4,6 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/2.0.0...cakephp-3.x)
 ### Added
+
+### Changed
+
+### Dependencies
+
+### Fixed
+
+## [3.0.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/2.2.1) - 2025-11-04
+### Added
 - Upgrade to CakePHP version 4.x
 - Add visibility for constants
 - Add data type hints for parameters & return values
@@ -58,8 +67,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - slevomat/coding-standard installed in version 8.15.0
 - squizlabs/php_codesniffer updated from 3.10.2 to 3.13.4 minor
 - symfony/service-contracts downgraded from v2.5.4 to v1.1.2 major
-
-### Fixed
 
 ## [2.2.1](https://github.com/orca-services/cakephp-heartbeat/releases/tag/2.2.1) - 2024-7-29
 ### Fixed
