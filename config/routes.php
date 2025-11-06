@@ -3,7 +3,9 @@ use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 
-Router::plugin(
+$routes = Router::createRouteBuilder('/', []);
+
+$routes->plugin(
     'OrcaServices/Heartbeat',
     ['path' => '/heartbeat'],
     function (RouteBuilder $routes) {
@@ -11,7 +13,7 @@ Router::plugin(
     }
 );
 Router::extensions(['json']);
-Router::connect('/heartbeat', [
+$routes->connect('/heartbeat', [
     'plugin' => 'OrcaServices/Heartbeat',
     'controller' => 'Heartbeat',
     'action' => 'index',
