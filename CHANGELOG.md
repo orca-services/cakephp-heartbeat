@@ -10,7 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Dependencies
 
 ### Fixed
-- Fix CakePHP and PhpUnit deprecations
+- Fix CakePHP and PHPUnit deprecations
 
 ## [3.0.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/2.2.1) - 2025-11-04
 ### Added
