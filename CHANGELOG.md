@@ -10,9 +10,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Dependencies
 
 ### Fixed
+
+## [3.0.1](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.0.1) - 2025-11-11
+### Fixed
 - Fix CakePHP and PHPUnit deprecations
 
-## [3.0.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/2.2.1) - 2025-11-04
+## [3.0.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.0.0) - 2025-11-04
 ### Added
 - Upgrade to CakePHP version 4.x
 - Add visibility for constants
