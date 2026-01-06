@@ -6,10 +6,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
-- Move template's folder to standard CakePHP location
-- Rename '.ctp' extension to '.php' for all templates
 
 ### Dependencies
+
+### Fixed
+
+## [3.0.2](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.0.2) - 2025-01-06
+### Changed
+- Move template's folder to standard CakePHP location
+- Rename '.ctp' extension to '.php' for all templates
 
 ### Fixed
 - Resolve CakePHP deprecation by getting database connection
