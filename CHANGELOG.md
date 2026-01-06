@@ -11,6 +11,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
+## [3.0.3](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.0.3) - 2025-01-06
+### Fixed
+- Changed the case of letters in the names of template folders
+
 ## [3.0.2](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.0.2) - 2025-01-06
 ### Changed
 - Move template's folder to standard CakePHP location
