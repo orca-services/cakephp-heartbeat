@@ -1,6 +1,5 @@
 <?php
 use Cake\Routing\RouteBuilder;
-use Cake\Routing\Router;
 use Cake\Routing\Route\DashedRoute;
 
 return static function (RouteBuilder $routes) {
@@ -11,7 +10,7 @@ return static function (RouteBuilder $routes) {
             $routes->fallbacks(DashedRoute::class);
         }
     );
-    Router::extensions(['json']);
+    $routes->setExtensions(['json']);
     $routes->connect('/heartbeat', [
         'plugin' => 'OrcaServices/Heartbeat',
         'controller' => 'Heartbeat',
