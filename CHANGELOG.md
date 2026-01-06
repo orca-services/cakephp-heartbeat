@@ -10,6 +10,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Dependencies
 
 ### Fixed
+
+## [3.0.4](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.0.4) - 2025-01-06
+### Fixed
 - JSON view fixed
 
 ## [3.0.3](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.0.3) - 2025-01-06
