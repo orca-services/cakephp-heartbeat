@@ -6,6 +6,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
+- Move template's folder to standard CakePHP location
+- Rename '.ctp' extension to '.php' for all templates
 
 ### Dependencies
 
