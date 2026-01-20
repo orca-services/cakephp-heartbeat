@@ -8,6 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 
 ### Dependencies
+- phpunit/phpunit updated from 9.6.29 to 9.6.31 patch
+- cakephp/cakephp updated from 4.6.2 to 4.6.3 patch
 
 ### Fixed
 
