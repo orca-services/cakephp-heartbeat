@@ -67,6 +67,11 @@
         "sort-packages": true,
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
+		},
+        "audit": {
+            "ignore": {
+                "CVE-2023-29530": "PHP Version >=8.0 is needed for a secure version of laminas/diactoros"
+            }
+        }
     }
 }
