@@ -73,5 +73,11 @@
                 "CVE-2023-29530": "PHP Version >=8.0 is needed for a secure version of laminas/diactoros"
             }
         }
+    },
+    "replace": {
+        "symfony/polyfill-ctype": "*",
+        "symfony/polyfill-intl-grapheme": "*",
+        "symfony/polyfill-intl-normalizer": "*",
+        "symfony/polyfill-mbstring": "*"
     }
 }
