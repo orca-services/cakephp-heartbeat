@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
@@ -9,6 +10,9 @@ use InvalidArgumentException;
  */
 class Config
 {
+    /** @var array All valid severity levels */
+    public const SEVERITY_LEVELS = [Status::STATUS_CRITICAL, Status::STATUS_NONCRITICAL, Status::STATUS_INFORMATIONAL];
+
     /**
      * The name of the sensor
      *
@@ -126,7 +130,7 @@ class Config
      */
     protected function setSeverity(int $severity): void
     {
-        if (!in_array($severity, [Status::STATUS_CRITICAL, Status::STATUS_NONCRITICAL, Status::STATUS_INFORMATIONAL], true)) {
+        if (!in_array($severity, self::SEVERITY_LEVELS, true)) {
             throw new InvalidArgumentException(sprintf(
                 'Severity must be a valid severity level, got "%s" instead.',
                 $severity

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat;
 

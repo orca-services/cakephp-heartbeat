@@ -1,10 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Controller;
 
 use Cake\Core\Configure;
 use Cake\Event\EventInterface;
-use Cake\Http\Response;
 use OrcaServices\Heartbeat\Heartbeat\Heartbeat;
 
 /**

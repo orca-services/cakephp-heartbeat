@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
@@ -137,7 +138,8 @@ class Status
     /**
      * Set whether the sensor status was fetched from cache
      *
-     * @param bool $wasCached
+     * @param bool $wasCached Whether status was cached
+     * @return void
      */
     public function setCheckWasCached(bool $wasCached): void
     {

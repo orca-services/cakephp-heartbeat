@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
@@ -21,7 +22,7 @@ class DBUpToDate extends Sensor
     public const MIGRATION_STATUS_UP = 'up';
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function _getStatus()
     {

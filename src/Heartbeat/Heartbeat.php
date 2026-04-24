@@ -1,11 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Heartbeat;
 
 use Cake\Chronos\Chronos;
 use Cake\Collection\Collection;
 use Cake\Core\Configure;
-use InvalidArgumentException;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 /**
@@ -34,7 +34,7 @@ class Heartbeat
      *
      * @return $this
      */
-    public function check(): self
+    public function check()
     {
         $sensors = $this->_getEnabledSensors();
 

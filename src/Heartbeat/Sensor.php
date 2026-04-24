@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Heartbeat;
 
@@ -70,7 +71,7 @@ abstract class Sensor
 
         $this->_resetCacheConfig($sensorCaching);
 
-        $cacheKey =  self::CACHE_NAME . '_' . strtolower(Text::slug($this->config->getName()));
+        $cacheKey = self::CACHE_NAME . '_' . strtolower(Text::slug($this->config->getName()));
         if ($sensorCaching === false) {
             $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
             if (!empty($cachedStatus)) {
@@ -81,7 +82,7 @@ abstract class Sensor
         }
 
         $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
-        if(!empty($cachedStatus)) {
+        if (!empty($cachedStatus)) {
             $cachedStatus->setCheckWasCached(true);
 
             return $cachedStatus;

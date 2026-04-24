@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 
@@ -53,6 +54,5 @@ class StatusTest extends TestCase
         $this->assertTrue($status->wasCheckCached());
         $status->setCheckWasCached(false);
         $this->assertFalse($status->wasCheckCached());
-
     }
 }

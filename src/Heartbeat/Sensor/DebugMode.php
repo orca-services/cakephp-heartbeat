@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
@@ -11,7 +12,7 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
 class DebugMode extends Sensor
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     protected function _getStatus()
     {

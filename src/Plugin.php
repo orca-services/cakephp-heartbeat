@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat;
 
@@ -14,7 +15,7 @@ use Cake\Routing\RouteBuilder;
 class Plugin extends BasePlugin
 {
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function middleware(MiddlewareQueue $middlewareQueue): MiddlewareQueue
     {
@@ -23,7 +24,7 @@ class Plugin extends BasePlugin
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function console(CommandCollection $commands): CommandCollection
     {
@@ -32,7 +33,7 @@ class Plugin extends BasePlugin
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function bootstrap(PluginApplicationInterface $app): void
     {
@@ -42,7 +43,7 @@ class Plugin extends BasePlugin
     }
 
     /**
-     * {@inheritdoc}
+     * @inheritDoc
      */
     public function routes(RouteBuilder $routes): void
     {

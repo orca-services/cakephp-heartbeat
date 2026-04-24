@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat;
 
@@ -7,7 +8,6 @@ use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
-use ReflectionException;
 
 /**
  * Sensor Test
@@ -82,7 +82,7 @@ class SensorTest extends TestCase
             'enabled' => true,
             'severity' => 1,
             'class' => DummySensor::class,
-            'cached' => "+1 seconds"
+            'cached' => '+1 seconds',
         ];
         $sensorConfig = new Config($sensorName, $sensorConfig);
         $sensorClassName = $sensorConfig->getClass();
@@ -125,7 +125,7 @@ class SensorTest extends TestCase
             'enabled' => true,
             'severity' => 1,
             'class' => DummySensor::class,
-            'cached' => false
+            'cached' => false,
         ];
         $sensorConfig = new Config($sensorName, $sensorConfig);
         $sensorClassName = $sensorConfig->getClass();

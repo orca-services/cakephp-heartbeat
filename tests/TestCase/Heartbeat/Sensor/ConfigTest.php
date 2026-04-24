@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 
@@ -62,7 +63,7 @@ class ConfigTest extends TestCase
     {
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
-            'class' => DummySensor::class
+            'class' => DummySensor::class,
         ];
         $sensorConfig = new Config($sensorName, $sensorConfigArray);
         static::assertEquals($sensorName, $sensorConfig->getName());
