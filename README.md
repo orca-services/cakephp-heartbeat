@@ -44,17 +44,6 @@ See [CHANGELOG.md](CHANGELOG.md)
 If you've found a security vulnerability, please follow the procedure
 described in [SECURITY.md](.github/SECURITY.md).
 
-## TODOs
-
-- Add badges
-- Fix & extend Unit Tests
-- Add Console application incl. related docs
-- Support for separate status text
-- Add flexible routing
-- CI integrations
-- Update screenshots in [How to Use](docs/Usage.md) with new cache indicator
-- See [the issues](https://github.com/orca-services/cakephp-heartbeat/issues)
-
 ## License
 
 This plugin is licensed under the [MIT License](LICENSE).
