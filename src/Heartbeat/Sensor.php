@@ -157,7 +157,7 @@ abstract class Sensor
      * @param null|mixed $default The optional default value, if the setting is not set.
      * @return string The value of the setting or the provided default, if not set.
      */
-    protected function _getSetting(string $name, $default = null): string
+    protected function getSetting(string $name, $default = null): string
     {
         $settings = $this->config->getSettings();
 
