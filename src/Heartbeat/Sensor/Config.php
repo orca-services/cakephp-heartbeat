@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
+use Cake\Core\InstanceConfigTrait;
 use InvalidArgumentException;
 
 /**
@@ -10,60 +11,21 @@ use InvalidArgumentException;
  */
 class Config
 {
+    use InstanceConfigTrait;
+
     /** @var array All valid severity levels */
     public const SEVERITY_LEVELS = [Status::STATUS_CRITICAL, Status::STATUS_NONCRITICAL, Status::STATUS_INFORMATIONAL];
-
-    /**
-     * The name of the sensor
-     *
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * Whether the sensor is enabled
-     *
-     * @var bool
-     */
-    protected $enabled;
-
-    /**
-     * The severity level
-     *
-     * @var int
-     * @see Status The status constants.
-     */
-    protected $severity;
-
-    /**
-     * The class name
-     *
-     * @var string
-     */
-    protected $class;
-
-    /**
-     * Whether or how long the sensor status should be cached
-     *
-     * @var bool|string
-     */
-    protected $cached = false;
-
-    /**
-     * Additional settings, mandatory or optional, with or without default values
-     *
-     * @var array
-     */
-    protected $settings = [];
 
     /**
      * The default config
      *
      * @var array
      */
-    protected $defaultConfig = [
+    protected $_defaultConfig = [
+        'name' => null,
         'enabled' => true,
         'severity' => Status::STATUS_NONCRITICAL,
+        'class' => null,
         'cached' => false,
         'settings' => [],
     ];
@@ -76,15 +38,12 @@ class Config
      */
     public function __construct(string $name, array $config)
     {
-        $this->setName($name);
+        // Merge with defaults, overwrite (no recursive merge) to match original behavior.
+        $this->setConfig(['name' => $name] + $config, null, false);
 
-        $config = array_merge($this->defaultConfig, $config);
-
-        $this->setEnabled($config['enabled']);
-        $this->setSeverity($config['severity']);
-        $this->setClass($config['class']);
-        $this->setCached($config['cached']);
-        $this->setSettings($config['settings']);
+        // Validate the values that have constraints.
+        $this->assertSeverity($this->getConfig('severity'));
+        $this->assertCached($this->getConfig('cached'));
     }
 
     /**
@@ -94,7 +53,7 @@ class Config
      */
     public function getName(): string
     {
-        return $this->name;
+        return $this->getConfig('name');
     }
 
     /**
@@ -105,7 +64,7 @@ class Config
      */
     public function setName(string $name): void
     {
-        $this->name = $name;
+        $this->setConfig('name', $name, false);
     }
 
     /**
@@ -113,11 +72,10 @@ class Config
      *
      * @param bool $enabled Whether the sensor is enabled.
      * @return void
-     * @throws InvalidArgumentException If not valid severity level was given.
      */
-    protected function setEnabled(bool $enabled): void
+    public function setEnabled(bool $enabled): void
     {
-        $this->enabled = $enabled;
+        $this->setConfig('enabled', $enabled, false);
     }
 
     /**
@@ -127,7 +85,7 @@ class Config
      */
     public function getEnabled(): bool
     {
-        return $this->enabled;
+        return (bool)$this->getConfig('enabled');
     }
 
     /**
@@ -135,18 +93,12 @@ class Config
      *
      * @param int $severity The severity level.
      * @return void
-     * @throws InvalidArgumentException If not valid severity level was given.
+     * @throws InvalidArgumentException If no valid severity level was given.
      */
-    protected function setSeverity(int $severity): void
+    public function setSeverity(int $severity): void
     {
-        if (!in_array($severity, self::SEVERITY_LEVELS, true)) {
-            throw new InvalidArgumentException(sprintf(
-                'Severity must be a valid severity level, got "%s" instead.',
-                $severity
-            ));
-        }
-
-        $this->severity = $severity;
+        $this->assertSeverity($severity);
+        $this->setConfig('severity', $severity, false);
     }
 
     /**
@@ -156,7 +108,7 @@ class Config
      */
     public function getSeverity(): int
     {
-        return $this->severity;
+        return (int)$this->getConfig('severity');
     }
 
     /**
@@ -165,20 +117,20 @@ class Config
      * @param string $class The class name.
      * @return void
      */
-    protected function setClass(string $class): void
+    public function setClass(string $class): void
     {
         // TODO Consider checking for valid class name.
-        $this->class = $class;
+        $this->setConfig('class', $class, false);
     }
 
     /**
      * Get the class name
      *
-     * @return null|string The class name or null.
+     * @return string The class name.
      */
     public function getClass(): string
     {
-        return $this->class;
+        return $this->getConfig('class');
     }
 
     /**
@@ -188,7 +140,7 @@ class Config
      */
     public function getCached()
     {
-        return $this->cached;
+        return $this->getConfig('cached');
     }
 
     /**
@@ -201,14 +153,8 @@ class Config
      */
     public function setCached($cached): void
     {
-        if (!is_bool($cached) && !is_string($cached)) {
-            throw new InvalidArgumentException(sprintf(
-                'Cached must be either a bool or a string, "%s" given instead',
-                $cached
-            ));
-        }
-
-        $this->cached = $cached;
+        $this->assertCached($cached);
+        $this->setConfig('cached', $cached, false);
     }
 
     /**
@@ -218,7 +164,7 @@ class Config
      */
     public function getSettings(): array
     {
-        return $this->settings;
+        return (array)$this->getConfig('settings');
     }
 
     /**
@@ -229,6 +175,40 @@ class Config
      */
     public function setSettings(array $settings): void
     {
-        $this->settings = $settings;
+        $this->setConfig('settings', $settings, false);
+    }
+
+    /**
+     * Assert that a severity level is valid.
+     *
+     * @param mixed $severity The severity level.
+     * @return void
+     * @throws InvalidArgumentException If no valid severity level was given.
+     */
+    private function assertSeverity($severity): void
+    {
+        if (!in_array($severity, self::SEVERITY_LEVELS, true)) {
+            throw new InvalidArgumentException(sprintf(
+                'Severity must be a valid severity level, got "%s" instead.',
+                $severity
+            ));
+        }
+    }
+
+    /**
+     * Assert that a cached value is valid.
+     *
+     * @param mixed $cached The cached value.
+     * @return void
+     * @throws InvalidArgumentException If not a valid boolean or string was given.
+     */
+    private function assertCached($cached): void
+    {
+        if (!is_bool($cached) && !is_string($cached)) {
+            throw new InvalidArgumentException(sprintf(
+                'Cached must be either a bool or a string, "%s" given instead',
+                $cached
+            ));
+        }
     }
 }
