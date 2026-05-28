@@ -23,10 +23,12 @@ class ConfigTest extends TestCase
      * @covers ::setEnabled
      * @covers ::setSeverity
      * @covers ::setClass
+     * @covers ::setSettings
      * @covers ::getName
      * @covers ::getEnabled
      * @covers ::getSeverity
      * @covers ::getClass
+     * @covers ::getSettings
      */
     public function testCreateConfig(): void
     {
@@ -36,12 +38,16 @@ class ConfigTest extends TestCase
             'severity' => 1,
             'class' => DummySensor::class,
             'cached' => true,
+            'settings' => [
+                'connection_name' => 'test',
+            ],
         ];
         $sensorConfig = new Config($sensorName, $sensorConfigArray);
         static::assertEquals($sensorName, $sensorConfig->getName());
         static::assertEquals($sensorConfigArray['enabled'], $sensorConfig->getEnabled());
         static::assertEquals($sensorConfigArray['severity'], $sensorConfig->getSeverity());
         static::assertEquals($sensorConfigArray['class'], $sensorConfig->getClass());
+        static::assertEquals($sensorConfigArray['settings'], $sensorConfig->getSettings());
         static::assertTrue($sensorConfig->getCached());
     }
 
@@ -54,10 +60,12 @@ class ConfigTest extends TestCase
      * @covers ::setEnabled
      * @covers ::setSeverity
      * @covers ::setClass
+     * @covers ::setSettings
      * @covers ::getName
      * @covers ::getEnabled
      * @covers ::getSeverity
      * @covers ::getClass
+     * @covers ::getSettings
      */
     public function testDefaultConfig(): void
     {
@@ -70,6 +78,7 @@ class ConfigTest extends TestCase
         static::assertTrue($sensorConfig->getEnabled());
         static::assertEquals(2, $sensorConfig->getSeverity());
         static::assertEquals($sensorConfigArray['class'], $sensorConfig->getClass());
+        static::assertEquals([], $sensorConfig->getSettings());
         static::assertFalse($sensorConfig->getCached());
     }
 
