@@ -4,7 +4,7 @@ Built-in Sensors
 #### DB Connection
 Checks whether a connection to the database server can be established.
 
-To check a different connection than ``default``, e.g. ``external``,
+To check a connection other than ``default``, e.g. ``external``,
 the ``connection_name``setting can be used.
 
  ```php

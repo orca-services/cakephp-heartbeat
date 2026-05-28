@@ -50,7 +50,7 @@ class Config
     protected $cached = false;
 
     /**
-     * Additional settings
+     * Additional settings, mandatory or optional, with or without default values
      *
      * @var array
      */

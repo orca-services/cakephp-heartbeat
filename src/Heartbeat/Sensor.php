@@ -155,7 +155,7 @@ abstract class Sensor
      *
      * @param string $name The name of the setting to retrieve.
      * @param null|mixed $default The optional default value, if the setting is not set.
-     * @return string The name of the connection to check.
+     * @return string The value of the setting or the provided default, if not set.
      */
     protected function _getSetting(string $name, $default = null): string
     {
