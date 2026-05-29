@@ -151,7 +151,7 @@ abstract class Sensor
     abstract protected function _getStatus();
 
     /**
-     * Get the given setting or an optional default value
+     * Get the value of the given setting or an optional  fallback default value
      *
      * @param string $name The name of the setting to retrieve.
      * @param null|mixed $default The optional default value, if the setting is not set.

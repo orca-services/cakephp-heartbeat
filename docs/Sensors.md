@@ -2,13 +2,13 @@ Built-in Sensors
 ================
 
 #### DB Connection
-Checks whether a connection to the database server can be established.
+Checks whether a connection to the database server of the `default` connection can be established.
 
 To check a connection other than ``default``, e.g. ``external``,
 the ``connection_name``setting can be used.
 
  ```php
-$config['App']['Heartbeat']['Sensors']['DB Connection'] = [
+$config['App']['Heartbeat']['Sensors']['External DB Connection'] = [
     'enabled' => true,
     'severity' => 3,
     'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,

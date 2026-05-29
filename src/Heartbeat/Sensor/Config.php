@@ -93,7 +93,7 @@ class Config
      *
      * @param int $severity The severity level.
      * @return void
-     * @throws InvalidArgumentException If no valid severity level was given.
+     * @throws InvalidArgumentException If an invalid severity level was given.
      */
     public function setSeverity(int $severity): void
     {
@@ -179,11 +179,11 @@ class Config
     }
 
     /**
-     * Assert that a severity level is valid.
+     * Assert that the given severity level is valid.
      *
-     * @param mixed $severity The severity level.
+     * @param mixed $severity The severity level to check.
      * @return void
-     * @throws InvalidArgumentException If no valid severity level was given.
+     * @throws InvalidArgumentException If an invalid severity level was given.
      */
     private function assertSeverity($severity): void
     {
@@ -196,11 +196,11 @@ class Config
     }
 
     /**
-     * Assert that a cached value is valid.
+     * Assert that the given cached value is valid.
      *
-     * @param mixed $cached The cached value.
+     * @param mixed $cached The cached value to check.
      * @return void
-     * @throws InvalidArgumentException If not a valid boolean or string was given.
+     * @throws InvalidArgumentException If an invalid boolean or string was given.
      */
     private function assertCached($cached): void
     {
