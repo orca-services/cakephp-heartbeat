@@ -17,24 +17,20 @@ class Heartbeat
 {
     /**
      * Whether the Heartbeat sensor statuses should be cached by default. Can be overridden. Defaults to true.
-     *
-     * @var bool
      */
-    protected $cached = true;
+    protected bool $cached = true;
 
     /**
      * The sensor statuses
-     *
-     * @var array
      */
-    protected $sensorStatuses = [];
+    protected array $sensorStatuses = [];
 
     /**
      * Executes the sensor checks an populates their statuses.
      *
      * @return $this
      */
-    public function check()
+    public function check(): Heartbeat
     {
         $sensors = $this->_getEnabledSensors();
 

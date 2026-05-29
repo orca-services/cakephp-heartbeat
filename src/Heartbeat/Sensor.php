@@ -29,10 +29,8 @@ abstract class Sensor
 
     /**
      * The sensor config
-     *
-     * @var Config
      */
-    protected $config;
+    protected Config $config;
 
     /**
      * Construct the status

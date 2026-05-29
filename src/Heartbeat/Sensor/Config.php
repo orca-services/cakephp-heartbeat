@@ -18,10 +18,8 @@ class Config
 
     /**
      * The default config
-     *
-     * @var array
      */
-    protected $_defaultConfig = [
+    protected array $_defaultConfig = [
         'name' => null,
         'enabled' => true,
         'severity' => Status::STATUS_NONCRITICAL,
