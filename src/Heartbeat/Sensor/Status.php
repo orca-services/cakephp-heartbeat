@@ -56,9 +56,9 @@ class Status
     /**
      * How severe the status is, e.g.
      *
-     * @var
+     * @var int
      */
-    protected $severity;
+    protected int $severity;
 
     /**
      * Whether sensor status was fetched from cache
@@ -128,9 +128,9 @@ class Status
     /**
      * Get the severity of the status
      *
-     * @return mixed The severity of the status.
+     * @return int The severity of the status.
      */
-    public function getSeverity(): mixed
+    public function getSeverity(): int
     {
         return $this->severity;
     }
