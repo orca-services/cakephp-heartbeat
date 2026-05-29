@@ -25,7 +25,7 @@ class DBUpToDate extends Sensor
     /**
      * @inheritDoc
      */
-    protected function _getStatus()
+    protected function _getStatus(): mixed
     {
         $dbMigrated = true;
         try {
