@@ -5,9 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/2.0.0...cakephp-3.x)
 ### Added
 - Make DB connection name configurable [#14](https://github.com/orca-services/cakephp-heartbeat/issues/14)
-- Added the Cake InstanceConfigTrait [#14](https://github.com/orca-services/cakephp-heartbeat/issues/14)
+- Implement the Cake InstanceConfigTrait [#14](https://github.com/orca-services/cakephp-heartbeat/issues/14)
 
 ### Changed
+- Update the minimum required PHP Version to PHP 7.4
 
 ### Dependencies
 Removed unnecessary polyfill Composer dependencies through replace mechanism
