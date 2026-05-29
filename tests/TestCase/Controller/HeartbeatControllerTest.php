@@ -4,12 +4,15 @@ declare(strict_types=1);
 namespace OrcaServices\Heartbeat\Test\TestCase\Controller;
 
 use Cake\Chronos\Chronos;
+use Cake\TestSuite\IntegrationTestTrait;
+use Cake\TestSuite\TestCase;
 use Cake\Collection\Collection;
-use Cake\TestSuite\IntegrationTestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
-class HeartbeatControllerTest extends IntegrationTestCase
+class HeartbeatControllerTest extends TestCase
 {
+    use IntegrationTestTrait;
+
     /**
      * Tests index
      *
