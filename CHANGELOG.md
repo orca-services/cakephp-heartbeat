@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/2.0.0...cakephp-3.x)
 ### Added
 - Make DB connection name configurable [#14](https://github.com/orca-services/cakephp-heartbeat/issues/14)
+- Added the Cake InstanceConfigTrait [#14](https://github.com/orca-services/cakephp-heartbeat/issues/14)
 
 ### Changed
 
