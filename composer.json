@@ -34,9 +34,10 @@
 		"issues": "https://github.com/orca-services/cakephp-heartbeat/issues"
 	},
 	"require": {
+        "ext-json": "*",
 		"php": ">=7.4",
 		"cakephp/cakephp": "^4.0"
-	},
+    },
 	"require-dev": {
 		"cakephp/cakephp-codesniffer": "^4.0",
 		"cakephp/migrations": "^3.0.0",
