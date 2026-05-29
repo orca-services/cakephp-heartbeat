@@ -18,10 +18,15 @@
 			"email": "ravage@bluewin.ch",
 			"role": "Lead developer"
 		},
+        {
+            "name": "Fabian Arndt",
+            "homepage": "https://github.com/neluxx",
+            "role": "Developer"
+        },
 		{
 			"name": "Livia Scapin",
 			"homepage": "https://github.com/liviascapin",
-			"role": "Co Developer"
+			"role": "Developer"
 		},
 		{
 			"name": "Other contributors",
@@ -34,13 +39,13 @@
 		"issues": "https://github.com/orca-services/cakephp-heartbeat/issues"
 	},
 	"require": {
-		"php": ">=7.2.0",
-		"cakephp/cakephp": "^4.0"
+        "php": "^8.2",
+        "cakephp/cakephp": "^5.3"
 	},
 	"require-dev": {
-		"cakephp/cakephp-codesniffer": "^4.0",
-		"cakephp/migrations": "^3.0.0",
-		"phpunit/phpunit": "^8.5|^9.6"
+		"cakephp/cakephp-codesniffer": "^5.0",
+		"cakephp/migrations": "^5.0",
+		"phpunit/phpunit": "^10.0"
 	},
 	"autoload": {
 		"psr-4": {
@@ -67,12 +72,7 @@
         "sort-packages": true,
 		"allow-plugins": {
 			"dealerdirect/phpcodesniffer-composer-installer": true
-		},
-        "audit": {
-            "ignore": {
-                "CVE-2023-29530": "PHP Version >=8.0 is needed for a secure version of laminas/diactoros"
-            }
-        }
+		}
     },
     "replace": {
         "symfony/polyfill-php54": "*",
