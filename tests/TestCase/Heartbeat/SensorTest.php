@@ -21,6 +21,7 @@ class SensorTest extends TestCase
      *
      * @return void
      * @covers ::__construct
+     * @throws \ReflectionException
      */
     public function testConstructor()
     {
@@ -145,7 +146,7 @@ class SensorTest extends TestCase
      * @param mixed $object The object
      * @param string $property The property name
      * @return mixed The value
-     * @throws ReflectionException
+     * @throws \ReflectionException
      */
     public static function getProperty($object, string $property)
     {
