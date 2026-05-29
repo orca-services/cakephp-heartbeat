@@ -185,12 +185,12 @@ class Config
     /**
      * Set whether or how long the status should be cached
      *
-     * @param string|bool $cached Whether or how long the status should be cached.
+     * @param mixed $cached Whether or how long the status should be cached.
      * @return void
      * @throws InvalidArgumentException If not a valid boolean or string was given.
      * @todo Cover the exception.
      */
-    public function setCached(bool|string $cached): void
+    public function setCached(mixed $cached): void
     {
         if (!is_bool($cached) && !is_string($cached)) {
             throw new InvalidArgumentException(sprintf(
