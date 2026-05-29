@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
+use Exception;
 use Migrations\Migrations;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
@@ -34,7 +35,7 @@ class DBUpToDate extends Sensor
             if ($lastStatus['status'] !== self::MIGRATION_STATUS_UP) {
                 $dbMigrated = false;
             }
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             $dbMigrated = false;
         }
 

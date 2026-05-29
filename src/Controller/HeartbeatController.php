@@ -37,7 +37,7 @@ class HeartbeatController extends AppController
      * @todo Cover layout overriding.
      * @todo Cover cache-resetting.
      */
-    public function index()
+    public function index(): void
     {
         $heartbeat = new Heartbeat();
 

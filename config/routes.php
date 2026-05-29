@@ -3,13 +3,13 @@
 use Cake\Routing\Route\DashedRoute;
 use Cake\Routing\RouteBuilder;
 
-return static function (RouteBuilder $routes) {
+return static function (RouteBuilder $routes): void {
     $routes->plugin(
         'OrcaServices/Heartbeat',
         ['path' => '/heartbeat'],
-        function (RouteBuilder $routes) {
+        function (RouteBuilder $routes): void {
             $routes->fallbacks(DashedRoute::class);
-        }
+        },
     );
     $routes->setExtensions(['json']);
     $routes->connect('/heartbeat', [

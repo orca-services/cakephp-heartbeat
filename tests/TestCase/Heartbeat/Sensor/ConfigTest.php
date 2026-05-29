@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 
+use InvalidArgumentException;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
 use PHPUnit\Framework\TestCase;
@@ -81,7 +82,7 @@ class ConfigTest extends TestCase
      */
     public function testInvalidSeverity(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => true,
@@ -99,7 +100,7 @@ class ConfigTest extends TestCase
      */
     public function testInvalidCached(): void
     {
-        $this->expectException(\InvalidArgumentException::class);
+        $this->expectException(InvalidArgumentException::class);
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => true,

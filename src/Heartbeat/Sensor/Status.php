@@ -30,28 +30,28 @@ class Status
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * The actual status
      *
      * @var mixed
      */
-    protected $status;
+    protected mixed $status;
 
     /**
      * The sensor check duration in seconds
      *
      * @var float
      */
-    protected $duration;
+    protected float $duration;
 
     /**
      * The date/time when the sensor check was last executed
      *
      * @var Chronos
      */
-    protected $lastExecuted;
+    protected Chronos $lastExecuted;
 
     /**
      * How severe the status is, e.g.
@@ -65,7 +65,7 @@ class Status
      *
      * @var bool
      */
-    protected $checkCached = false;
+    protected bool $checkCached = false;
 
     /**
      * Status construction
@@ -76,7 +76,7 @@ class Status
      * @param Chronos $lastExecuted The date/time when it was executed last.
      * @param int $severity The status severity.
      */
-    public function __construct($name, $status, $duration, $lastExecuted, $severity)
+    public function __construct(string $name, mixed $status, float $duration, Chronos $lastExecuted, int $severity)
     {
         $this->name = $name;
         $this->status = $status;
@@ -100,7 +100,7 @@ class Status
      *
      * @return mixed
      */
-    public function getStatus()
+    public function getStatus(): mixed
     {
         return $this->status;
     }
@@ -130,7 +130,7 @@ class Status
      *
      * @return mixed The severity of the status.
      */
-    public function getSeverity()
+    public function getSeverity(): mixed
     {
         return $this->severity;
     }

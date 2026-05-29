@@ -20,14 +20,14 @@ class Heartbeat
      *
      * @var bool
      */
-    protected $cached = true;
+    protected bool $cached = true;
 
     /**
      * The sensor statuses
      *
      * @var array
      */
-    protected $sensorStatuses = [];
+    protected array $sensorStatuses = [];
 
     /**
      * Executes the sensor checks an populates their statuses.
@@ -118,7 +118,7 @@ class Heartbeat
             $systemStatus,
             0, // TODO Calculate the duration for the whole heartbeat
             Chronos::now(),
-            Status::STATUS_CRITICAL
+            Status::STATUS_CRITICAL,
         );
 
         return $status;

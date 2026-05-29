@@ -8,6 +8,7 @@ use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
+use ReflectionClass;
 
 /**
  * Sensor Test
@@ -149,7 +150,7 @@ class SensorTest extends TestCase
      */
     public static function getProperty($object, string $property)
     {
-        $reflectedClass = new \ReflectionClass($object);
+        $reflectedClass = new ReflectionClass($object);
         $reflection = $reflectedClass->getProperty($property);
         $reflection->setAccessible(true);
 

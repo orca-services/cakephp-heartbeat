@@ -18,14 +18,14 @@ class Config
      *
      * @var string
      */
-    protected $name;
+    protected string $name;
 
     /**
      * Whether the sensor is enabled
      *
      * @var bool
      */
-    protected $enabled;
+    protected bool $enabled;
 
     /**
      * The severity level
@@ -33,28 +33,28 @@ class Config
      * @var int
      * @see Status The status constants.
      */
-    protected $severity;
+    protected int $severity;
 
     /**
      * The class name
      *
      * @var string
      */
-    protected $class;
+    protected string $class;
 
     /**
      * Whether or how long the sensor status should be cached
      *
-     * @var bool|string
+     * @var string|bool
      */
-    protected $cached = false;
+    protected bool|string $cached = false;
 
     /**
      * The default config
      *
      * @var array
      */
-    protected $defaultConfig = [
+    protected array $defaultConfig = [
         'enabled' => true,
         'severity' => Status::STATUS_NONCRITICAL,
         'cached' => false,
@@ -133,7 +133,7 @@ class Config
         if (!in_array($severity, self::SEVERITY_LEVELS, true)) {
             throw new InvalidArgumentException(sprintf(
                 'Severity must be a valid severity level, got "%s" instead.',
-                $severity
+                $severity,
             ));
         }
 
@@ -165,7 +165,7 @@ class Config
     /**
      * Get the class name
      *
-     * @return null|string The class name or null.
+     * @return string|null The class name or null.
      */
     public function getClass(): string
     {
@@ -175,9 +175,9 @@ class Config
     /**
      * Get whether or how long the status should be cached
      *
-     * @return bool|string
+     * @return string|bool
      */
-    public function getCached()
+    public function getCached(): bool|string
     {
         return $this->cached;
     }
@@ -185,17 +185,17 @@ class Config
     /**
      * Set whether or how long the status should be cached
      *
-     * @param bool|string $cached Whether or how long the status should be cached.
+     * @param string|bool $cached Whether or how long the status should be cached.
      * @return void
      * @throws InvalidArgumentException If not a valid boolean or string was given.
      * @todo Cover the exception.
      */
-    public function setCached($cached): void
+    public function setCached(bool|string $cached): void
     {
         if (!is_bool($cached) && !is_string($cached)) {
             throw new InvalidArgumentException(sprintf(
                 'Cached must be either a bool or a string, "%s" given instead',
-                $cached
+                $cached,
             ));
         }
 

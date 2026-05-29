@@ -31,7 +31,7 @@ abstract class Sensor
      *
      * @var Config
      */
-    protected $config;
+    protected Config $config;
 
     /**
      * Construct the status
@@ -63,9 +63,9 @@ abstract class Sensor
      *
      * Resets the cache, if disabled.
      *
-     * @return bool|Status The cached status or false.
+     * @return Status|bool The cached status or false.
      */
-    protected function _getCachedStatus()
+    protected function _getCachedStatus(): bool|Status
     {
         $sensorCaching = $this->config->getCached();
 
@@ -97,10 +97,10 @@ abstract class Sensor
     /**
      * Reset the cache configuration
      *
-     * @param bool|string $sensorCaching The sensor cache configuration, either a bool or a relative time string.
+     * @param string|bool $sensorCaching The sensor cache configuration, either a bool or a relative time string.
      * @return void
      */
-    protected function _resetCacheConfig($sensorCaching): void
+    protected function _resetCacheConfig(bool|string $sensorCaching): void
     {
         Cache::drop(self::CACHE_NAME);
 
@@ -111,7 +111,7 @@ abstract class Sensor
 
         $settings = array_merge(
             (array)Cache::getConfig('default'),
-            ['duration' => $duration, 'className' => 'File']
+            ['duration' => $duration, 'className' => 'File'],
         );
 
         Cache::setConfig(self::CACHE_NAME, $settings);
@@ -136,7 +136,7 @@ abstract class Sensor
             $status,
             $duration,
             Chronos::now(),
-            $this->config->getSeverity()
+            $this->config->getSeverity(),
         );
 
         return $status;
@@ -147,5 +147,5 @@ abstract class Sensor
      *
      * @return mixed The sensor status.
      */
-    abstract protected function _getStatus();
+    abstract protected function _getStatus(): mixed;
 }
