@@ -9,7 +9,7 @@ This allows you to insert a block just before and after the
 heartbeat status table.
 
 For this, create a file at
-``app/View/Plugin/Heartbeat/Heartbeat/index.ctp``
+``app/View/Plugin/Heartbeat/Heartbeat/index.php``
 and copy the following into it:
 
 ```` php

@@ -6,6 +6,7 @@
 
 | Plugin Version | CakePHP Compatibility | Branch      | Status    |
 |----------------|-----------------------|-------------| --------- |
+| 4.x            | 5.3+                  | cakephp-5.x | Supported |
 | 3.x            | 4.6+                  | cakephp-4.x | Supported |
 | 2.x            | 3.7+                  | cakephp-3.x | Supported |
 | 1.x            | 2.x                   | cakephp-2.x | Supported |
@@ -17,11 +18,11 @@ Note:
 
 ## Installation
 
-See the [installation documentation](docs/Installation.md) .
+See the [installation documentation](docs/Installation.md).
 
 ## Configuration
 
-See the [configuration documentation](docs/Configuration.md) .
+See the [configuration documentation](docs/Configuration.md).
 
 ## How to use
 
@@ -33,11 +34,11 @@ The releases of this plugin are versioned using [SemVer](http://semver.org/).
 
 ## Contributing
 
-See [CONTRIBUTING.md](.github/CONTRIBUTING.md)
+See [CONTRIBUTING.md](.github/CONTRIBUTING.md).
 
 ## Changelog
 
-See [CHANGELOG.md](CHANGELOG.md)
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## Security
 
