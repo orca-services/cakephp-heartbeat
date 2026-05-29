@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
+- Exclude repository-only files from archives to reduce Composer distribution package size [#37](https://github.com/orca-services/cakephp-heartbeat/issues/37)
 
 ### Dependencies
 Removed unnecessary polyfill Composer dependencies through replace mechanism
