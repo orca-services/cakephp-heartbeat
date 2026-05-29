@@ -14,7 +14,11 @@ class Config
     use InstanceConfigTrait;
 
     /** @var array All valid severity levels */
-    public const SEVERITY_LEVELS = [Status::STATUS_CRITICAL, Status::STATUS_NONCRITICAL, Status::STATUS_INFORMATIONAL];
+    public const SEVERITY_LEVELS = [
+        Status::STATUS_CRITICAL,
+        Status::STATUS_NONCRITICAL,
+        Status::STATUS_INFORMATIONAL,
+    ];
 
     /**
      * The default config

@@ -14,7 +14,9 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
  */
 class DBConnection extends Sensor
 {
-    /** @var string The default connection name */
+    /**
+     * The default connection name
+     */
     protected string $defaultConnectionName = 'default';
 
     /**
