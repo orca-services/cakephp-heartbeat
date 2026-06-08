@@ -31,3 +31,16 @@
 *.gif binary
 *.ico binary
 *.mo binary
+
+# Exclude repository-only files from distribution archives (git archive / Composer dist).
+# These files are needed for development but not at runtime, keeping the published package lean.
+# https://git-scm.com/docs/gitattributes#_export_ignore
+/.editorconfig      export-ignore
+/.gitattributes     export-ignore
+/.github            export-ignore
+/.gitignore         export-ignore
+/.idea              export-ignore
+/composer.lock      export-ignore
+/phpcs.xml.dist     export-ignore
+/phpunit.xml.dist   export-ignore
+/tests              export-ignore

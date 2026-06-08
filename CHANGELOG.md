@@ -9,6 +9,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Update the minimum required PHP Version to PHP 7.4
+- Exclude repository-only files from archives to reduce Composer distribution package size [#37](https://github.com/orca-services/cakephp-heartbeat/issues/37)
 
 ### Dependencies
 Removed unnecessary polyfill Composer dependencies through replace mechanism
