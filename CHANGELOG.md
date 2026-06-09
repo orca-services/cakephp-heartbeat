@@ -12,11 +12,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Exclude repository-only files from archives to reduce Composer distribution package size [#37](https://github.com/orca-services/cakephp-heartbeat/issues/37)
 
 ### Dependencies
-Removed unnecessary polyfill Composer dependencies through replace mechanism
-  - symfony/polyfill-mbstring removed (installed version was v1.34.0)
-  - symfony/polyfill-intl-normalizer removed (installed version was v1.34.0)
-  - symfony/polyfill-intl-grapheme removed (installed version was v1.34.0)
-  - symfony/polyfill-ctype removed (installed version was v1.34.0)
 - phpunit/phpunit updated from 9.6.29 to 9.6.34 patch
 - cakephp/cakephp updated from 4.6.2 to 4.6.4 patch
 - cakephp/cakephp-codesniffer downgraded from 5.1.0 to 4.7.1 major
