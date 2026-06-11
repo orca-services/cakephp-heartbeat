@@ -26,6 +26,9 @@ $config['App']['Heartbeat'] = [
             'severity' => 3,
             'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
             'cached' => true,
+            'settings' => [
+                'connection_name' => 'default',
+            ],
         ],
         'DB up to date' => [
             'enabled' => false,
@@ -56,6 +59,7 @@ Those take the following subkeys:
     - If set to `false`, the value will not be cached.
     - If set to `true`, the value will be cached for 30 seconds (by default).
     - Can be set to a relative time string e.g. `+10 minutes` to cache the value for 10 minutes.
+- `settings` Additional settings for the sensor. e.g. the name of the database connection to test.
 
 Conditional Severity
 --------------------

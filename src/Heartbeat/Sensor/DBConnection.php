@@ -15,12 +15,19 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
 class DBConnection extends Sensor
 {
     /**
+     * The default connection name
+     */
+    protected string $defaultConnectionName = 'default';
+
+    /**
      * @inheritDoc
      */
     protected function _getStatus()
     {
         try {
-            return ConnectionManager::get('default')->getDriver()->connect();
+            $connectionName = $this->getSetting('connection_name', $this->defaultConnectionName);
+
+            return ConnectionManager::get($connectionName)->getDriver()->connect();
         } catch (\Exception $exception) {
             return false;
         }

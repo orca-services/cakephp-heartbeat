@@ -21,6 +21,7 @@ class SensorTest extends TestCase
      *
      * @return void
      * @covers ::__construct
+     * @throws \ReflectionException
      */
     public function testConstructor()
     {
@@ -60,7 +61,7 @@ class SensorTest extends TestCase
         $status = $sensor->getStatus();
         $this->assertInstanceOf(Sensor\Status::class, $status);
         $this->assertEquals('Dummy Sensor', $status->getName());
-        $this->assertEquals(true, $status->getStatus());
+        $this->assertTrue($status->getStatus());
         $this->assertEquals(0, $status->getDuration());
         $this->assertEquals('2017-03-30 12:45:37', $status->getLastExecuted());
         $this->assertEquals(1, $status->getSeverity());
@@ -95,13 +96,11 @@ class SensorTest extends TestCase
         $this->assertFalse($status->wasCheckCached());
 
         // Get status again and assert that result was cached
-        /** @var DummySensor $sensor */
         $status = $sensor->getStatus();
         $this->assertTrue($status->wasCheckCached());
 
         // Get status again after slightly more than a second and assert that result was not cached
         sleep(2);
-        /** @var DummySensor $sensor */
         $status = $sensor->getStatus();
         $this->assertFalse($status->wasCheckCached());
 
@@ -145,7 +144,7 @@ class SensorTest extends TestCase
      * @param mixed $object The object
      * @param string $property The property name
      * @return mixed The value
-     * @throws ReflectionException
+     * @throws \ReflectionException
      */
     public static function getProperty($object, string $property)
     {
