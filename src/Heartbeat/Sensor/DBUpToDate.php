@@ -38,7 +38,7 @@ class DBUpToDate extends Sensor
     {
         $dbMigrated = true;
         try {
-            $migrations = new Migrations($this->buildMigrationsOptions());
+            $migrations = $this->createMigrations($this->buildMigrationsOptions());
 
             foreach ($migrations->status() as $migration) {
                 if ($migration['status'] !== self::MIGRATION_STATUS_UP) {
@@ -51,6 +51,17 @@ class DBUpToDate extends Sensor
         }
 
         return $dbMigrated;
+    }
+
+    /**
+     * Creates the Migrations instance used to check the status.
+     *
+     * @param array<string, mixed> $options Options as built by buildMigrationsOptions()
+     * @return Migrations
+     */
+    protected function createMigrations(array $options): Migrations
+    {
+        return new Migrations($options);
     }
 
     /**
