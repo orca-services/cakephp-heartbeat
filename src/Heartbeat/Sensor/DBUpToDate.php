@@ -22,22 +22,54 @@ class DBUpToDate extends Sensor
     public const MIGRATION_STATUS_UP = 'up';
 
     /**
+     * The default connection name
+     */
+    protected string $defaultConnectionName = 'default';
+
+    /**
+     * The default migrations source (subfolder of config)
+     */
+    protected string $defaultSource = 'Migrations';
+
+    /**
      * @inheritDoc
      */
     protected function _getStatus()
     {
         $dbMigrated = true;
         try {
-            $migrations = new Migrations();
-            $status = $migrations->status();
-            $lastStatus = array_pop($status);
-            if ($lastStatus['status'] !== self::MIGRATION_STATUS_UP) {
-                $dbMigrated = false;
+            $migrations = new Migrations($this->buildMigrationsOptions());
+
+            foreach ($migrations->status() as $migration) {
+                if ($migration['status'] !== self::MIGRATION_STATUS_UP) {
+                    $dbMigrated = false;
+                    break;
+                }
             }
         } catch (\Exception $exception) {
             $dbMigrated = false;
         }
 
         return $dbMigrated;
+    }
+
+    /**
+     * Build the options array passed to the Migrations plugin.
+     *
+     * @return array<string, mixed>
+     */
+    private function buildMigrationsOptions(): array
+    {
+        $options = [
+            'connection' => $this->getSetting('connection_name', $this->defaultConnectionName),
+            'source' => $this->getSetting('source', $this->defaultSource),
+        ];
+
+        $pluginName = $this->getSetting('plugin_name', '');
+        if ($pluginName !== '') {
+            $options['plugin'] = $pluginName;
+        }
+
+        return $options;
     }
 }
