@@ -71,12 +71,27 @@ class DBConnectionTest extends TestCase
     }
 
     /**
-     * Test _getStatus for a healthy connection.
+     * Test _getStatus for the default connection.
      *
      * @return void
      * @covers ::_getStatus
      */
-    public function testGetStatusReturnsTrueForReachableConnection(): void
+    public function testGetStatusReturnsTrueForDefaultConnection(): void
+    {
+        $sensor = $this->createSensor();
+
+        $status = $sensor->getStatus();
+
+        $this->assertTrue($status->getStatus());
+    }
+
+    /**
+     * Test _getStatus for a custom connection.
+     *
+     * @return void
+     * @covers ::_getStatus
+     */
+    public function testGetStatusReturnsTrueForCustomConnection(): void
     {
         $sensor = $this->createSensor(['connection_name' => self::TEST_CONNECTION]);
 
