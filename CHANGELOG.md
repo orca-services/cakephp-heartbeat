@@ -2,7 +2,16 @@
 All notable changes to this project are documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/orca-services/cakephp-heartbeat/compare/2.0.0...cakephp-3.x)
+## [Unreleased](https://github.com/orca-services/cakephp-heartbeat)
+### Added
+
+### Changed
+
+### Dependencies
+
+### Fixed
+
+## [3.1.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.1.0) - 2026-06-15
 ### Added
 - Make DB connection name configurable [#14](https://github.com/orca-services/cakephp-heartbeat/issues/14)
 - Implement the Cake InstanceConfigTrait [#14](https://github.com/orca-services/cakephp-heartbeat/issues/14)
@@ -15,8 +24,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - phpunit/phpunit updated from 9.6.29 to 9.6.34 patch
 - cakephp/cakephp updated from 4.6.2 to 4.6.4 patch
 - cakephp/cakephp-codesniffer downgraded from 5.1.0 to 4.7.1 major
-
-### Fixed
 
 ## [3.0.4](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.0.4) - 2025-01-06
 ### Fixed
