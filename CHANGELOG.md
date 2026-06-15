@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat)
 ### Added
+- Make DB connection name for DBUpToDate sensor configurable [#40](https://github.com/orca-services/cakephp-heartbeat/issues/40)
 
 ### Changed
 
