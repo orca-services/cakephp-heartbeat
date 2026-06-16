@@ -17,17 +17,17 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
 class DBUpToDate extends Sensor
 {
     /**
-     * Migration status indicating the migration was executed successfully
+     * Migration status indicating the migration was executed successfully.
      */
     public const MIGRATION_STATUS_UP = 'up';
 
     /**
-     * The default connection name
+     * The default connection name. Defaults to `default`.
      */
     protected string $defaultConnectionName = 'default';
 
     /**
-     * The default migrations source (subfolder of config)
+     * The default migrations source (subfolder of config). Defaults to `Migrations`.
      */
     protected string $defaultSource = 'Migrations';
 
