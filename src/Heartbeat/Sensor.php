@@ -149,13 +149,13 @@ abstract class Sensor
     abstract protected function _getStatus();
 
     /**
-     * Get the value of the given setting or an optional  fallback default value
+     * Get the value of the given setting or an optional fallback default value
      *
      * @param string $name The name of the setting to retrieve.
      * @param null|mixed $default The optional default value, if the setting is not set.
-     * @return string The value of the setting or the provided default, if not set.
+     * @return string|null The value of the setting or the provided default, if not set.
      */
-    protected function getSetting(string $name, $default = null): string
+    protected function getSetting(string $name, $default = null): ?string
     {
         $settings = $this->config->getSettings();
 
