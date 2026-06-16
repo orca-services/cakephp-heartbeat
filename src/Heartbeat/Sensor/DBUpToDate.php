@@ -76,7 +76,7 @@ class DBUpToDate extends Sensor
             'source' => $this->getSetting('source', $this->defaultSource),
         ];
 
-        $pluginName = $this->getSetting('plugin_name', '');
+        $pluginName = $this->getSetting('plugin', '');
         if ($pluginName !== '') {
             $options['plugin'] = $pluginName;
         }

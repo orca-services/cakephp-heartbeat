@@ -38,6 +38,7 @@ $config['App']['Heartbeat'] = [
             'settings' => [
                 'connection_name' => 'default',
                 'source' => 'Migrations',
+                'plugin' => 'MyPlugin',
             ],
         ],
     ],

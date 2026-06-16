@@ -30,7 +30,7 @@ connection. The following settings can be used to point it elsewhere:
 
 - ``connection_name`` The datasource connection to check. Defaults to ``default``.
 - ``source`` The folder the migration files live in. Defaults to ``Migrations``.
-- ``plugin_name`` The plugin that contains the migrations. When omitted, the
+- ``plugin`` The plugin that contains the migrations. Defaults to `null`. When omitted, the
   application's migrations are checked.
 
 To check the migrations of a plugin (e.g. ``MyPlugin``) on a connection other
@@ -44,8 +44,8 @@ $config['App']['Heartbeat']['Sensors']['Plugin DB up to date'] = [
     'cached' => '+10 minutes',
     'settings' => [
         'connection_name' => 'external',
-        'source' => 'Migrations',
-        'plugin_name' => 'MyPlugin',
+        'source' => 'MyMigrations',
+        'plugin' => 'MyPlugin',
     ],
 ];
 ```
