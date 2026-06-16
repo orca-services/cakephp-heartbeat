@@ -35,6 +35,11 @@ $config['App']['Heartbeat'] = [
             'severity' => 3,
             'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
             'cached' => '+10 minutes',
+            'settings' => [
+                'connection_name' => 'default',
+                'source' => 'Migrations',
+                'plugin' => 'MyPlugin',
+            ],
         ],
     ],
 ];

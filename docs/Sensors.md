@@ -25,6 +25,31 @@ Uses the Migrations Plugin to check whether all migrations have been run.
 If you use a version of cakephp/migrations below 2.2, you will need to load
 the cakephp/migrations plugin before the sensor is called.
 
+By default, the sensor checks the application's own migrations on the ``default``
+connection. The following settings can be used to point it elsewhere:
+
+- ``connection_name`` The datasource connection to check. Defaults to ``default``.
+- ``source`` The folder the migration files live in. Defaults to ``Migrations``.
+- ``plugin`` The plugin that contains the migrations. Defaults to `null`. When omitted, the
+  application's migrations are checked.
+
+To check the migrations of a plugin (e.g. ``MyPlugin``) on a connection other
+than ``default``, e.g. ``external``, the settings can be used like this:
+
+```php
+$config['App']['Heartbeat']['Sensors']['Plugin DB up to date'] = [
+    'enabled' => true,
+    'severity' => 3,
+    'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
+    'cached' => '+10 minutes',
+    'settings' => [
+        'connection_name' => 'external',
+        'source' => 'MyMigrations',
+        'plugin' => 'MyPlugin',
+    ],
+];
+```
+
 #### Debug Mode
 Outputs the configuration for the debug mode.
 
