@@ -29,11 +29,11 @@ class DBConnectionTest extends TestCase
      */
     public function setUp(): void
     {
-        parent::setUp();
-
         if (!extension_loaded('pdo_sqlite')) {
             $this->markTestSkipped('The pdo_sqlite extension is required for this test.');
         }
+
+        parent::setUp();
 
         ConnectionManager::setConfig(self::TEST_CONNECTION, [
             'className' => Connection::class,
