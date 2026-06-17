@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 use Cake\Datasource\ConnectionManager;
-use Exception;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 /**
@@ -16,13 +15,20 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
 class DBConnection extends Sensor
 {
     /**
+     * The default connection name
+     */
+    protected string $defaultConnectionName = 'default';
+
+    /**
      * @inheritDoc
      */
     protected function _getStatus(): mixed
     {
         try {
-            return ConnectionManager::get('default')->getDriver()->connect();
-        } catch (Exception $exception) {
+            $connectionName = $this->getSetting('connection_name', $this->defaultConnectionName);
+
+            return ConnectionManager::get($connectionName)->getDriver()->connect();
+        } catch (\Exception $exception) {
             return false;
         }
     }

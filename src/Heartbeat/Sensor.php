@@ -5,6 +5,7 @@ namespace OrcaServices\Heartbeat\Heartbeat;
 
 use Cake\Cache\Cache;
 use Cake\Chronos\Chronos;
+use Cake\Utility\Hash;
 use Cake\Utility\Text;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
@@ -28,8 +29,6 @@ abstract class Sensor
 
     /**
      * The sensor config
-     *
-     * @var Config
      */
     protected Config $config;
 
@@ -65,7 +64,7 @@ abstract class Sensor
      *
      * @return Status|bool The cached status or false.
      */
-    protected function _getCachedStatus(): bool|Status
+    protected function _getCachedStatus(): Status|bool
     {
         $sensorCaching = $this->config->getCached();
 
@@ -100,7 +99,7 @@ abstract class Sensor
      * @param string|bool $sensorCaching The sensor cache configuration, either a bool or a relative time string.
      * @return void
      */
-    protected function _resetCacheConfig(bool|string $sensorCaching): void
+    protected function _resetCacheConfig(string|bool $sensorCaching): void
     {
         Cache::drop(self::CACHE_NAME);
 
@@ -148,4 +147,18 @@ abstract class Sensor
      * @return mixed The sensor status.
      */
     abstract protected function _getStatus(): mixed;
+
+    /**
+     * Get the value of the given setting or an optional fallback default value
+     *
+     * @param string $name The name of the setting to retrieve.
+     * @param null|mixed $default The optional default value, if the setting is not set.
+     * @return string|null The value of the setting or the provided default, if not set.
+     */
+    protected function getSetting(string $name, $default = null): ?string
+    {
+        $settings = $this->config->getSettings();
+
+        return Hash::get($settings, $name, $default);
+    }
 }

@@ -17,20 +17,16 @@ class Heartbeat
 {
     /**
      * Whether the Heartbeat sensor statuses should be cached by default. Can be overridden. Defaults to true.
-     *
-     * @var bool
      */
     protected bool $cached = true;
 
     /**
      * The sensor statuses
-     *
-     * @var array
      */
     protected array $sensorStatuses = [];
 
     /**
-     * Executes the sensor checks an populates their statuses.
+     * Executes the sensor checks and populates their statuses.
      *
      * @return $this
      */
@@ -113,15 +109,13 @@ class Heartbeat
 
         $name = Configure::read('App.Heartbeat.name');
 
-        $status = new Status(
+        return new Status(
             $name . ' Heartbeat Status',
             $systemStatus,
             0, // TODO Calculate the duration for the whole heartbeat
             Chronos::now(),
             Status::STATUS_CRITICAL,
         );
-
-        return $status;
     }
 
     /**
@@ -129,7 +123,7 @@ class Heartbeat
      *
      * @param bool $cached True if yes, else false.
      * @return void
-     * @throws InvalidArgumentException If not a valid boolean was given.
+     * @throws \InvalidArgumentException If not a valid boolean was given.
      * @todo Cover set & exception.
      */
     public function setCached(bool $cached): void

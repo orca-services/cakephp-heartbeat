@@ -27,8 +27,6 @@ class Status
 
     /**
      * The name of the sensor
-     *
-     * @var string
      */
     protected string $name;
 
@@ -41,29 +39,21 @@ class Status
 
     /**
      * The sensor check duration in seconds
-     *
-     * @var float
      */
     protected float $duration;
 
     /**
      * The date/time when the sensor check was last executed
-     *
-     * @var Chronos
      */
     protected Chronos $lastExecuted;
 
     /**
      * How severe the status is, e.g.
-     *
-     * @var int
      */
     protected int $severity;
 
     /**
      * Whether sensor status was fetched from cache
-     *
-     * @var bool
      */
     protected bool $checkCached = false;
 
