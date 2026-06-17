@@ -93,7 +93,7 @@ class DBConnectionTest extends TestCase
      */
     public function testGetStatusReturnsTrueForCustomConnection(): void
     {
-        $sensor = $this->createSensor(['connection_name' => self::TEST_CONNECTION]);
+        $sensor = $this->createSensor(['connection' => self::TEST_CONNECTION]);
 
         $status = $sensor->getStatus();
 
@@ -108,7 +108,7 @@ class DBConnectionTest extends TestCase
      */
     public function testGetStatusReturnsFalseForUnknownConnection(): void
     {
-        $sensor = $this->createSensor(['connection_name' => 'this_connection_does_not_exist']);
+        $sensor = $this->createSensor(['connection' => 'this_connection_does_not_exist']);
 
         $status = $sensor->getStatus();
 

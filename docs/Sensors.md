@@ -5,7 +5,7 @@ Built-in Sensors
 Checks whether a connection to the database server of the `default` connection can be established.
 
 To check a connection other than ``default``, e.g. ``external``,
-the ``connection_name``setting can be used.
+the ``connection``setting can be used.
 
  ```php
 $config['App']['Heartbeat']['Sensors']['External DB Connection'] = [
@@ -14,7 +14,7 @@ $config['App']['Heartbeat']['Sensors']['External DB Connection'] = [
     'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
     'cached' => true,
     'settings' => [
-        'connection_name' => 'external'
+        'connection' => 'external'
     ],
 ];
 ```
@@ -28,7 +28,7 @@ the cakephp/migrations plugin before the sensor is called.
 By default, the sensor checks the application's own migrations on the ``default``
 connection. The following settings can be used to point it elsewhere:
 
-- ``connection_name`` The datasource connection to check. Defaults to ``default``.
+- ``connection`` The datasource connection to check. Defaults to ``default``.
 - ``source`` The folder the migration files live in. Defaults to ``Migrations``.
 - ``plugin`` The plugin that contains the migrations. Defaults to `null`. When omitted, the
   application's migrations are checked.
@@ -43,7 +43,7 @@ $config['App']['Heartbeat']['Sensors']['Plugin DB up to date'] = [
     'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
     'cached' => '+10 minutes',
     'settings' => [
-        'connection_name' => 'external',
+        'connection' => 'external',
         'source' => 'MyMigrations',
         'plugin' => 'MyPlugin',
     ],

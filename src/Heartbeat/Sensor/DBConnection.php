@@ -26,7 +26,7 @@ class DBConnection extends Sensor
     protected function _getStatus(): bool
     {
         try {
-            $connectionName = $this->getSetting('connection_name', $this->defaultConnectionName);
+            $connectionName = $this->getSetting('connection', $this->defaultConnectionName);
 
             ConnectionManager::get($connectionName)->getDriver()->connect();
 

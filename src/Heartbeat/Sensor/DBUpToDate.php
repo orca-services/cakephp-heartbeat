@@ -71,7 +71,7 @@ class DBUpToDate extends Sensor
     private function buildMigrationsOptions(): array
     {
         $options = [
-            'connection' => $this->getSetting('connection_name', $this->defaultConnectionName),
+            'connection' => $this->getSetting('connection', $this->defaultConnectionName),
             'source' => $this->getSetting('source', $this->defaultSource),
         ];
 

@@ -40,7 +40,7 @@ class ConfigTest extends TestCase
             'class' => DummySensor::class,
             'cached' => true,
             'settings' => [
-                'connection_name' => 'test',
+                'connection' => 'test',
             ],
         ];
         $sensorConfig = new Config($sensorName, $sensorConfigArray);

@@ -27,7 +27,7 @@ $config['App']['Heartbeat'] = [
             'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
             'cached' => true,
             'settings' => [
-                'connection_name' => 'default',
+                'connection' => 'default',
             ],
         ],
         'DB up to date' => [
@@ -36,7 +36,7 @@ $config['App']['Heartbeat'] = [
             'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
             'cached' => '+10 minutes',
             'settings' => [
-                'connection_name' => 'default',
+                'connection' => 'default',
                 'source' => 'Migrations',
                 'plugin' => 'MyPlugin',
             ],
