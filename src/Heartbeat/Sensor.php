@@ -130,15 +130,13 @@ abstract class Sensor
         $duration = $end - $start;
         $duration = round($duration, 3);
 
-        $status = new Status(
+        return new Status(
             $this->config->getName(),
             $status,
             $duration,
             Chronos::now(),
             $this->config->getSeverity(),
         );
-
-        return $status;
     }
 
     /**
