@@ -8,10 +8,21 @@ use Cake\Collection\Collection;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
+use OrcaServices\Heartbeat\Test\TestApp\TestApplication;
 
 class HeartbeatControllerTest extends TestCase
 {
     use IntegrationTestTrait;
+
+    /**
+     * @inheritDoc
+     */
+    public function setUp(): void
+    {
+        parent::setUp();
+
+        $this->_appClass = TestApplication::class;
+    }
 
     /**
      * Tests index
@@ -21,7 +32,6 @@ class HeartbeatControllerTest extends TestCase
      */
     public function testIndex()
     {
-        $this->markTestIncomplete('TODO: Fix this test. Something with routes I guess.');
         Chronos::setTestNow('2017-03-30 12:45:37');
         $this->get('/heartbeat');
         $systemStatus = $this->viewVariable('systemStatus');
