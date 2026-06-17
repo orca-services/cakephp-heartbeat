@@ -37,21 +37,19 @@ class DBUpToDate extends Sensor
      */
     protected function _getStatus(): bool
     {
-        $dbMigrated = true;
         try {
             $migrations = $this->createMigrations($this->buildMigrationsOptions());
 
             foreach ($migrations->status() as $migration) {
                 if ($migration['status'] !== self::MIGRATION_STATUS_UP) {
-                    $dbMigrated = false;
-                    break;
+                    return false;
                 }
             }
         } catch (Exception $exception) {
-            $dbMigrated = false;
+            return false;
         }
 
-        return $dbMigrated;
+        return true;
     }
 
     /**
