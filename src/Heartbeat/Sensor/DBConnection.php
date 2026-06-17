@@ -22,12 +22,14 @@ class DBConnection extends Sensor
     /**
      * @inheritDoc
      */
-    protected function _getStatus(): mixed
+    protected function _getStatus(): bool
     {
         try {
             $connectionName = $this->getSetting('connection_name', $this->defaultConnectionName);
 
-            return ConnectionManager::get($connectionName)->getDriver()->connect();
+            ConnectionManager::get($connectionName)->getDriver()->connect();
+
+            return true;
         } catch (\Exception $exception) {
             return false;
         }

@@ -144,9 +144,9 @@ abstract class Sensor
     /**
      * Get the status
      *
-     * @return mixed The sensor status.
+     * @return bool The sensor status.
      */
-    abstract protected function _getStatus(): mixed;
+    abstract protected function _getStatus(): bool;
 
     /**
      * Get the value of the given setting or an optional fallback default value

@@ -14,8 +14,8 @@ class DebugMode extends Sensor
     /**
      * @inheritDoc
      */
-    protected function _getStatus(): mixed
+    protected function _getStatus(): bool
     {
-        return (string)Configure::read('debug');
+        return (bool)Configure::read('debug');
     }
 }

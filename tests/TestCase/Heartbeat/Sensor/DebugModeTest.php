@@ -32,7 +32,7 @@ class DebugModeTest extends TestCase
     }
 
     /**
-     * When debug mode is enabled, the sensor reports the string '1'.
+     * When debug mode is enabled, the sensor reports true.
      *
      * @return void
      * @covers ::_getStatus
@@ -43,11 +43,11 @@ class DebugModeTest extends TestCase
 
         $sensor = $this->createSensor();
 
-        $this->assertSame('1', $sensor->getStatus()->getStatus());
+        $this->assertTrue($sensor->getStatus()->getStatus());
     }
 
     /**
-     * When debug mode is disabled, the sensor reports the string '' (the (string) cast of boolean false).
+     * When debug mode is disabled, the sensor reports false.
      *
      * @return void
      * @covers ::_getStatus
@@ -58,6 +58,6 @@ class DebugModeTest extends TestCase
 
         $sensor = $this->createSensor();
 
-        $this->assertSame('', $sensor->getStatus()->getStatus());
+        $this->assertFalse($sensor->getStatus()->getStatus());
     }
 }
