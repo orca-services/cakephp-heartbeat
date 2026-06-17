@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Bump support for CakePHP to 5.x
 - Update the minimum required PHP Version to PHP 8.2
+- Rename config setting `connection_name` to `connection`
 
 ### Dependencies
 - cakephp/cakephp updated from 4.6.4 to 5.3.6 major
