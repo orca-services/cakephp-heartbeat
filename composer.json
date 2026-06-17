@@ -50,8 +50,7 @@
 	},
 	"autoload-dev": {
 		"psr-4": {
-			"OrcaServices\\Heartbeat\\Test\\": "tests",
-			"Cake\\Test\\": "./vendor/cakephp/cakephp/tests"
+			"OrcaServices\\Heartbeat\\Test\\": "tests"
 		}
 	},
     "scripts": {
