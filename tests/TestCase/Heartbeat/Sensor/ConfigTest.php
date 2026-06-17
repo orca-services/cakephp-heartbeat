@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 
+use Cake\TestSuite\TestCase;
 use InvalidArgumentException;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
-use PHPUnit\Framework\TestCase;
 
 /**
  * Config Tests

@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat;
 
 use Cake\Collection\Collection;
+use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Heartbeat;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
-use PHPUnit\Framework\TestCase;
 
 class HeartbeatTests extends TestCase
 {
