@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 use Cake\Datasource\ConnectionManager;
+use Exception;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 /**
@@ -30,7 +31,7 @@ class DBConnection extends Sensor
             ConnectionManager::get($connectionName)->getDriver()->connect();
 
             return true;
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             return false;
         }
     }
