@@ -7,7 +7,7 @@ use Cake\Http\BaseApplication;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\Middleware\RoutingMiddleware;
 use Cake\Routing\RouteBuilder;
-use OrcaServices\Heartbeat\Plugin as HeartbeatPlugin;
+use OrcaServices\Heartbeat\HeartbeatPlugin;
 
 /**
  * Minimal test application used by integration tests.

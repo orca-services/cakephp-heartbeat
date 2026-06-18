@@ -8,6 +8,6 @@ use Cake\Core\BasePlugin;
 /**
  * CakePHP Heartbeat Plugin
  */
-class Plugin extends BasePlugin
+class HeartbeatPlugin extends BasePlugin
 {
 }
