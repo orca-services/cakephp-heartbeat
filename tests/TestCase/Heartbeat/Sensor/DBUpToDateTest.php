@@ -7,6 +7,7 @@ use Cake\TestSuite\TestCase;
 use Migrations\Migrations;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use PHPUnit\Framework\MockObject\MockObject;
 use RuntimeException;
 
@@ -28,7 +29,7 @@ class DBUpToDateTest extends TestCase
     {
         $config = new Config('DB up to date', [
             'enabled' => true,
-            'severity' => 3,
+            'severity' => Severity::CRITICAL,
             'class' => DBUpToDate::class,
             'settings' => $settings,
         ]);
@@ -78,7 +79,9 @@ class DBUpToDateTest extends TestCase
 
         $sensor = $this->createSensor($migrations);
 
-        $this->assertTrue($sensor->getStatus()->getStatus());
+        $sensorStatus = $sensor->getSensorStatus();
+
+        $this->assertTrue($sensorStatus->status);
     }
 
     /**
@@ -96,7 +99,9 @@ class DBUpToDateTest extends TestCase
 
         $sensor = $this->createSensor($migrations);
 
-        $this->assertFalse($sensor->getStatus()->getStatus());
+        $sensorStatus = $sensor->getSensorStatus();
+
+        $this->assertFalse($sensorStatus->status);
     }
 
     /**
@@ -111,7 +116,9 @@ class DBUpToDateTest extends TestCase
 
         $sensor = $this->createSensor($migrations);
 
-        $this->assertTrue($sensor->getStatus()->getStatus());
+        $sensorStatus = $sensor->getSensorStatus();
+
+        $this->assertTrue($sensorStatus->status);
     }
 
     /**
@@ -127,6 +134,8 @@ class DBUpToDateTest extends TestCase
 
         $sensor = $this->createSensor($migrations);
 
-        $this->assertFalse($sensor->getStatus()->getStatus());
+        $sensorStatus = $sensor->getSensorStatus();
+
+        $this->assertFalse($sensorStatus->status);
     }
 }

@@ -10,24 +10,24 @@
 use Cake\Collection\Collection;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
-$systemStatusName = $systemStatus->getName();
-$systemStatusText = $systemStatus->getStatus() ? __('OK') : __('FAILED');
+$systemStatusName = $systemStatus->name;
+$systemStatusText = $systemStatus->status ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED');
 
 $system = [$systemStatusName => $systemStatusText];
 
 $statuses = $sensorStatuses->map(function ($sensorStatus) {
     /** @var Status $sensorStatus */
-    $name = $sensorStatus->getName();
-    $status = $sensorStatus->getStatus();
-    $severity = $sensorStatus->getSeverity();
-    $duration = $sensorStatus->getDuration();
-    $lastExecuted = $sensorStatus->getLastExecuted()->format('Y-m-d H:i:s');
+    $name = $sensorStatus->name;
+    $status = $sensorStatus->status;
+    $severity = $sensorStatus->severity;
+    $duration = $sensorStatus->duration;
+    $lastExecuted = $sensorStatus->lastExecuted->format('Y-m-d H:i:s');
     $wasCheckFromCache = $sensorStatus->wasCheckCached();
 
     if ($status === true) {
-        $statusText = 'OK';
+        $statusText = __d('Heartbeat', 'OK');
     } elseif ($status === false) {
-        $statusText = 'FAILED';
+        $statusText = __d('Heartbeat', 'FAILED');
     } else {
         $statusText = $status;
     }

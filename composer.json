@@ -1,58 +1,66 @@
 {
-	"name": "orca-services/cakephp-heartbeat",
-	"description": "A CakePHP plugin providing an application heartbeat status page with configurable sensors",
-	"type": "cakephp-plugin",
-	"keywords":[
-		"cakephp",
-		"plugin",
-		"heartbeat",
-		"status",
-		"sensor"
-	],
-	"homepage": "https://github.com/orca-services/cakephp-heartbeat",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Marc Würth",
-			"homepage": "https://github.com/ravage84/",
-			"email": "ravage@bluewin.ch",
-			"role": "Lead developer"
-		},
-		{
-			"name": "Livia Scapin",
-			"homepage": "https://github.com/liviascapin",
-			"role": "Co Developer"
-		},
-		{
-			"name": "Other contributors",
-			"homepage": "https://github.com/orca-services/cakephp-heartbeat/graphs/contributors",
-			"role": "Contributors"
-		}
-	],
-	"support": {
-		"source": "https://github.com/orca-services/cakephp-heartbeat",
-		"issues": "https://github.com/orca-services/cakephp-heartbeat/issues"
-	},
-	"require": {
-        "ext-json": "*",
-		"php": ">=7.4",
-		"cakephp/cakephp": "^4.0"
+    "name": "orca-services/cakephp-heartbeat",
+    "description": "A CakePHP plugin providing an application heartbeat status page with configurable sensors",
+    "type": "cakephp-plugin",
+    "keywords": [
+        "cakephp",
+        "plugin",
+        "heartbeat",
+        "status",
+        "sensor"
+    ],
+    "homepage": "https://github.com/orca-services/cakephp-heartbeat",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Marc Würth",
+            "homepage": "https://github.com/ravage84/",
+            "email": "ravage@bluewin.ch",
+            "role": "Lead developer"
+        },
+        {
+            "name": "Fabian Arndt",
+            "homepage": "https://github.com/neluxx",
+            "role": "Developer"
+        },
+        {
+            "name": "Livia Scapin",
+            "homepage": "https://github.com/liviascapin",
+            "role": "Developer"
+        },
+        {
+            "name": "Other contributors",
+            "homepage": "https://github.com/orca-services/cakephp-heartbeat/graphs/contributors",
+            "role": "Contributors"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/orca-services/cakephp-heartbeat",
+        "issues": "https://github.com/orca-services/cakephp-heartbeat/issues"
     },
-	"require-dev": {
-		"cakephp/cakephp-codesniffer": "^4.0",
-		"cakephp/migrations": "^3.0.0",
-		"phpunit/phpunit": "^8.5|^9.6"
-	},
-	"autoload": {
-		"psr-4": {
-			"OrcaServices\\Heartbeat\\": "src"
-		}
-	},
-	"autoload-dev": {
-		"psr-4": {
-			"OrcaServices\\Heartbeat\\Test\\": "tests"
-		}
-	},
+    "require": {
+        "ext-json": "*",
+        "php": "^8.2",
+        "cakephp/cakephp": "^5.3.1"
+    },
+    "require-dev": {
+        "cakephp/cakephp-codesniffer": "^5.0",
+        "cakephp/migrations": "^5.0",
+        "phpunit/phpunit": "^10.0"
+    },
+    "suggest": {
+        "cakephp/migrations": "Required to use the DBUpToDate sensor"
+    },
+    "autoload": {
+        "psr-4": {
+            "OrcaServices\\Heartbeat\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OrcaServices\\Heartbeat\\Test\\": "tests"
+        }
+    },
     "scripts": {
         "check": [
             "@test",
@@ -65,13 +73,8 @@
     },
     "config": {
         "sort-packages": true,
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		},
-        "audit": {
-            "ignore": {
-                "CVE-2023-29530": "PHP Version >=8.0 is needed for a secure version of laminas/diactoros"
-            }
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
         }
     }
 }

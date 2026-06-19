@@ -21,6 +21,7 @@ phpcs.xml
 pdepend.xml
 phpunit.xml
 .phpunit.result.cache
+.phpunit.cache
 build
 
 # OS generated files #

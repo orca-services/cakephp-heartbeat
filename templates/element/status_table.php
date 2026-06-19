@@ -8,40 +8,36 @@
 
 use Cake\Collection\Collection;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 
 echo '<table class="table table-bordered table-responsive table-striped table-hover table-condensed">';
 
 $sensorStatuses->some(function ($sensorStatus) {
     /** @var Status $sensorStatus */
-    $name = $sensorStatus->getName();
-    $status = $sensorStatus->getStatus();
-    $severity = $sensorStatus->getSeverity();
-    $duration = $sensorStatus->getDuration();
-    $lastExecuted = $sensorStatus->getLastExecuted();
+    $name = $sensorStatus->name;
+    $status = $sensorStatus->status;
+    $severity = $sensorStatus->severity;
+    $duration = $sensorStatus->duration;
+    $lastExecuted = $sensorStatus->lastExecuted;
     $wasCheckFromCache = $sensorStatus->wasCheckCached();
 
-    if ($status === true) {
-        $statusText = 'OK';
-    } elseif ($status === false) {
-        $statusText = 'FAILED';
-    } else {
-        $statusText = $status;
-    }
+    $statusText = match ($status) {
+        true => __d('Heartbeat', 'OK'),
+        false => __d('Heartbeat', 'FAILED'),
+        default => $status,
+    };
 
-    if ($status !== false) {
-        if ($severity === Status::STATUS_INFORMATIONAL) {
-            $tableClass = 'info';
-        } else {
-            $tableClass = 'success';
-        }
+    if ($status === true) {
+        $tableClass = match ($severity) {
+            Severity::INFORMATIONAL => 'info',
+            default => 'success',
+        };
     } else {
-        if ($severity === Status::STATUS_CRITICAL) {
-            $tableClass = 'danger';
-        } elseif ($severity === Status::STATUS_NONCRITICAL) {
-            $tableClass = 'warning';
-        } else {
-            $tableClass = 'info';
-        }
+        $tableClass = match ($severity) {
+            Severity::CRITICAL => 'danger',
+            Severity::NONCRITICAL => 'warning',
+            Severity::INFORMATIONAL => 'info',
+        };
     }
 
     echo $this->Html->tableCells([

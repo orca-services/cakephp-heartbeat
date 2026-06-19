@@ -5,16 +5,16 @@ Built-in Sensors
 Checks whether a connection to the database server of the `default` connection can be established.
 
 To check a connection other than ``default``, e.g. ``external``,
-the ``connection_name``setting can be used.
+the ``connection``setting can be used.
 
  ```php
 $config['App']['Heartbeat']['Sensors']['External DB Connection'] = [
     'enabled' => true,
-    'severity' => 3,
-    'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
+    'severity' => Severity::CRITICAL,
+    'class' => DBConnection::class,
     'cached' => true,
     'settings' => [
-        'connection_name' => 'external'
+        'connection' => 'external'
     ],
 ];
 ```
@@ -28,7 +28,7 @@ the cakephp/migrations plugin before the sensor is called.
 By default, the sensor checks the application's own migrations on the ``default``
 connection. The following settings can be used to point it elsewhere:
 
-- ``connection_name`` The datasource connection to check. Defaults to ``default``.
+- ``connection`` The datasource connection to check. Defaults to ``default``.
 - ``source`` The folder the migration files live in. Defaults to ``Migrations``.
 - ``plugin`` The plugin that contains the migrations. Defaults to `null`. When omitted, the
   application's migrations are checked.
@@ -39,11 +39,11 @@ than ``default``, e.g. ``external``, the settings can be used like this:
 ```php
 $config['App']['Heartbeat']['Sensors']['Plugin DB up to date'] = [
     'enabled' => true,
-    'severity' => 3,
-    'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
+    'severity' => Severity::CRITICAL,
+    'class' => DBUpToDate::class,
     'cached' => '+10 minutes',
     'settings' => [
-        'connection_name' => 'external',
+        'connection' => 'external',
         'source' => 'MyMigrations',
         'plugin' => 'MyPlugin',
     ],
@@ -83,7 +83,7 @@ use Api\ApiClient;
 
 class MyApi extends Sensor
 {
-    protected function _getStatus()
+    protected function getStatus()
     {
         try {
             $client = new ApiClient();
@@ -105,24 +105,24 @@ $config['App']['Heartbeat'] = [
     'Sensors' => [
         'Debug-Mode' => [
             'enabled' => true,
-            'severity' => 1,
-            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode::class,
+            'severity' => Severity::INFORMATIONAL,
+            'class' => DebugMode::class,
         ],
         'DB Connection' => [
             'enabled' => true,
-            'severity' => 3,
-            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
+            'severity' => Severity::CRITICAL,
+            'class' => DBConnection::class,
             'cached' => true,
         ],
         'DB up to date' => [
             'enabled' => false,
-            'severity' => 3,
-            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
+            'severity' => Severity::CRITICAL,
+            'class' => DBUpToDate::class,
             'cached' => '+10 minutes',
         ],
         'REST API' => [
             'enabled' => true,
-            'severity' => 2,
+            'severity' => Severity::NONCRITICAL,
             'class' => Heartbeat\Sensor\MyApi::class,
             'cached' => '+15 minutes',
         ],

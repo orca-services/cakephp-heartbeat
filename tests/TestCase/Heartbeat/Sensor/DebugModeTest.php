@@ -7,6 +7,7 @@ use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 
 /**
  * Debug Mode Sensor Test
@@ -24,7 +25,7 @@ class DebugModeTest extends TestCase
     {
         $config = new Config('Debug-Mode', [
             'enabled' => true,
-            'severity' => 1,
+            'severity' => Severity::INFORMATIONAL,
             'class' => DebugMode::class,
         ]);
 
@@ -32,7 +33,7 @@ class DebugModeTest extends TestCase
     }
 
     /**
-     * When debug mode is enabled, the sensor reports the string '1'.
+     * When debug mode is enabled, the sensor reports true.
      *
      * @return void
      * @covers ::_getStatus
@@ -43,11 +44,13 @@ class DebugModeTest extends TestCase
 
         $sensor = $this->createSensor();
 
-        $this->assertSame('1', $sensor->getStatus()->getStatus());
+        $sensorStatus = $sensor->getSensorStatus();
+
+        $this->assertTrue($sensorStatus->status);
     }
 
     /**
-     * When debug mode is disabled, the sensor reports the string '' (the (string) cast of boolean false).
+     * When debug mode is disabled, the sensor reports false.
      *
      * @return void
      * @covers ::_getStatus
@@ -58,6 +61,8 @@ class DebugModeTest extends TestCase
 
         $sensor = $this->createSensor();
 
-        $this->assertSame('', $sensor->getStatus()->getStatus());
+        $sensorStatus = $sensor->getSensorStatus();
+
+        $this->assertFalse($sensorStatus->status);
     }
 }

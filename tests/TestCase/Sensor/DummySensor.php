@@ -13,7 +13,7 @@ class DummySensor extends Sensor
     /**
      * @inheritDoc
      */
-    protected function _getStatus()
+    protected function getStatus(): bool
     {
         return true;
     }
