@@ -128,7 +128,7 @@ Layout overriding
 -----------------
 
 You can override the default layout with your own to match the styling of your application.
-For the example above, you should create a file named `heartbeat.ctp` in your View/Layouts folder.
+For the example above, you should create a file named `heartbeat.php` in your View/Layouts folder.
 In there, you can define a custom layout and load custom assets, such as JavaScript & CSS.
 
 ---
