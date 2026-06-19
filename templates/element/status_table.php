@@ -22,8 +22,8 @@ $sensorStatuses->some(function ($sensorStatus) {
     $wasCheckFromCache = $sensorStatus->wasCheckCached();
 
     $statusText = match ($status) {
-        true => 'OK',
-        false => 'FAILED',
+        true => __d('Heartbeat', 'OK'),
+        false => __d('Heartbeat', 'FAILED'),
         default => $status,
     };
 

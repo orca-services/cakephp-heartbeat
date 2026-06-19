@@ -13,7 +13,7 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 $systemStatusLabel = $this->Html->tag(
     'span',
-    $systemStatus->status ? __('OK') : __('FAILED'),
+    $systemStatus->status ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED'),
     ['class' => 'label label-' . ($systemStatus->status ? 'success' : 'danger')]);
 
 echo sprintf('<h1>' . $systemStatus->name . ' %s</h1>', $systemStatusLabel);
