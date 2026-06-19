@@ -6,6 +6,8 @@
 
 | Plugin Version | CakePHP Compatibility | Branch      | Status    |
 | -------------- | --------------------- | ----------- | --------- |
+| 4.x            | 5.3+                  | cakephp-5.x | Supported |
+| 3.x            | 4.6+                  | cakephp-4.x | Supported |
 | 2.x            | 3.7+                  | cakephp-3.x | Supported |
 | 1.x            | 2.x                   | cakephp-2.x | Supported |
 | 0.x            | 2.x                   | -           | EOL       |
