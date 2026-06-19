@@ -81,9 +81,9 @@ class DBConnectionTest extends TestCase
     {
         $sensor = $this->createSensor();
 
-        $status = $sensor->getSensorStatus();
+        $sensorStatus = $sensor->getSensorStatus();
 
-        $this->assertTrue($status->status);
+        $this->assertTrue($sensorStatus->status);
     }
 
     /**
@@ -96,9 +96,9 @@ class DBConnectionTest extends TestCase
     {
         $sensor = $this->createSensor(['connection' => self::TEST_CONNECTION]);
 
-        $status = $sensor->getSensorStatus();
+        $sensorStatus = $sensor->getSensorStatus();
 
-        $this->assertTrue($status->status);
+        $this->assertTrue($sensorStatus->status);
     }
 
     /**
@@ -111,8 +111,8 @@ class DBConnectionTest extends TestCase
     {
         $sensor = $this->createSensor(['connection' => 'this_connection_does_not_exist']);
 
-        $status = $sensor->getSensorStatus();
+        $sensorStatus = $sensor->getSensorStatus();
 
-        $this->assertFalse($status->status);
+        $this->assertFalse($sensorStatus->status);
     }
 }
