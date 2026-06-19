@@ -40,11 +40,11 @@ class StatusTest extends TestCase
         );
 
         $this->assertInstanceOf(Status::class, $status);
-        $this->assertEquals('Dummy Sensor', $status->getName());
-        $this->assertEquals(true, $status->getStatus());
-        $this->assertEquals(0, $status->getDuration());
-        $this->assertEquals('2017-03-30 12:45:37', $status->getLastExecuted());
-        $this->assertEquals(Severity::INFORMATIONAL, $status->getSeverity());
+        $this->assertEquals('Dummy Sensor', $status->name);
+        $this->assertEquals(true, $status->status);
+        $this->assertEquals(0, $status->duration);
+        $this->assertEquals('2017-03-30 12:45:37', $status->lastExecuted);
+        $this->assertEquals(Severity::INFORMATIONAL, $status->severity);
         $this->assertEquals(false, $status->wasCheckCached());
     }
 

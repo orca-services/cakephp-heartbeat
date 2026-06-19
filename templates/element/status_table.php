@@ -14,11 +14,11 @@ echo '<table class="table table-bordered table-responsive table-striped table-ho
 
 $sensorStatuses->some(function ($sensorStatus) {
     /** @var Status $sensorStatus */
-    $name = $sensorStatus->getName();
-    $status = $sensorStatus->getStatus();
-    $severity = $sensorStatus->getSeverity();
-    $duration = $sensorStatus->getDuration();
-    $lastExecuted = $sensorStatus->getLastExecuted();
+    $name = $sensorStatus->name;
+    $status = $sensorStatus->status;
+    $severity = $sensorStatus->severity;
+    $duration = $sensorStatus->duration;
+    $lastExecuted = $sensorStatus->lastExecuted;
     $wasCheckFromCache = $sensorStatus->wasCheckCached();
 
     $statusText = match ($status) {

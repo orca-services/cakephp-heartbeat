@@ -5,7 +5,6 @@ namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat;
 
 use Cake\Chronos\Chronos;
 use Cake\TestSuite\TestCase;
-use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
@@ -23,7 +22,7 @@ class SensorTest extends TestCase
      *
      * @return void
      * @covers ::__construct
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     public function testConstructor()
     {
@@ -61,12 +60,11 @@ class SensorTest extends TestCase
         /** @var Sensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
         $status = $sensor->getStatus();
-        $this->assertInstanceOf(Sensor\Status::class, $status);
-        $this->assertEquals('Dummy Sensor', $status->getName());
-        $this->assertTrue($status->getStatus());
-        $this->assertEquals(0, $status->getDuration());
-        $this->assertEquals('2017-03-30 12:45:37', $status->getLastExecuted());
-        $this->assertEquals(Severity::INFORMATIONAL, $status->getSeverity());
+        $this->assertEquals('Dummy Sensor', $status->name);
+        $this->assertTrue($status->status);
+        $this->assertEquals(0, $status->duration);
+        $this->assertEquals('2017-03-30 12:45:37', $status->lastExecuted);
+        $this->assertEquals(Severity::INFORMATIONAL, $status->severity);
     }
 
     /**
@@ -146,13 +144,12 @@ class SensorTest extends TestCase
      * @param mixed $object The object
      * @param string $property The property name
      * @return mixed The value
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
-    public static function getProperty($object, string $property)
+    public static function getProperty(mixed $object, string $property): mixed
     {
         $reflectedClass = new ReflectionClass($object);
         $reflection = $reflectedClass->getProperty($property);
-        $reflection->setAccessible(true);
 
         return $reflection->getValue($object);
     }

@@ -83,7 +83,7 @@ class DBConnectionTest extends TestCase
 
         $status = $sensor->getStatus();
 
-        $this->assertTrue($status->getStatus());
+        $this->assertTrue($status->status);
     }
 
     /**
@@ -98,7 +98,7 @@ class DBConnectionTest extends TestCase
 
         $status = $sensor->getStatus();
 
-        $this->assertTrue($status->getStatus());
+        $this->assertTrue($status->status);
     }
 
     /**
@@ -113,6 +113,6 @@ class DBConnectionTest extends TestCase
 
         $status = $sensor->getStatus();
 
-        $this->assertFalse($status->getStatus());
+        $this->assertFalse($status->status);
     }
 }
