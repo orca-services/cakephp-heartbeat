@@ -22,6 +22,12 @@ use OrcaServices\Heartbeat\HeartbeatPlugin;
 $this->addPlugin(HeartbeatPlugin::class);
 ```
 
+Or use the alternative way with an alias:
+
+```php
+$this->addPlugin('OrcaServices/Heartbeat');
+```
+
 ### 2. Heartbeat configuration changed
 
 If you configure the `DBConnection` / `DBUpToDate` sensors, update your config:
