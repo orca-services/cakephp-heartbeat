@@ -30,7 +30,7 @@ $this->addPlugin('OrcaServices/Heartbeat');
 
 ### 2. Heartbeat configuration changed
 
-If you configure the `DBConnection` / `DBUpToDate` sensors, update your config:
+If you are using either the `DBConnection` or the `DBUpToDate` sensor, update the connection name config key:
 
 ```php
 // Before
@@ -48,11 +48,11 @@ If your app uses the `DBUpToDate` sensor, make sure you explicitly require `cake
 
 If you created custom sensors, review them for API changes:
 
-- Status handling now uses the Severity enum instead of Integer values.
+- Status handling now uses the `Severity` enum instead of integer values.
 - Sensor status methods were renamed.
 - Some getter methods were replaced by readonly properties.
 
-Compare your custom sensors with the updated sensor classes before upgrading.
+Compare your custom sensors with the updated [sensor](../src/Heartbeat/Sensor.php) and [status](../src/Heartbeat/Sensor/Status.php) classes before upgrading.
 
 ## Upgrade steps
 
