@@ -43,7 +43,7 @@ class SensorTest extends TestCase
      * Tests the constructor
      *
      * @return void
-     * @covers ::getStatus
+     * @covers ::getSensorStatus
      * @covers ::_getStatus
      */
     public function testGetStatus()
@@ -90,18 +90,18 @@ class SensorTest extends TestCase
 
         /** @var DummySensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
 
         // Assert that result was not cached
         $this->assertFalse($status->wasCheckCached());
 
         // Get status again and assert that result was cached
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
         $this->assertTrue($status->wasCheckCached());
 
         // Get status again after slightly more than a second and assert that result was not cached
         sleep(2);
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
         $this->assertFalse($status->wasCheckCached());
 
         //// Wait another second to let the cache be reset
@@ -131,10 +131,10 @@ class SensorTest extends TestCase
 
         /** @var DummySensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
 
         $this->assertFalse($status->wasCheckCached());
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
         $this->assertFalse($status->wasCheckCached());
     }
 

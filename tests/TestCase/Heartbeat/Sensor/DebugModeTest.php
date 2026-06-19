@@ -44,7 +44,7 @@ class DebugModeTest extends TestCase
 
         $sensor = $this->createSensor();
 
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
 
         $this->assertTrue($status->status);
     }
@@ -61,7 +61,7 @@ class DebugModeTest extends TestCase
 
         $sensor = $this->createSensor();
 
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
 
         $this->assertFalse($status->status);
     }

@@ -38,7 +38,7 @@ class Heartbeat
         $this->sensorStatuses = [];
         foreach ($sensors as $sensorName => $sensorConfig) {
             $sensor = $this->_getSensor($sensorName, $sensorConfig);
-            $this->sensorStatuses[] = $sensor->getStatus();
+            $this->sensorStatuses[] = $sensor->getSensorStatus();
         }
 
         return $this;

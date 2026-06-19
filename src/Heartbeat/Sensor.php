@@ -43,11 +43,11 @@ abstract class Sensor
     }
 
     /**
-     * Get the status
+     * Get the sensor status
      *
      * @return Sensor\Status The sensor status.
      */
-    public function getStatus(): Status
+    public function getSensorStatus(): Status
     {
         $cachedStatus = $this->_getCachedStatus();
         if ($cachedStatus !== false) {

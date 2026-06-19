@@ -79,7 +79,7 @@ class DBUpToDateTest extends TestCase
 
         $sensor = $this->createSensor($migrations);
 
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
 
         $this->assertTrue($status->status);
     }
@@ -99,7 +99,7 @@ class DBUpToDateTest extends TestCase
 
         $sensor = $this->createSensor($migrations);
 
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
 
         $this->assertFalse($status->status);
     }
@@ -116,7 +116,7 @@ class DBUpToDateTest extends TestCase
 
         $sensor = $this->createSensor($migrations);
 
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
 
         $this->assertTrue($status->status);
     }
@@ -134,7 +134,7 @@ class DBUpToDateTest extends TestCase
 
         $sensor = $this->createSensor($migrations);
 
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
 
         $this->assertFalse($status->status);
     }
