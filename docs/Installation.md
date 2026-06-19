@@ -8,7 +8,7 @@ Installation
 
 ### CakePHP Version Support
 
-This version of the plugin supports CakePHP 5.x only.
+This version of the plugin supports CakePHP 5.3+ only.
 
 ### Installation via composer
 
