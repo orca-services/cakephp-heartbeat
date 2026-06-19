@@ -3,7 +3,7 @@
 This guide covers upgrading `cakephp-heartbeat` from version 3.x to 4.x to gain support for CakePHP 5.x.
 
 ```bash
-composer require orca-services/cakephp-heartbeat:^4.0
+composer require orca-services/cakephp-heartbeat:^4.0 --update-with-all-dependencies
 ```
 
 ## Breaking changes
