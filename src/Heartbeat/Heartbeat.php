@@ -101,7 +101,7 @@ class Heartbeat
 
         $systemStatus = !$sensorStatuses->some(function ($sensorStatus) {
             /** @var Status $sensorStatus */
-            if ($sensorStatus->severity === Severity::CRITICAL) {
+            if ($sensorStatus->isCritical()) {
                 return $sensorStatus->status === false;
             }
 

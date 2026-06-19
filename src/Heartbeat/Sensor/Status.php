@@ -34,7 +34,7 @@ class Status
     }
 
     /**
-     * Set whether the sensor status was fetched from cache
+     * Set whether the sensor status was fetched from a cache
      *
      * @param bool $wasCached Whether status was cached
      * @return void
@@ -45,12 +45,22 @@ class Status
     }
 
     /**
-     * Check whether sensor status was fetched from cache
+     * Check whether the sensor status was fetched from a cache
      *
      * @return bool Whether status was cached
      */
     public function wasCheckCached(): bool
     {
         return $this->checkCached;
+    }
+
+    /**
+     * Check whether the sensor severity is critical
+     *
+     * @return bool Whether severity is critical
+     */
+    public function isCritical(): bool
+    {
+        return $this->severity === Severity::CRITICAL;
     }
 }
