@@ -1,6 +1,6 @@
 # Heartbeat
 
- A CakePHP plugin providing an application heartbeat status page with configurable sensors.
+A CakePHP plugin providing an application heartbeat status page with configurable sensors.
 
 ## Compatibility
 
@@ -27,6 +27,10 @@ See the [configuration documentation](docs/Configuration.md).
 ## How to use
 
 See the [usage guide](docs/Usage.md) and [how to write heartbeat sensors](docs/Sensors.md).
+
+## Migrating
+
+If you're upgrading to a new major version, see the [migration guide](docs/Migration.md).
 
 ## Versioning
 
