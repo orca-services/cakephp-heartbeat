@@ -41,7 +41,7 @@
 	"require": {
         "ext-json": "*",
         "php": "^8.2",
-        "cakephp/cakephp": "^5.3"
+        "cakephp/cakephp": "^5.3.1"
 	},
 	"require-dev": {
 		"cakephp/cakephp-codesniffer": "^5.0",
