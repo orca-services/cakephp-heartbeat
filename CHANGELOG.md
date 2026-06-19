@@ -6,15 +6,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 
 ### Changed
-- Bump support for CakePHP to 5.x
-- Update the minimum required PHP Version to PHP 8.2
-- Rename config setting `connection_name` to `connection`
+- Bump support for CakePHP to 5.x [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- Update the minimum required PHP Version to PHP 8.2 [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- Rename config setting `connection_name` to `connection` [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 
 ### Dependencies
-- cakephp/cakephp updated from 4.6.4 to 5.3.6 major
-- cakephp/migrations updated from 3.9.0 to 5.2.1 major
-- cakephp/cakephp-codesniffer updated from 4.7.1 to 5.3.0 major
-- phpunit/phpunit updated from 9.6.34 to 10.5.63 major
+- cakephp/cakephp updated from 4.6.4 to 5.3.6 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- cakephp/migrations updated from 3.9.0 to 5.2.1 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- cakephp/cakephp-codesniffer updated from 4.7.1 to 5.3.0 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- phpunit/phpunit updated from 9.6.34 to 10.5.63 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 
 ### Fixed
 
