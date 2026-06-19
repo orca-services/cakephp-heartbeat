@@ -9,6 +9,7 @@ use Cake\Datasource\ConnectionManager;
 use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 
 /**
  * DB Connection Sensor Test
@@ -62,7 +63,7 @@ class DBConnectionTest extends TestCase
     {
         $config = new Config('DB Connection', [
             'enabled' => true,
-            'severity' => 3,
+            'severity' => Severity::CRITICAL,
             'class' => DBConnection::class,
             'settings' => $settings,
         ]);

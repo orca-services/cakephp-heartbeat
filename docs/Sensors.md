@@ -10,8 +10,8 @@ the ``connection``setting can be used.
  ```php
 $config['App']['Heartbeat']['Sensors']['External DB Connection'] = [
     'enabled' => true,
-    'severity' => 3,
-    'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
+    'severity' => Severity::CRITICAL,
+    'class' => DBConnection::class,
     'cached' => true,
     'settings' => [
         'connection' => 'external'
@@ -39,8 +39,8 @@ than ``default``, e.g. ``external``, the settings can be used like this:
 ```php
 $config['App']['Heartbeat']['Sensors']['Plugin DB up to date'] = [
     'enabled' => true,
-    'severity' => 3,
-    'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
+    'severity' => Severity::CRITICAL,
+    'class' => DBUpToDate::class,
     'cached' => '+10 minutes',
     'settings' => [
         'connection' => 'external',
@@ -105,24 +105,24 @@ $config['App']['Heartbeat'] = [
     'Sensors' => [
         'Debug-Mode' => [
             'enabled' => true,
-            'severity' => 1,
-            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode::class,
+            'severity' => Severity::INFORMATIONAL,
+            'class' => DebugMode::class,
         ],
         'DB Connection' => [
             'enabled' => true,
-            'severity' => 3,
-            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
+            'severity' => Severity::CRITICAL,
+            'class' => DBConnection::class,
             'cached' => true,
         ],
         'DB up to date' => [
             'enabled' => false,
-            'severity' => 3,
-            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
+            'severity' => Severity::CRITICAL,
+            'class' => DBUpToDate::class,
             'cached' => '+10 minutes',
         ],
         'REST API' => [
             'enabled' => true,
-            'severity' => 2,
+            'severity' => Severity::NONCRITICAL,
             'class' => Heartbeat\Sensor\MyApi::class,
             'cached' => '+15 minutes',
         ],

@@ -6,6 +6,7 @@ namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 use Cake\TestSuite\TestCase;
 use InvalidArgumentException;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
 
 /**
@@ -36,7 +37,7 @@ class ConfigTest extends TestCase
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => true,
-            'severity' => 1,
+            'severity' => Severity::INFORMATIONAL,
             'class' => DummySensor::class,
             'cached' => true,
             'settings' => [
@@ -77,7 +78,7 @@ class ConfigTest extends TestCase
         $sensorConfig = new Config($sensorName, $sensorConfigArray);
         static::assertEquals($sensorName, $sensorConfig->getName());
         static::assertTrue($sensorConfig->getEnabled());
-        static::assertEquals(2, $sensorConfig->getSeverity());
+        static::assertEquals(Severity::NONCRITICAL, $sensorConfig->getSeverity());
         static::assertEquals($sensorConfigArray['class'], $sensorConfig->getClass());
         static::assertEquals([], $sensorConfig->getSettings());
         static::assertFalse($sensorConfig->getCached());
@@ -113,7 +114,7 @@ class ConfigTest extends TestCase
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => true,
-            'severity' => 1,
+            'severity' => Severity::INFORMATIONAL,
             'class' => DummySensor::class,
             'cached' => 1,
         ];

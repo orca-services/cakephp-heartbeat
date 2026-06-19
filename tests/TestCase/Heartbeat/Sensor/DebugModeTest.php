@@ -7,6 +7,7 @@ use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 
 /**
  * Debug Mode Sensor Test
@@ -24,7 +25,7 @@ class DebugModeTest extends TestCase
     {
         $config = new Config('Debug-Mode', [
             'enabled' => true,
-            'severity' => 1,
+            'severity' => Severity::INFORMATIONAL,
             'class' => DebugMode::class,
         ]);
 

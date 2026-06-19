@@ -11,21 +11,6 @@ use Cake\Chronos\Chronos;
 class Status
 {
     /**
-     * Informational status
-     */
-    public const STATUS_INFORMATIONAL = 1;
-
-    /**
-     * Noncritical status
-     */
-    public const STATUS_NONCRITICAL = 2;
-
-    /**
-     * Critical status
-     */
-    public const STATUS_CRITICAL = 3;
-
-    /**
      * The name of the sensor
      */
     protected string $name;
@@ -50,7 +35,7 @@ class Status
     /**
      * How severe the status is, e.g.
      */
-    protected int $severity;
+    protected Severity $severity;
 
     /**
      * Whether sensor status was fetched from cache
@@ -64,10 +49,15 @@ class Status
      * @param mixed $status The actual status.
      * @param float $duration How long it took to execute the check.
      * @param Chronos $lastExecuted The date/time when it was executed last.
-     * @param int $severity The status severity.
+     * @param Severity $severity The status severity.
      */
-    public function __construct(string $name, mixed $status, float $duration, Chronos $lastExecuted, int $severity)
-    {
+    public function __construct(
+        string $name,
+        mixed $status,
+        float $duration,
+        Chronos $lastExecuted,
+        Severity $severity,
+    ) {
         $this->name = $name;
         $this->status = $status;
         $this->duration = $duration;
@@ -118,9 +108,9 @@ class Status
     /**
      * Get the severity of the status
      *
-     * @return int The severity of the status.
+     * @return Severity The severity of the status.
      */
-    public function getSeverity(): int
+    public function getSeverity(): Severity
     {
         return $this->severity;
     }

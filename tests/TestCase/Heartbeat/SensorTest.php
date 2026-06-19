@@ -7,6 +7,7 @@ use Cake\Chronos\Chronos;
 use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
 use ReflectionClass;
 
@@ -29,7 +30,7 @@ class SensorTest extends TestCase
         $sensorName = 'Dummy Sensor';
         $sensorConfig = [
             'enabled' => true,
-            'severity' => 1,
+            'severity' => Severity::INFORMATIONAL,
             'class' => DummySensor::class,
         ];
         $sensorConfig = new Config($sensorName, $sensorConfig);
@@ -52,7 +53,7 @@ class SensorTest extends TestCase
         $sensorName = 'Dummy Sensor';
         $sensorConfig = [
             'enabled' => true,
-            'severity' => 1,
+            'severity' => Severity::INFORMATIONAL,
             'class' => DummySensor::class,
         ];
         $sensorConfig = new Config($sensorName, $sensorConfig);
@@ -65,7 +66,7 @@ class SensorTest extends TestCase
         $this->assertTrue($status->getStatus());
         $this->assertEquals(0, $status->getDuration());
         $this->assertEquals('2017-03-30 12:45:37', $status->getLastExecuted());
-        $this->assertEquals(1, $status->getSeverity());
+        $this->assertEquals(Severity::INFORMATIONAL, $status->getSeverity());
     }
 
     /**
@@ -82,7 +83,7 @@ class SensorTest extends TestCase
         $sensorName = 'Cached Sensor';
         $sensorConfig = [
             'enabled' => true,
-            'severity' => 1,
+            'severity' => Severity::INFORMATIONAL,
             'class' => DummySensor::class,
             'cached' => '+1 seconds',
         ];
@@ -123,7 +124,7 @@ class SensorTest extends TestCase
         $sensorName = 'Uncached Sensor';
         $sensorConfig = [
             'enabled' => true,
-            'severity' => 1,
+            'severity' => Severity::INFORMATIONAL,
             'class' => DummySensor::class,
             'cached' => false,
         ];

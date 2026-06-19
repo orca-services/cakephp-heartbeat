@@ -6,6 +6,7 @@ namespace OrcaServices\Heartbeat\Heartbeat;
 use Cake\Chronos\Chronos;
 use Cake\Collection\Collection;
 use Cake\Core\Configure;
+use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 /**
@@ -100,7 +101,7 @@ class Heartbeat
 
         $systemStatus = !$sensorStatuses->some(function ($sensorStatus) {
             /** @var Status $sensorStatus */
-            if ($sensorStatus->getSeverity() === Status::STATUS_CRITICAL) {
+            if ($sensorStatus->getSeverity() === Severity::CRITICAL) {
                 return $sensorStatus->getStatus() === false;
             }
 
@@ -114,7 +115,7 @@ class Heartbeat
             $systemStatus,
             0, // TODO Calculate the duration for the whole heartbeat
             Chronos::now(),
-            Status::STATUS_CRITICAL,
+            Severity::CRITICAL,
         );
     }
 
