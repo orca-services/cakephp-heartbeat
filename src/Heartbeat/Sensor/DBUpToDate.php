@@ -35,7 +35,7 @@ class DBUpToDate extends Sensor
     /**
      * @inheritDoc
      */
-    protected function _getStatus(): bool
+    protected function getStatus(): bool
     {
         try {
             $migrations = $this->createMigrations($this->buildMigrationsOptions());

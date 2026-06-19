@@ -44,7 +44,7 @@ class SensorTest extends TestCase
      *
      * @return void
      * @covers ::getSensorStatus
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatus()
     {

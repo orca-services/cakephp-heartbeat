@@ -124,7 +124,7 @@ abstract class Sensor
     protected function _getNonCachedStatus(): Status
     {
         $start = microtime(true);
-        $status = $this->_getStatus();
+        $status = $this->getStatus();
         $end = microtime(true);
 
         $duration = $end - $start;
@@ -144,7 +144,7 @@ abstract class Sensor
      *
      * @return bool The sensor status.
      */
-    abstract protected function _getStatus(): bool;
+    abstract protected function getStatus(): bool;
 
     /**
      * Get the value of the given setting or an optional fallback default value

@@ -23,7 +23,7 @@ class DBConnection extends Sensor
     /**
      * @inheritDoc
      */
-    protected function _getStatus(): bool
+    protected function getStatus(): bool
     {
         try {
             $connectionName = $this->getSetting('connection', $this->defaultConnectionName);
