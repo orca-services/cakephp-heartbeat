@@ -58,8 +58,3 @@ Compare your custom sensors with the updated sensor classes before upgrading.
 4. Install `cakephp/migrations` dependency if you use the `DBUpToDate` sensor.
 5. If you reference `OrcaServices\Heartbeat\Plugin` directly, switch to `OrcaServices\Heartbeat\HeartbeatPlugin`.
 6. Review custom sensors for API changes.
-
-## Source
-
-- PR: [#44](https://github.com/orca-services/cakephp-heartbeat/pull/44)
-- Related issue: [#42](https://github.com/orca-services/cakephp-heartbeat/issues/42)
