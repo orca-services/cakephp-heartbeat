@@ -9,6 +9,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Bump support for CakePHP to 5.x [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 - Update the minimum required PHP Version to PHP 8.2 [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 - Rename config setting `connection_name` to `connection` [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- Some getter methods were replaced by readonly properties [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- Sensor status methods were renamed to get rid of the `_` prefix [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- Rename Heartbeat Plugin class name to match CakePHP 5 convention [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- Status handling now uses the `Severity` enum instead of integer values [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 
 ### Dependencies
 - cakephp/cakephp updated from 4.6.4 to 5.3.6 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
