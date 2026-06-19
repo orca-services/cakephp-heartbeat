@@ -33,11 +33,11 @@ class Heartbeat
      */
     public function check()
     {
-        $sensors = $this->_getEnabledSensors();
+        $sensors = $this->getEnabledSensors();
 
         $this->sensorStatuses = [];
         foreach ($sensors as $sensorName => $sensorConfig) {
-            $sensor = $this->_getSensor($sensorName, $sensorConfig);
+            $sensor = $this->getSensor($sensorName, $sensorConfig);
             $this->sensorStatuses[] = $sensor->getSensorStatus();
         }
 
@@ -49,7 +49,7 @@ class Heartbeat
      *
      * @return array All enabled sensors.
      */
-    protected function _getEnabledSensors(): array
+    protected function getEnabledSensors(): array
     {
         $sensors = (array)Configure::read('App.Heartbeat.Sensors');
         $collection = collection($sensors);
@@ -67,7 +67,7 @@ class Heartbeat
      * @param array $sensorConfig The sensor configuration.
      * @return Sensor The configures sensor.
      */
-    protected function _getSensor(string $sensorName, array $sensorConfig): Sensor
+    protected function getSensor(string $sensorName, array $sensorConfig): Sensor
     {
         $config = new Sensor\Config($sensorName, $sensorConfig);
         if (!$this->cached) {

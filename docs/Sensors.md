@@ -83,7 +83,7 @@ use Api\ApiClient;
 
 class MyApi extends Sensor
 {
-    protected function _getStatus()
+    protected function getStatus()
     {
         try {
             $client = new ApiClient();

@@ -59,7 +59,7 @@ class SensorTest extends TestCase
         $sensorClassName = $sensorConfig->getClass();
         /** @var Sensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
-        $status = $sensor->getStatus();
+        $status = $sensor->getSensorStatus();
         $this->assertEquals('Dummy Sensor', $status->name);
         $this->assertTrue($status->status);
         $this->assertEquals(0, $status->duration);
@@ -71,9 +71,9 @@ class SensorTest extends TestCase
      * Tests whether the check result was fetched from cache or by running the check now
      *
      * @return void
-     * @covers ::_getCachedStatus
-     * @covers ::_resetCacheConfig
-     * @covers ::_getNonCachedStatus
+     * @covers ::getCachedStatus
+     * @covers ::resetCacheConfig
+     * @covers ::getNonCachedStatus
      */
     public function testWasCheckCached()
     {
@@ -112,9 +112,9 @@ class SensorTest extends TestCase
      * Tests whether the check result was fetched from cache when cache is disabled
      *
      * @return void
-     * @covers ::_getCachedStatus
-     * @covers ::_resetCacheConfig
-     * @covers ::_getNonCachedStatus
+     * @covers ::getCachedStatus
+     * @covers ::resetCacheConfig
+     * @covers ::getNonCachedStatus
      */
     public function testWasCheckCachedWhenCacheDisabled()
     {

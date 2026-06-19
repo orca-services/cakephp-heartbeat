@@ -49,12 +49,12 @@ abstract class Sensor
      */
     public function getSensorStatus(): Status
     {
-        $cachedStatus = $this->_getCachedStatus();
+        $cachedStatus = $this->getCachedStatus();
         if ($cachedStatus !== false) {
             return $cachedStatus;
         }
 
-        return $this->_getNonCachedStatus();
+        return $this->getNonCachedStatus();
     }
 
     /**
@@ -64,11 +64,11 @@ abstract class Sensor
      *
      * @return Status|bool The cached status or false.
      */
-    protected function _getCachedStatus(): Status|bool
+    protected function getCachedStatus(): Status|bool
     {
         $sensorCaching = $this->config->getCached();
 
-        $this->_resetCacheConfig($sensorCaching);
+        $this->resetCacheConfig($sensorCaching);
 
         $cacheKey = self::CACHE_NAME . '_' . strtolower(Text::slug($this->config->getName()));
         if ($sensorCaching === false) {
@@ -87,7 +87,7 @@ abstract class Sensor
             return $cachedStatus;
         }
 
-        $nonCachedStatus = $this->_getNonCachedStatus();
+        $nonCachedStatus = $this->getNonCachedStatus();
         Cache::write($cacheKey, $nonCachedStatus, self::CACHE_NAME);
 
         return $nonCachedStatus;
@@ -99,7 +99,7 @@ abstract class Sensor
      * @param string|bool $sensorCaching The sensor cache configuration, either a bool or a relative time string.
      * @return void
      */
-    protected function _resetCacheConfig(string|bool $sensorCaching): void
+    protected function resetCacheConfig(string|bool $sensorCaching): void
     {
         Cache::drop(self::CACHE_NAME);
 
@@ -121,7 +121,7 @@ abstract class Sensor
      *
      * @return Status The status object.
      */
-    protected function _getNonCachedStatus(): Status
+    protected function getNonCachedStatus(): Status
     {
         $start = microtime(true);
         $status = $this->getStatus();
