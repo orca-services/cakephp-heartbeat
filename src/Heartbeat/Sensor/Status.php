@@ -16,9 +16,9 @@ class Status
     public readonly string $name;
 
     /**
-     * @var mixed The actual status
+     * @var bool The actual status
      */
-    public readonly mixed $status;
+    public readonly bool $status;
 
     /**
      * @var string The human-readable status message
@@ -49,7 +49,7 @@ class Status
      * Status construction
      *
      * @param string $name The name of the sensor
-     * @param mixed $status The actual status.
+     * @param bool $status The actual status.
      * @param float $duration How long it took to execute the check.
      * @param Chronos $lastExecuted The date/time when it was executed last.
      * @param Severity $severity The status severity.
@@ -57,7 +57,7 @@ class Status
      */
     public function __construct(
         string $name,
-        mixed $status,
+        bool $status,
         float $duration,
         Chronos $lastExecuted,
         Severity $severity,

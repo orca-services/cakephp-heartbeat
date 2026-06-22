@@ -23,7 +23,7 @@ $sensorStatuses->some(function ($sensorStatus) {
 
     $statusText = $sensorStatus->message;
 
-    if ($status === true) {
+    if ($status) {
         $tableClass = match ($severity) {
             Severity::INFORMATIONAL => 'info',
             default => 'success',
