@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - Add optional config setting `environment` to append the application environment to the heartbeat status page title [#45](https://github.com/orca-services/cakephp-heartbeat/issues/45)
 - Add abstract `getStatusMessage()` method to `Sensor` so each sensor provides its own human-readable status message [#45](https://github.com/orca-services/cakephp-heartbeat/issues/45)
+- Add `Sensor::$defaultSettings` so sensors can declare default settings that are merged with (and overridden by) the settings from the configuration [#45](https://github.com/orca-services/cakephp-heartbeat/issues/45)
 
 ### Changed
 - Bump support for CakePHP to 5.x [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)

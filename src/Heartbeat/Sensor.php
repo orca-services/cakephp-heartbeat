@@ -33,6 +33,14 @@ abstract class Sensor
     protected Config $config;
 
     /**
+     * Default settings for the sensor, merged with (and overridden by) the
+     * settings provided through the configuration.
+     *
+     * @var array<string, mixed>
+     */
+    protected array $defaultSettings = [];
+
+    /**
      * Construct the status
      *
      * @param Config $config The sensor configuration to set.
@@ -164,7 +172,7 @@ abstract class Sensor
      */
     protected function getSetting(string $name, mixed $default = null): ?string
     {
-        $settings = $this->config->getSettings();
+        $settings = $this->config->getSettings() + $this->defaultSettings;
 
         return Hash::get($settings, $name, $default);
     }

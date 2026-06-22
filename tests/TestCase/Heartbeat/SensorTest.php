@@ -5,6 +5,7 @@ namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat;
 
 use Cake\Chronos\Chronos;
 use Cake\TestSuite\TestCase;
+use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
@@ -152,5 +153,50 @@ class SensorTest extends TestCase
         $reflection = $reflectedClass->getProperty($property);
 
         return $reflection->getValue($object);
+    }
+
+    /**
+     * Configured settings are merged on top of the sensor's default settings.
+     *
+     * @return void
+     * @covers ::getSetting
+     */
+    public function testGetSettingMergesConfiguredSettingsOverDefaultSettings(): void
+    {
+        $config = new Config('Settings Sensor', [
+            'enabled' => true,
+            'severity' => Severity::INFORMATIONAL,
+            'class' => DummySensor::class,
+            'settings' => ['connection' => 'custom'],
+        ]);
+
+        $sensor = new class ($config) extends Sensor {
+            protected array $defaultSettings = [
+                'connection' => 'default',
+                'source' => 'Migrations',
+            ];
+
+            protected function getStatus(): bool
+            {
+                return true;
+            }
+
+            protected function getStatusMessage(bool $status): string
+            {
+                return __d('Heartbeat', 'OK');
+            }
+
+            public function readSetting(string $name): ?string
+            {
+                return $this->getSetting($name);
+            }
+        };
+
+        // A configured value wins over the default setting.
+        $this->assertSame('custom', $sensor->readSetting('connection'));
+        // The default setting is used when the setting is not configured.
+        $this->assertSame('Migrations', $sensor->readSetting('source'));
+        // Neither configured nor declared as a default setting -> null.
+        $this->assertNull($sensor->readSetting('unknown'));
     }
 }

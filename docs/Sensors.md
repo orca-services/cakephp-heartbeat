@@ -7,7 +7,7 @@ Checks whether a connection to the database server of the `default` connection c
 To check a connection other than ``default``, e.g. ``external``,
 the ``connection``setting can be used.
 
- ```php
+```php
 $config['App']['Heartbeat']['Sensors']['External DB Connection'] = [
     'enabled' => true,
     'severity' => Severity::CRITICAL,
@@ -67,14 +67,26 @@ and implement the abstract methods ``getStatus()`` and ``getStatusMessage()``.
 
 ``getStatus()`` returns true or false to imply whether the action to check was successful or not.
 
-``getStatusMessage()`` receives the boolean result of ``getStatus()`` and returns the
-status message that is shown in the status column of the heartbeat table.
+``getStatusMessage()`` receives the boolean result of ``getStatus()`` and returns the status message that is shown in the status column of the heartbeat table.
+
+If your sensor reads configurable settings, declare their defaults in the ``$defaultSettings`` property and read them with ``$this->getSetting('name')``.
+The settings configured under the ``settings`` key (see the [configuration](Configuration.md)) are merged on top of the defaults, so a configured value always wins:
+
+```php
+// In your sensor class:
+protected array $defaultSettings = [
+    'connection' => 'default',
+];
+
+// Read a setting (returns 'default' unless overridden via the `settings` config):
+$connectionName = $this->getSetting('connection');
+```
 
 We assume that, to check the API status, we have an ``ApiClient`` class somewhere in the project
 and that class has a method called ``ping()`` which returns 'Pong' as answer from the API.
 
 In this example, the Sensor would look like this:
-```` php
+```php
 <?php
 namespace Heartbeat\Sensor;
 
@@ -101,7 +113,7 @@ class MyApi extends Sensor
         return $status ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED');
     }
 }
-````
+```
 
 Now we just have to load our new sensor in the [configuration](Configuration.md), e.g:
 ```php
