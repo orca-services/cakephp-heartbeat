@@ -10,22 +10,34 @@ use Cake\Chronos\Chronos;
  */
 class Status
 {
-    /** @var string The name of the sensor */
+    /**
+     * @var string The name of the sensor
+     */
     public readonly string $name;
 
-    /** @var mixed The actual status */
+    /**
+     * @var mixed The actual status
+     */
     public readonly mixed $status;
 
-    /** @var float The sensor check duration in seconds */
+    /**
+     * @var float The sensor check duration in seconds
+     */
     public readonly float $duration;
 
-    /** @var Chronos  The date/time when the sensor check was last executed */
+    /**
+     * @var Chronos  The date/time when the sensor check was last executed
+     */
     public readonly Chronos $lastExecuted;
 
-    /** @var Severity How severe the status is, e.g. critical */
+    /**
+     * @var Severity How severe the status is, e.g. critical
+     */
     public readonly Severity $severity;
 
-    /** @var bool Whether sensor status was fetched from cache */
+    /**
+     * @var bool Whether sensor status was fetched from cache
+     */
     protected bool $checkCached = false;
 
     /**
