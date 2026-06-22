@@ -20,6 +20,7 @@ vendor
 phpcs.xml
 pdepend.xml
 phpunit.xml
+.phpunit.cache
 .phpunit.result.cache
 build
 
