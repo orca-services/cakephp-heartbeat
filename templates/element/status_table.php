@@ -21,11 +21,7 @@ $sensorStatuses->some(function ($sensorStatus) {
     $lastExecuted = $sensorStatus->lastExecuted;
     $wasCheckFromCache = $sensorStatus->wasCheckCached();
 
-    $statusText = match ($status) {
-        true => __d('Heartbeat', 'OK'),
-        false => __d('Heartbeat', 'FAILED'),
-        default => $status,
-    };
+    $statusText = $sensorStatus->message;
 
     if ($status === true) {
         $tableClass = match ($severity) {

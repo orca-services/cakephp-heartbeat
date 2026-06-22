@@ -119,6 +119,7 @@ class Heartbeat
             0, // TODO Calculate the duration for the whole heartbeat
             Chronos::now(),
             Severity::CRITICAL,
+            $systemStatus ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED'),
         );
     }
 

@@ -51,6 +51,7 @@ If you created custom sensors, review them for API changes:
 - Status handling now uses the `Severity` enum instead of integer values.
 - Sensor status methods were renamed.
 - Some getter methods were replaced by readonly properties.
+- Custom sensors must now implement the new abstract `getStatusMessage` method, which returns the message shown in the status table (e.g. `OK`/`FAILED`).
 
 Compare your custom sensors with the updated [sensor](../src/Heartbeat/Sensor.php) and [status](../src/Heartbeat/Sensor/Status.php) classes before upgrading.
 
@@ -59,8 +60,8 @@ Compare your custom sensors with the updated [sensor](../src/Heartbeat/Sensor.ph
 1. Ensure your application runs PHP 8.2+ and CakePHP 5.3.1+.
 2. Update the Heartbeat dependency.
 3. Update Heartbeat configuration:
-   - Rename `connection_name` to `connection`.
-   - Use Severity enum instead of Integer values.
+    - Rename `connection_name` to `connection`.
+    - Use Severity enum instead of Integer values.
 4. Install `cakephp/migrations` dependency if you use the `DBUpToDate` sensor.
 5. If you reference `OrcaServices\Heartbeat\Plugin` directly, switch to `OrcaServices\Heartbeat\HeartbeatPlugin`.
 6. Review custom sensors for API changes.

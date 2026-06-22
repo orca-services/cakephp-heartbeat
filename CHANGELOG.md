@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat)
 ### Added
 - Add optional config setting `environment` to append the application environment to the heartbeat status page title [#45](https://github.com/orca-services/cakephp-heartbeat/issues/45)
+- Add abstract `getStatusMessage()` method to `Sensor` so each sensor provides its own human-readable status message [#45](https://github.com/orca-services/cakephp-heartbeat/issues/45)
 
 ### Changed
 - Bump support for CakePHP to 5.x [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
@@ -14,6 +15,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Sensor status methods were renamed to get rid of the `_` prefix [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 - Rename Heartbeat Plugin class name to match CakePHP 5 convention [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 - Status handling now uses the `Severity` enum instead of integer values [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- Move the sensor status text out of the status table template into the sensors [#45](https://github.com/orca-services/cakephp-heartbeat/issues/45)
 
 ### Dependencies
 - cakephp/cakephp updated from 4.6.4 to 5.3.6 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)

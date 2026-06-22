@@ -63,11 +63,14 @@ you can do that easily. In this example, we will add a sensor for 'My API'.
 First, create a class for the sensor wherever you like, e.g. ``src/Heartbeat/Sensor``.
 The class for this example will be named ``MyApi``.
 This class has to extend ``OrcaServices\Heartbeat\Heartbeat\Sensor``
-and implement the abstract method ``_getStatus()``.
+and implement the abstract methods ``getStatus()`` and ``getStatusMessage()``.
 
-In most cases, this method should return true or false to imply whether the action to check was successful or not.
+In most cases, ``getStatus()`` should return true or false to imply whether the action to check was successful or not.
 It can also return other, purely informational data, e.g. the version number,
 but that only makes sense for an informational status (as defined in the [configuration](Configuration.md)).
+
+``getStatusMessage()`` receives the boolean result of ``getStatus()`` and returns the
+status message that is shown in the status column of the heartbeat table.
 
 We assume that, to check the API status, we have an ``ApiClient`` class somewhere in the project
 and that class has a method called ``ping()`` which returns 'Pong' as answer from the API.
@@ -83,7 +86,7 @@ use Api\ApiClient;
 
 class MyApi extends Sensor
 {
-    protected function getStatus()
+    protected function getStatus(): bool
     {
         try {
             $client = new ApiClient();
@@ -93,6 +96,11 @@ class MyApi extends Sensor
         } catch (Exception $exception) {
             return false;
         }
+    }
+
+    protected function getStatusMessage(bool $status): string
+    {
+        return $status ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED');
     }
 }
 ````

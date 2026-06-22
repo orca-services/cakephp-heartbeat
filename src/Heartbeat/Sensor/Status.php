@@ -21,6 +21,11 @@ class Status
     public readonly mixed $status;
 
     /**
+     * @var string The human-readable status message
+     */
+    public readonly string $message;
+
+    /**
      * @var float The sensor check duration in seconds
      */
     public readonly float $duration;
@@ -48,6 +53,7 @@ class Status
      * @param float $duration How long it took to execute the check.
      * @param Chronos $lastExecuted The date/time when it was executed last.
      * @param Severity $severity The status severity.
+     * @param string $message The human-readable status message.
      */
     public function __construct(
         string $name,
@@ -55,12 +61,14 @@ class Status
         float $duration,
         Chronos $lastExecuted,
         Severity $severity,
+        string $message,
     ) {
         $this->severity = $severity;
         $this->lastExecuted = $lastExecuted;
         $this->duration = $duration;
         $this->status = $status;
         $this->name = $name;
+        $this->message = $message;
     }
 
     /**

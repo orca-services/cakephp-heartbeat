@@ -37,6 +37,7 @@ class StatusTest extends TestCase
             0,
             Chronos::now(),
             Severity::INFORMATIONAL,
+            __d('Heartbeat', 'OK'),
         );
 
         $this->assertInstanceOf(Status::class, $status);
@@ -63,6 +64,7 @@ class StatusTest extends TestCase
             0,
             Chronos::now(),
             Severity::INFORMATIONAL,
+            __d('Heartbeat', 'OK'),
         );
 
         $this->assertFalse($status->wasCheckCached());

@@ -136,6 +136,7 @@ abstract class Sensor
             $duration,
             Chronos::now(),
             $this->config->getSeverity(),
+            $this->getStatusMessage($status),
         );
     }
 
@@ -145,6 +146,14 @@ abstract class Sensor
      * @return bool The sensor status.
      */
     abstract protected function getStatus(): bool;
+
+    /**
+     * Get the human-readable status message
+     *
+     * @param bool $status The sensor status as returned by getStatus().
+     * @return string The sensor status message.
+     */
+    abstract protected function getStatusMessage(bool $status): string;
 
     /**
      * Get the value of the given setting or an optional fallback default value
