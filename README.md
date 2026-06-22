@@ -5,11 +5,11 @@
 ## Compatibility
 
 | Plugin Version | CakePHP Compatibility | Branch      | Status    |
-| -------------- | --------------------- | ----------- | --------- |
+| -------------- | --------------------- | ----------- |-----------|
 | 4.x            | 5.3+                  | cakephp-5.x | Supported |
 | 3.x            | 4.6+                  | cakephp-4.x | Supported |
-| 2.x            | 3.7+                  | cakephp-3.x | Supported |
-| 1.x            | 2.x                   | cakephp-2.x | Supported |
+| 2.x            | 3.7+                  | cakephp-3.x | EOL       |
+| 1.x            | 2.x                   | cakephp-2.x | EOL       |
 | 0.x            | 2.x                   | -           | EOL       |
 
 Note:
@@ -23,11 +23,11 @@ described in [SECURITY.md](.github/SECURITY.md).
 
 ## Installation
 
-See the [installation documentation](docs/Installation.md) .
+See the [installation documentation](docs/Installation.md).
 
 ## Configuration
 
-See the [configuration documentation](docs/Configuration.md) .
+See the [configuration documentation](docs/Configuration.md).
 
 ## How to use
 
@@ -49,17 +49,6 @@ See [CHANGELOG.md](CHANGELOG.md)
 
 If you've found a security vulnerability, please follow the procedure
 described in [SECURITY.md](.github/SECURITY.md).
-
-## TODOs
-
-- Add badges
-- Fix & extend Unit Tests
-- Add Console application incl. related docs
-- Support for separate status text
-- Add flexible routing
-- CI integrations
-- Update screenshots in [How to Use](docs/Usage.md) with new cache indicator
-- See [the issues](https://github.com/orca-services/cakephp-heartbeat/issues)
 
 ## License
 
