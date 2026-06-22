@@ -5,18 +5,20 @@
 ## Compatibility
 
 | Plugin Version | CakePHP Compatibility | Branch      | Status    |
-| -------------- | --------------------- | ----------- | --------- |
-| 2.x            | 3.6+                  | cakephp-3.x | Supported |
-| 1.x            | 2.x                   | cakephp-2.x | Supported |
+| -------------- | --------------------- | ----------- |-----------|
+| 4.x            | 5.3+                  | cakephp-5.x | Supported |
+| 3.x            | 4.6+                  | cakephp-4.x | Supported |
+| 2.x            | 3.7+                  | cakephp-3.x | EOL       |
+| 1.x            | 2.x                   | cakephp-2.x | EOL       |
 | 0.x            | 2.x                   | -           | EOL       |
 
 ## Installation
 
-See the [installation documentation](Docs/Installation.md) .
+See the [installation documentation](Docs/Installation.md).
 
 ## Configuration
 
-See the [configuration documentation](Docs/Configuration.md) .
+See the [configuration documentation](Docs/Configuration.md).
 
 ## How to use
 
@@ -33,18 +35,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md)
 ## Changelog
 
 See [CHANGELOG.md](CHANGELOG.md)
-
-## TODOs
-
-- Add badges
-- Unit Tests
-- Documentation
-    - How to write a sensor
-- Console shell & related docs
-- Support for separate status text
-- Flexible routing
-- CI integrations
-- CakePHP 3.x support
 
 ## License
 
