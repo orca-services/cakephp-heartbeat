@@ -1,8 +1,6 @@
 <?php
 declare(strict_types=1);
 
-require_once dirname(__DIR__) . '/vendor/cakephp/cakephp/src/functions.php';
-
 /**
  * Test suite bootstrap for OrcaServices/Heartbeat.
  *

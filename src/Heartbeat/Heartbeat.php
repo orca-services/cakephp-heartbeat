@@ -6,7 +6,6 @@ namespace OrcaServices\Heartbeat\Heartbeat;
 use Cake\Chronos\Chronos;
 use Cake\Collection\Collection;
 use Cake\Core\Configure;
-use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 /**
@@ -33,12 +32,12 @@ class Heartbeat
      */
     public function check()
     {
-        $sensors = $this->getEnabledSensors();
+        $sensors = $this->_getEnabledSensors();
 
         $this->sensorStatuses = [];
         foreach ($sensors as $sensorName => $sensorConfig) {
-            $sensor = $this->getSensor($sensorName, $sensorConfig);
-            $this->sensorStatuses[] = $sensor->getSensorStatus();
+            $sensor = $this->_getSensor($sensorName, $sensorConfig);
+            $this->sensorStatuses[] = $sensor->getStatus();
         }
 
         return $this;
@@ -49,7 +48,7 @@ class Heartbeat
      *
      * @return array All enabled sensors.
      */
-    protected function getEnabledSensors(): array
+    protected function _getEnabledSensors(): array
     {
         $sensors = (array)Configure::read('App.Heartbeat.Sensors');
         $collection = collection($sensors);
@@ -67,7 +66,7 @@ class Heartbeat
      * @param array $sensorConfig The sensor configuration.
      * @return Sensor The configures sensor.
      */
-    protected function getSensor(string $sensorName, array $sensorConfig): Sensor
+    protected function _getSensor(string $sensorName, array $sensorConfig): Sensor
     {
         $config = new Sensor\Config($sensorName, $sensorConfig);
         if (!$this->cached) {
@@ -101,8 +100,8 @@ class Heartbeat
 
         $systemStatus = !$sensorStatuses->some(function ($sensorStatus) {
             /** @var Status $sensorStatus */
-            if ($sensorStatus->isCritical()) {
-                return $sensorStatus->status === false;
+            if ($sensorStatus->getSeverity() === Status::STATUS_CRITICAL) {
+                return $sensorStatus->getStatus() === false;
             }
 
             return false;
@@ -115,7 +114,7 @@ class Heartbeat
             $systemStatus,
             0, // TODO Calculate the duration for the whole heartbeat
             Chronos::now(),
-            Severity::CRITICAL,
+            Status::STATUS_CRITICAL
         );
     }
 

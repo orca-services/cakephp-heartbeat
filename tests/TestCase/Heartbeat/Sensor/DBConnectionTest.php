@@ -9,7 +9,6 @@ use Cake\Datasource\ConnectionManager;
 use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection;
-use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 
 /**
  * DB Connection Sensor Test
@@ -63,7 +62,7 @@ class DBConnectionTest extends TestCase
     {
         $config = new Config('DB Connection', [
             'enabled' => true,
-            'severity' => Severity::CRITICAL,
+            'severity' => 3,
             'class' => DBConnection::class,
             'settings' => $settings,
         ]);
@@ -81,9 +80,9 @@ class DBConnectionTest extends TestCase
     {
         $sensor = $this->createSensor();
 
-        $sensorStatus = $sensor->getSensorStatus();
+        $status = $sensor->getStatus();
 
-        $this->assertTrue($sensorStatus->status);
+        $this->assertTrue($status->getStatus());
     }
 
     /**
@@ -94,11 +93,11 @@ class DBConnectionTest extends TestCase
      */
     public function testGetStatusReturnsTrueForCustomConnection(): void
     {
-        $sensor = $this->createSensor(['connection' => self::TEST_CONNECTION]);
+        $sensor = $this->createSensor(['connection_name' => self::TEST_CONNECTION]);
 
-        $sensorStatus = $sensor->getSensorStatus();
+        $status = $sensor->getStatus();
 
-        $this->assertTrue($sensorStatus->status);
+        $this->assertTrue($status->getStatus());
     }
 
     /**
@@ -109,10 +108,10 @@ class DBConnectionTest extends TestCase
      */
     public function testGetStatusReturnsFalseForUnknownConnection(): void
     {
-        $sensor = $this->createSensor(['connection' => 'this_connection_does_not_exist']);
+        $sensor = $this->createSensor(['connection_name' => 'this_connection_does_not_exist']);
 
-        $sensorStatus = $sensor->getSensorStatus();
+        $status = $sensor->getStatus();
 
-        $this->assertFalse($sensorStatus->status);
+        $this->assertFalse($status->getStatus());
     }
 }

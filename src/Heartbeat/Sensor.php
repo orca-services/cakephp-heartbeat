@@ -43,18 +43,18 @@ abstract class Sensor
     }
 
     /**
-     * Get the sensor status
+     * Get the status
      *
      * @return Sensor\Status The sensor status.
      */
-    public function getSensorStatus(): Status
+    public function getStatus(): Status
     {
-        $cachedStatus = $this->getCachedStatus();
+        $cachedStatus = $this->_getCachedStatus();
         if ($cachedStatus !== false) {
             return $cachedStatus;
         }
 
-        return $this->getNonCachedStatus();
+        return $this->_getNonCachedStatus();
     }
 
     /**
@@ -62,13 +62,13 @@ abstract class Sensor
      *
      * Resets the cache, if disabled.
      *
-     * @return Status|bool The cached status or false.
+     * @return bool|Status The cached status or false.
      */
-    protected function getCachedStatus(): Status|bool
+    protected function _getCachedStatus()
     {
         $sensorCaching = $this->config->getCached();
 
-        $this->resetCacheConfig($sensorCaching);
+        $this->_resetCacheConfig($sensorCaching);
 
         $cacheKey = self::CACHE_NAME . '_' . strtolower(Text::slug($this->config->getName()));
         if ($sensorCaching === false) {
@@ -87,7 +87,7 @@ abstract class Sensor
             return $cachedStatus;
         }
 
-        $nonCachedStatus = $this->getNonCachedStatus();
+        $nonCachedStatus = $this->_getNonCachedStatus();
         Cache::write($cacheKey, $nonCachedStatus, self::CACHE_NAME);
 
         return $nonCachedStatus;
@@ -96,10 +96,10 @@ abstract class Sensor
     /**
      * Reset the cache configuration
      *
-     * @param string|bool $sensorCaching The sensor cache configuration, either a bool or a relative time string.
+     * @param bool|string $sensorCaching The sensor cache configuration, either a bool or a relative time string.
      * @return void
      */
-    protected function resetCacheConfig(string|bool $sensorCaching): void
+    protected function _resetCacheConfig($sensorCaching): void
     {
         Cache::drop(self::CACHE_NAME);
 
@@ -110,7 +110,7 @@ abstract class Sensor
 
         $settings = array_merge(
             (array)Cache::getConfig('default'),
-            ['duration' => $duration, 'className' => 'File'],
+            ['duration' => $duration, 'className' => 'File']
         );
 
         Cache::setConfig(self::CACHE_NAME, $settings);
@@ -121,39 +121,41 @@ abstract class Sensor
      *
      * @return Status The status object.
      */
-    protected function getNonCachedStatus(): Status
+    protected function _getNonCachedStatus(): Status
     {
         $start = microtime(true);
-        $status = $this->getStatus();
+        $status = $this->_getStatus();
         $end = microtime(true);
 
         $duration = $end - $start;
         $duration = round($duration, 3);
 
-        return new Status(
+        $status = new Status(
             $this->config->getName(),
             $status,
             $duration,
             Chronos::now(),
-            $this->config->getSeverity(),
+            $this->config->getSeverity()
         );
+
+        return $status;
     }
 
     /**
      * Get the status
      *
-     * @return bool The sensor status.
+     * @return mixed The sensor status.
      */
-    abstract protected function getStatus(): bool;
+    abstract protected function _getStatus();
 
     /**
      * Get the value of the given setting or an optional fallback default value
      *
      * @param string $name The name of the setting to retrieve.
-     * @param mixed|null $default The optional default value, if the setting is not set.
+     * @param null|mixed $default The optional default value, if the setting is not set.
      * @return string|null The value of the setting or the provided default, if not set.
      */
-    protected function getSetting(string $name, mixed $default = null): ?string
+    protected function getSetting(string $name, $default = null): ?string
     {
         $settings = $this->config->getSettings();
 

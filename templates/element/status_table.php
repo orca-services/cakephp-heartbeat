@@ -8,36 +8,40 @@
 
 use Cake\Collection\Collection;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
-use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 
 echo '<table class="table table-bordered table-responsive table-striped table-hover table-condensed">';
 
 $sensorStatuses->some(function ($sensorStatus) {
     /** @var Status $sensorStatus */
-    $name = $sensorStatus->name;
-    $status = $sensorStatus->status;
-    $severity = $sensorStatus->severity;
-    $duration = $sensorStatus->duration;
-    $lastExecuted = $sensorStatus->lastExecuted;
+    $name = $sensorStatus->getName();
+    $status = $sensorStatus->getStatus();
+    $severity = $sensorStatus->getSeverity();
+    $duration = $sensorStatus->getDuration();
+    $lastExecuted = $sensorStatus->getLastExecuted();
     $wasCheckFromCache = $sensorStatus->wasCheckCached();
 
-    $statusText = match ($status) {
-        true => __d('Heartbeat', 'OK'),
-        false => __d('Heartbeat', 'FAILED'),
-        default => $status,
-    };
-
     if ($status === true) {
-        $tableClass = match ($severity) {
-            Severity::INFORMATIONAL => 'info',
-            default => 'success',
-        };
+        $statusText = 'OK';
+    } elseif ($status === false) {
+        $statusText = 'FAILED';
     } else {
-        $tableClass = match ($severity) {
-            Severity::CRITICAL => 'danger',
-            Severity::NONCRITICAL => 'warning',
-            Severity::INFORMATIONAL => 'info',
-        };
+        $statusText = $status;
+    }
+
+    if ($status !== false) {
+        if ($severity === Status::STATUS_INFORMATIONAL) {
+            $tableClass = 'info';
+        } else {
+            $tableClass = 'success';
+        }
+    } else {
+        if ($severity === Status::STATUS_CRITICAL) {
+            $tableClass = 'danger';
+        } elseif ($severity === Status::STATUS_NONCRITICAL) {
+            $tableClass = 'warning';
+        } else {
+            $tableClass = 'info';
+        }
     }
 
     echo $this->Html->tableCells([

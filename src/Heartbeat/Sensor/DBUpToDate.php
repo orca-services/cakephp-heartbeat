@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 
-use Exception;
 use Migrations\Migrations;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
@@ -35,21 +34,23 @@ class DBUpToDate extends Sensor
     /**
      * @inheritDoc
      */
-    protected function getStatus(): bool
+    protected function _getStatus()
     {
+        $dbMigrated = true;
         try {
             $migrations = $this->createMigrations($this->buildMigrationsOptions());
 
             foreach ($migrations->status() as $migration) {
                 if ($migration['status'] !== self::MIGRATION_STATUS_UP) {
-                    return false;
+                    $dbMigrated = false;
+                    break;
                 }
             }
-        } catch (Exception $exception) {
-            return false;
+        } catch (\Exception $exception) {
+            $dbMigrated = false;
         }
 
-        return true;
+        return $dbMigrated;
     }
 
     /**
@@ -71,7 +72,7 @@ class DBUpToDate extends Sensor
     private function buildMigrationsOptions(): array
     {
         $options = [
-            'connection' => $this->getSetting('connection', $this->defaultConnectionName),
+            'connection' => $this->getSetting('connection_name', $this->defaultConnectionName),
             'source' => $this->getSetting('source', $this->defaultSource),
         ];
 

@@ -3,12 +3,12 @@ Installation
 
 ### Requirements
 
-- PHP >= 8.2
-- CakePHP 5.3+
+- PHP >= 7.4
+- CakePHP 4.0+
 
 ### CakePHP Version Support
 
-This version of the plugin supports CakePHP 5.3+ only.
+This version of the plugin supports CakePHP 4.x only.
 
 ### Installation via composer
 
@@ -19,13 +19,13 @@ composer require orca-services/cakephp-heartbeat
 ````
 
 Then load the plugin in your application as documented in the section
-[Loading a Plugin](https://book.cakephp.org/5.0/en/plugins.html#loading-a-plugin)
+[Loading a Plugin](https://book.cakephp.org/4.0/en/plugins.html#loading-a-plugin)
 in the CakePHP CookBook.
 
 ### Installation alternatives
 
 Refer to the CakePHP CookBook section
-[Manually Installing a Plugin](https://book.cakephp.org/5.0/en/plugins.html#manually-installing-a-plugin).
+[Manually Installing a Plugin](https://book.cakephp.org/4.0/en/plugins.html#manually-installing-a-plugin).
 
 ---
 

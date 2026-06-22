@@ -5,10 +5,9 @@ namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat;
 
 use Cake\Chronos\Chronos;
 use Cake\TestSuite\TestCase;
+use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
-use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
-use ReflectionClass;
 
 /**
  * Sensor Test
@@ -22,14 +21,14 @@ class SensorTest extends TestCase
      *
      * @return void
      * @covers ::__construct
-     * @throws ReflectionException
+     * @throws \ReflectionException
      */
     public function testConstructor()
     {
         $sensorName = 'Dummy Sensor';
         $sensorConfig = [
             'enabled' => true,
-            'severity' => Severity::INFORMATIONAL,
+            'severity' => 1,
             'class' => DummySensor::class,
         ];
         $sensorConfig = new Config($sensorName, $sensorConfig);
@@ -43,8 +42,8 @@ class SensorTest extends TestCase
      * Tests the constructor
      *
      * @return void
-     * @covers ::getSensorStatus
      * @covers ::getStatus
+     * @covers ::_getStatus
      */
     public function testGetStatus()
     {
@@ -52,28 +51,29 @@ class SensorTest extends TestCase
         $sensorName = 'Dummy Sensor';
         $sensorConfig = [
             'enabled' => true,
-            'severity' => Severity::INFORMATIONAL,
+            'severity' => 1,
             'class' => DummySensor::class,
         ];
         $sensorConfig = new Config($sensorName, $sensorConfig);
         $sensorClassName = $sensorConfig->getClass();
         /** @var Sensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
-        $sensorStatus = $sensor->getSensorStatus();
-        $this->assertEquals('Dummy Sensor', $sensorStatus->name);
-        $this->assertTrue($sensorStatus->status);
-        $this->assertEquals(0, $sensorStatus->duration);
-        $this->assertEquals('2017-03-30 12:45:37', $sensorStatus->lastExecuted);
-        $this->assertEquals(Severity::INFORMATIONAL, $sensorStatus->severity);
+        $status = $sensor->getStatus();
+        $this->assertInstanceOf(Sensor\Status::class, $status);
+        $this->assertEquals('Dummy Sensor', $status->getName());
+        $this->assertTrue($status->getStatus());
+        $this->assertEquals(0, $status->getDuration());
+        $this->assertEquals('2017-03-30 12:45:37', $status->getLastExecuted());
+        $this->assertEquals(1, $status->getSeverity());
     }
 
     /**
      * Tests whether the check result was fetched from cache or by running the check now
      *
      * @return void
-     * @covers ::getCachedStatus
-     * @covers ::resetCacheConfig
-     * @covers ::getNonCachedStatus
+     * @covers ::_getCachedStatus
+     * @covers ::_resetCacheConfig
+     * @covers ::_getNonCachedStatus
      */
     public function testWasCheckCached()
     {
@@ -81,7 +81,7 @@ class SensorTest extends TestCase
         $sensorName = 'Cached Sensor';
         $sensorConfig = [
             'enabled' => true,
-            'severity' => Severity::INFORMATIONAL,
+            'severity' => 1,
             'class' => DummySensor::class,
             'cached' => '+1 seconds',
         ];
@@ -90,19 +90,19 @@ class SensorTest extends TestCase
 
         /** @var DummySensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
-        $sensorStatus = $sensor->getSensorStatus();
+        $status = $sensor->getStatus();
 
         // Assert that result was not cached
-        $this->assertFalse($sensorStatus->wasCheckCached());
+        $this->assertFalse($status->wasCheckCached());
 
         // Get status again and assert that result was cached
-        $sensorStatus = $sensor->getSensorStatus();
-        $this->assertTrue($sensorStatus->wasCheckCached());
+        $status = $sensor->getStatus();
+        $this->assertTrue($status->wasCheckCached());
 
         // Get status again after slightly more than a second and assert that result was not cached
         sleep(2);
-        $sensorStatus = $sensor->getSensorStatus();
-        $this->assertFalse($sensorStatus->wasCheckCached());
+        $status = $sensor->getStatus();
+        $this->assertFalse($status->wasCheckCached());
 
         //// Wait another second to let the cache be reset
         sleep(1);
@@ -112,9 +112,9 @@ class SensorTest extends TestCase
      * Tests whether the check result was fetched from cache when cache is disabled
      *
      * @return void
-     * @covers ::getCachedStatus
-     * @covers ::resetCacheConfig
-     * @covers ::getNonCachedStatus
+     * @covers ::_getCachedStatus
+     * @covers ::_resetCacheConfig
+     * @covers ::_getNonCachedStatus
      */
     public function testWasCheckCachedWhenCacheDisabled()
     {
@@ -122,7 +122,7 @@ class SensorTest extends TestCase
         $sensorName = 'Uncached Sensor';
         $sensorConfig = [
             'enabled' => true,
-            'severity' => Severity::INFORMATIONAL,
+            'severity' => 1,
             'class' => DummySensor::class,
             'cached' => false,
         ];
@@ -131,11 +131,11 @@ class SensorTest extends TestCase
 
         /** @var DummySensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
-        $sensorStatus = $sensor->getSensorStatus();
+        $status = $sensor->getStatus();
 
-        $this->assertFalse($sensorStatus->wasCheckCached());
-        $sensorStatus = $sensor->getSensorStatus();
-        $this->assertFalse($sensorStatus->wasCheckCached());
+        $this->assertFalse($status->wasCheckCached());
+        $status = $sensor->getStatus();
+        $this->assertFalse($status->wasCheckCached());
     }
 
     /**
@@ -144,12 +144,13 @@ class SensorTest extends TestCase
      * @param mixed $object The object
      * @param string $property The property name
      * @return mixed The value
-     * @throws ReflectionException
+     * @throws \ReflectionException
      */
-    public static function getProperty(mixed $object, string $property): mixed
+    public static function getProperty($object, string $property)
     {
-        $reflectedClass = new ReflectionClass($object);
+        $reflectedClass = new \ReflectionClass($object);
         $reflection = $reflectedClass->getProperty($property);
+        $reflection->setAccessible(true);
 
         return $reflection->getValue($object);
     }

@@ -13,13 +13,20 @@ class Config
 {
     use InstanceConfigTrait;
 
+    /** @var array All valid severity levels */
+    public const SEVERITY_LEVELS = [
+        Status::STATUS_CRITICAL,
+        Status::STATUS_NONCRITICAL,
+        Status::STATUS_INFORMATIONAL,
+    ];
+
     /**
      * The default config
      */
     protected array $_defaultConfig = [
         'name' => null,
         'enabled' => true,
-        'severity' => Severity::NONCRITICAL,
+        'severity' => Status::STATUS_NONCRITICAL,
         'class' => null,
         'cached' => false,
         'settings' => [],
@@ -86,22 +93,24 @@ class Config
     /**
      * Set the severity level
      *
-     * @param Severity $severity The severity level.
+     * @param int $severity The severity level.
      * @return void
+     * @throws InvalidArgumentException If an invalid severity level was given.
      */
-    public function setSeverity(Severity $severity): void
+    public function setSeverity(int $severity): void
     {
+        $this->assertSeverity($severity);
         $this->setConfig('severity', $severity, false);
     }
 
     /**
      * Get the severity level
      *
-     * @return Severity The severity level.
+     * @return int The severity level.
      */
-    public function getSeverity(): Severity
+    public function getSeverity(): int
     {
-        return $this->getConfig('severity');
+        return (int)$this->getConfig('severity');
     }
 
     /**
@@ -129,9 +138,9 @@ class Config
     /**
      * Get whether or how long the status should be cached
      *
-     * @return string|bool
+     * @return bool|string
      */
-    public function getCached(): string|bool
+    public function getCached()
     {
         return $this->getConfig('cached');
     }
@@ -139,11 +148,14 @@ class Config
     /**
      * Set whether or how long the status should be cached
      *
-     * @param string|bool $cached Whether or how long the status should be cached.
+     * @param bool|string $cached Whether or how long the status should be cached.
      * @return void
+     * @throws InvalidArgumentException If not a valid boolean or string was given.
+     * @todo Cover the exception.
      */
-    public function setCached(string|bool $cached): void
+    public function setCached($cached): void
     {
+        $this->assertCached($cached);
         $this->setConfig('cached', $cached, false);
     }
 
@@ -175,12 +187,12 @@ class Config
      * @return void
      * @throws InvalidArgumentException If an invalid severity level was given.
      */
-    private function assertSeverity(mixed $severity): void
+    private function assertSeverity($severity): void
     {
-        if (!$severity instanceof Severity) {
+        if (!in_array($severity, self::SEVERITY_LEVELS, true)) {
             throw new InvalidArgumentException(sprintf(
                 'Severity must be a valid severity level, got "%s" instead.',
-                is_object($severity) ? $severity::class : (string)$severity,
+                $severity
             ));
         }
     }
@@ -192,12 +204,12 @@ class Config
      * @return void
      * @throws InvalidArgumentException If an invalid boolean or string was given.
      */
-    private function assertCached(mixed $cached): void
+    private function assertCached($cached): void
     {
         if (!is_bool($cached) && !is_string($cached)) {
             throw new InvalidArgumentException(sprintf(
                 'Cached must be either a bool or a string, "%s" given instead',
-                $cached,
+                $cached
             ));
         }
     }

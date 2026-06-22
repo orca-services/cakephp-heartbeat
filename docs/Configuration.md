@@ -18,25 +18,25 @@ $config['App']['Heartbeat'] = [
     'Sensors' => [
         'Debug-Mode' => [
             'enabled' => true,
-            'severity' => Severity::INFORMATIONAL,
-            'class' => DebugMode::class,
+            'severity' => 1,
+            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode::class,
         ],
         'DB Connection' => [
             'enabled' => true,
-            'severity' => Severity::CRITICAL,
-            'class' => DBConnection::class,
+            'severity' => 3,
+            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection::class,
             'cached' => true,
             'settings' => [
-                'connection' => 'default',
+                'connection_name' => 'default',
             ],
         ],
         'DB up to date' => [
             'enabled' => false,
-            'severity' => Severity::CRITICAL,
-            'class' => DBUpToDate::class,
+            'severity' => 3,
+            'class' => OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate::class,
             'cached' => '+10 minutes',
             'settings' => [
-                'connection' => 'default',
+                'connection_name' => 'default',
                 'source' => 'Migrations',
                 'plugin' => 'MyPlugin',
             ],

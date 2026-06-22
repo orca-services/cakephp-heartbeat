@@ -4,9 +4,7 @@ declare(strict_types=1);
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 
 use Cake\TestSuite\TestCase;
-use InvalidArgumentException;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
-use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
 
 /**
@@ -37,11 +35,11 @@ class ConfigTest extends TestCase
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => true,
-            'severity' => Severity::INFORMATIONAL,
+            'severity' => 1,
             'class' => DummySensor::class,
             'cached' => true,
             'settings' => [
-                'connection' => 'test',
+                'connection_name' => 'test',
             ],
         ];
         $sensorConfig = new Config($sensorName, $sensorConfigArray);
@@ -78,7 +76,7 @@ class ConfigTest extends TestCase
         $sensorConfig = new Config($sensorName, $sensorConfigArray);
         static::assertEquals($sensorName, $sensorConfig->getName());
         static::assertTrue($sensorConfig->getEnabled());
-        static::assertEquals(Severity::NONCRITICAL, $sensorConfig->getSeverity());
+        static::assertEquals(2, $sensorConfig->getSeverity());
         static::assertEquals($sensorConfigArray['class'], $sensorConfig->getClass());
         static::assertEquals([], $sensorConfig->getSettings());
         static::assertFalse($sensorConfig->getCached());
@@ -92,7 +90,7 @@ class ConfigTest extends TestCase
      */
     public function testInvalidSeverity(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => true,
@@ -110,11 +108,11 @@ class ConfigTest extends TestCase
      */
     public function testInvalidCached(): void
     {
-        $this->expectException(InvalidArgumentException::class);
+        $this->expectException(\InvalidArgumentException::class);
         $sensorName = 'Dummy Sensor';
         $sensorConfigArray = [
             'enabled' => true,
-            'severity' => Severity::INFORMATIONAL,
+            'severity' => 1,
             'class' => DummySensor::class,
             'cached' => 1,
         ];

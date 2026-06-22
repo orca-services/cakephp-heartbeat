@@ -14,6 +14,7 @@ declare(strict_types=1);
  * @since     0.2.9
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  */
+
 namespace OrcaServices\Heartbeat\Controller;
 
 use Cake\Controller\Controller;
@@ -24,7 +25,7 @@ use Cake\Controller\Controller;
  * Add your application-wide methods in the class below, your controllers
  * will inherit them.
  *
- * @link https://book.cakephp.org/5/en/controllers.html#the-app-controller
+ * @link https://book.cakephp.org/3.0/en/controllers.html#the-app-controller
  */
 class AppController extends Controller
 {
@@ -33,10 +34,17 @@ class AppController extends Controller
      *
      * Use this method to add common initialization code like loading components.
      *
+     * e.g. `$this->loadComponent('Security');`
+     *
      * @return void
+     * @throws \Exception
      */
     public function initialize(): void
     {
         parent::initialize();
+
+        $this->loadComponent('RequestHandler', [
+            'enableBeforeRedirect' => false,
+        ]);
     }
 }

@@ -5,7 +5,6 @@ namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat\Sensor;
 
 use Cake\Chronos\Chronos;
 use Cake\TestSuite\TestCase;
-use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
 /**
@@ -30,21 +29,13 @@ class StatusTest extends TestCase
     public function testStatus()
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
-
-        $status = new Status(
-            'Dummy Sensor',
-            true,
-            0,
-            Chronos::now(),
-            Severity::INFORMATIONAL,
-        );
-
+        $status = new Status('Dummy Sensor', true, 0, Chronos::now(), 1);
         $this->assertInstanceOf(Status::class, $status);
-        $this->assertEquals('Dummy Sensor', $status->name);
-        $this->assertEquals(true, $status->status);
-        $this->assertEquals(0, $status->duration);
-        $this->assertEquals('2017-03-30 12:45:37', $status->lastExecuted);
-        $this->assertEquals(Severity::INFORMATIONAL, $status->severity);
+        $this->assertEquals('Dummy Sensor', $status->getName());
+        $this->assertEquals(true, $status->getStatus());
+        $this->assertEquals(0, $status->getDuration());
+        $this->assertEquals('2017-03-30 12:45:37', $status->getLastExecuted());
+        $this->assertEquals(1, $status->getSeverity());
         $this->assertEquals(false, $status->wasCheckCached());
     }
 
@@ -57,14 +48,7 @@ class StatusTest extends TestCase
      */
     public function testSetGetCheckWasCached()
     {
-        $status = new Status(
-            'Dummy Sensor',
-            true,
-            0,
-            Chronos::now(),
-            Severity::INFORMATIONAL,
-        );
-
+        $status = new Status('Dummy Sensor', true, 0, Chronos::now(), 1);
         $this->assertFalse($status->wasCheckCached());
         $status->setCheckWasCached(true);
         $this->assertTrue($status->wasCheckCached());
