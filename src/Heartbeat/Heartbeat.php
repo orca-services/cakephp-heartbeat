@@ -109,9 +109,12 @@ class Heartbeat
         });
 
         $name = Configure::read('App.Heartbeat.name');
+        $environment = Configure::read('App.Heartbeat.environment');
+
+        $title = !empty($environment) ? $name . ' ' . $environment : $name;
 
         return new Status(
-            $name . ' Heartbeat Status',
+            $title . ' Heartbeat Status',
             $systemStatus,
             0, // TODO Calculate the duration for the whole heartbeat
             Chronos::now(),
