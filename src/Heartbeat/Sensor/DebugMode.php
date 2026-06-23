@@ -24,6 +24,6 @@ class DebugMode extends Sensor
      */
     protected function getStatusMessage(bool $status): string
     {
-        return $status ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED');
+        return $status ? __d('Heartbeat', 'ENABLED') : __d('Heartbeat', 'DISABLED');
     }
 }
