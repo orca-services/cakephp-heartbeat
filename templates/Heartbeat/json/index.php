@@ -10,10 +10,7 @@
 use Cake\Collection\Collection;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
-$systemStatusName = $systemStatus->name;
-$systemStatusText = $systemStatus->message;
-
-$system = [$systemStatusName => $systemStatusText];
+$system = [$systemStatus->name => $systemStatus->message];
 
 $statuses = $sensorStatuses->map(function ($sensorStatus) {
     /** @var Status $sensorStatus */
