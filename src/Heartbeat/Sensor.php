@@ -119,7 +119,10 @@ abstract class Sensor
 
         $settings = array_merge(
             (array)Cache::getConfig('default'),
-            ['duration' => $duration, 'className' => 'File'],
+            [
+                'duration' => $duration,
+                'className' => 'File'
+            ],
         );
 
         Cache::setConfig(self::CACHE_NAME, $settings);
