@@ -36,7 +36,7 @@ class SensorTest extends TestCase
         $sensorClassName = $sensorConfig->getClass();
         /** @var Sensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
-        $this->assertEquals($sensorConfig, $this->getProperty($sensor, 'config'));
+        $this->assertEquals($sensorConfig, self::getProperty($sensor, 'config'));
     }
 
     /**
