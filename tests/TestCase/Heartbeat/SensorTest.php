@@ -161,11 +161,12 @@ class SensorTest extends TestCase
      */
     public function testGetSettingMergesConfiguredSettingsOverDefaultSettings(): void
     {
+        $connectionName = 'custom';
         $config = new Config('Settings Sensor', [
             'enabled' => true,
             'severity' => Severity::INFORMATIONAL,
             'class' => DummySensor::class,
-            'settings' => ['connection' => 'custom'],
+            'settings' => ['connection' => $connectionName],
         ]);
 
         $sensor = new class ($config) extends Sensor {
@@ -191,7 +192,7 @@ class SensorTest extends TestCase
         };
 
         // A configured value wins over the default setting.
-        $this->assertSame('custom', $sensor->readSetting('connection'));
+        $this->assertSame($connectionName, $sensor->readSetting('connection'));
         // The default setting is used when the setting is not configured.
         $this->assertSame('Migrations', $sensor->readSetting('source'));
         // Neither configured nor declared as a default setting -> null.
