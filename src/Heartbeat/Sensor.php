@@ -23,7 +23,9 @@ abstract class Sensor
     public const CACHE_NAME = 'heartbeat';
 
     /**
-     * Default cache duration
+     * Default cache duration. Specified as a strtotime() compatible expression.
+     *
+     * @see strtotime
      */
     public const CACHE_DEFAULT_DURATION = '+30 seconds';
 
