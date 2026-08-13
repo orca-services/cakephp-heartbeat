@@ -14,7 +14,7 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 /**
  * DB Connection Sensor Test
  *
- * @coversDefaultClass DBConnection
+ * @coversDefaultClass \OrcaServices\Heartbeat\Heartbeat\Sensor\DBConnection
  */
 class DBConnectionTest extends TestCase
 {
@@ -72,10 +72,10 @@ class DBConnectionTest extends TestCase
     }
 
     /**
-     * Test _getStatus for the default connection.
+     * Test getStatus for the default connection.
      *
      * @return void
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatusReturnsTrueForDefaultConnection(): void
     {
@@ -87,10 +87,10 @@ class DBConnectionTest extends TestCase
     }
 
     /**
-     * Test _getStatus for a custom connection.
+     * Test getStatus for a custom connection.
      *
      * @return void
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatusReturnsTrueForCustomConnection(): void
     {
@@ -102,10 +102,10 @@ class DBConnectionTest extends TestCase
     }
 
     /**
-     * Test _getStatus for an unknown connection.
+     * Test getStatus for an unknown connection.
      *
      * @return void
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatusReturnsFalseForUnknownConnection(): void
     {

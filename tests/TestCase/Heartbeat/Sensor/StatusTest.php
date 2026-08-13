@@ -20,11 +20,6 @@ class StatusTest extends TestCase
      *
      * @return void
      * @covers ::__construct
-     * @covers ::getName
-     * @covers ::getStatus
-     * @covers ::getDuration
-     * @covers ::getLastExecuted
-     * @covers ::getSeverity
      * @covers ::wasCheckCached
      */
     public function testStatus(): void

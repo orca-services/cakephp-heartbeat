@@ -14,7 +14,7 @@ use RuntimeException;
 /**
  * DB Up to Date Sensor Test
  *
- * @coversDefaultClass DBUpToDate
+ * @coversDefaultClass \OrcaServices\Heartbeat\Heartbeat\Sensor\DBUpToDate
  */
 class DBUpToDateTest extends TestCase
 {
@@ -68,7 +68,7 @@ class DBUpToDateTest extends TestCase
      * When every migration reports status "up", the sensor reports true.
      *
      * @return void
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatusReturnsTrueWhenAllMigrationsAreUp(): void
     {
@@ -88,7 +88,7 @@ class DBUpToDateTest extends TestCase
      * When at least one migration is not "up", the sensor reports false.
      *
      * @return void
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatusReturnsFalseWhenAMigrationIsPending(): void
     {
@@ -108,7 +108,7 @@ class DBUpToDateTest extends TestCase
      * An empty migration list (no migrations at all) is treated as up to date.
      *
      * @return void
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatusReturnsTrueWhenThereAreNoMigrations(): void
     {
@@ -125,7 +125,7 @@ class DBUpToDateTest extends TestCase
      * If Migrations::status() throws, the sensor catches it and reports false.
      *
      * @return void
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatusReturnsFalseWhenStatusThrows(): void
     {
