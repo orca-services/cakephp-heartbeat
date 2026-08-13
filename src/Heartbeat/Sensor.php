@@ -122,7 +122,7 @@ abstract class Sensor
             (array)Cache::getConfig('default'),
             [
                 'duration' => $duration,
-                'className' => 'File'
+                'className' => 'File',
             ],
         );
 
