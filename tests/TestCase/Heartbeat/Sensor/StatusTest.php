@@ -27,7 +27,7 @@ class StatusTest extends TestCase
      * @covers ::getSeverity
      * @covers ::wasCheckCached
      */
-    public function testStatus()
+    public function testStatus(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
 
@@ -63,7 +63,7 @@ class StatusTest extends TestCase
      * @covers ::setCheckWasCached
      * @covers ::wasCheckCached
      */
-    public function testSetGetCheckWasCached()
+    public function testSetGetCheckWasCached(): void
     {
         $status = new Status(
             'Dummy Sensor',

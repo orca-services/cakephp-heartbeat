@@ -25,7 +25,7 @@ class SensorTest extends TestCase
      * @covers ::__construct
      * @throws ReflectionException
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $sensorName = 'Dummy Sensor';
         $sensorConfig = [
@@ -47,7 +47,7 @@ class SensorTest extends TestCase
      * @covers ::getSensorStatus
      * @covers ::getStatus
      */
-    public function testGetStatus()
+    public function testGetStatus(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
         $sensorName = 'Dummy Sensor';
@@ -76,7 +76,7 @@ class SensorTest extends TestCase
      * @covers ::resetCacheConfig
      * @covers ::getNonCachedStatus
      */
-    public function testWasCheckCached()
+    public function testWasCheckCached(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
         $sensorName = 'Cached Sensor';
@@ -117,7 +117,7 @@ class SensorTest extends TestCase
      * @covers ::resetCacheConfig
      * @covers ::getNonCachedStatus
      */
-    public function testWasCheckCachedWhenCacheDisabled()
+    public function testWasCheckCachedWhenCacheDisabled(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
         $sensorName = 'Uncached Sensor';

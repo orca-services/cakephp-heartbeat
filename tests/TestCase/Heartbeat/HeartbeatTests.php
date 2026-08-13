@@ -7,6 +7,11 @@ use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Heartbeat;
 
+/**
+ * Heartbeat Tests
+ *
+ * @coversDefaultClass \OrcaServices\Heartbeat\Heartbeat\Heartbeat
+ */
 class HeartbeatTests extends TestCase
 {
     /**
@@ -15,7 +20,7 @@ class HeartbeatTests extends TestCase
      * @return void
      * @covers ::getSystemStatus
      */
-    public function testGetSystemStatusAppendsEnvironment()
+    public function testGetSystemStatusAppendsEnvironment(): void
     {
         Configure::write('App.Heartbeat.name', 'My App');
         Configure::write('App.Heartbeat.environment', 'Production');
@@ -31,7 +36,7 @@ class HeartbeatTests extends TestCase
      * @return void
      * @covers ::getSystemStatus
      */
-    public function testGetSystemStatusWithoutEnvironment()
+    public function testGetSystemStatusWithoutEnvironment(): void
     {
         Configure::write('App.Heartbeat.name', 'My App');
         Configure::delete('App.Heartbeat.environment');
@@ -47,7 +52,7 @@ class HeartbeatTests extends TestCase
      * @return void
      * @covers ::getSystemStatus
      */
-    public function testGetSystemStatusWithEmptyEnvironment()
+    public function testGetSystemStatusWithEmptyEnvironment(): void
     {
         Configure::write('App.Heartbeat.name', 'My App');
         Configure::write('App.Heartbeat.environment', '');
