@@ -112,9 +112,10 @@ abstract class Sensor
     {
         Cache::drop(self::CACHE_NAME);
 
-        $duration = self::CACHE_DEFAULT_DURATION;
         if (is_string($sensorCaching)) {
             $duration = $sensorCaching;
+        } else {
+            $duration = self::CACHE_DEFAULT_DURATION;
         }
 
         $settings = array_merge(
