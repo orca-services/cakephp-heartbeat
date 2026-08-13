@@ -79,8 +79,8 @@ abstract class Sensor
         $this->resetCacheConfig($sensorCaching);
 
         $cacheKey = self::CACHE_NAME . '_' . strtolower(Text::slug($this->config->getName()));
+        $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
         if ($sensorCaching === false) {
-            $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
             if (!empty($cachedStatus)) {
                 Cache::delete($cacheKey, self::CACHE_NAME);
             }
@@ -88,7 +88,6 @@ abstract class Sensor
             return false;
         }
 
-        $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
         if (!empty($cachedStatus)) {
             $cachedStatus->setCheckWasCached(true);
 
