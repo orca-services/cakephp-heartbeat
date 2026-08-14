@@ -51,7 +51,7 @@ If you created custom sensors, review them for API changes:
 - Status handling now uses the `Severity` enum instead of integer values.
 - Sensor status methods were renamed.
 - Some getter methods were replaced by readonly properties.
-- Custom sensors must now implement the new abstract `getStatusMessage` method, which returns the message shown in the status table (e.g. `OK`/`FAILED`).
+- Custom sensors must now implement the new abstract `getStatusMessage` method, which returns the message shown in the status table (e.g. `ENABLED`/`DISABLED `).
 
 Compare your custom sensors with the updated [sensor](../src/Heartbeat/Sensor.php) and [status](../src/Heartbeat/Sensor/Status.php) classes before upgrading.
 

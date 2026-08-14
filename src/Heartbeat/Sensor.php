@@ -165,10 +165,16 @@ abstract class Sensor
     /**
      * Get the human-readable status message
      *
+     * Implementations can optionally override this method to provide a more
+     * specific message.
+     *
      * @param bool $status The sensor status as returned by getStatus().
      * @return string The sensor status message.
      */
-    abstract protected function getStatusMessage(bool $status): string;
+    protected function getStatusMessage(bool $status): string
+    {
+        return $status ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED');
+    }
 
     /**
      * Get the value of the given setting or an optional fallback default value

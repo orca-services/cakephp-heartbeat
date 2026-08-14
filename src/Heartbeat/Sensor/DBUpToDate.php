@@ -52,14 +52,6 @@ class DBUpToDate extends Sensor
     }
 
     /**
-     * @inheritDoc
-     */
-    protected function getStatusMessage(bool $status): string
-    {
-        return $status ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED');
-    }
-
-    /**
      * Creates the Migrations instance used to check the status.
      *
      * @param array<string, mixed> $options Options as built by buildMigrationsOptions()

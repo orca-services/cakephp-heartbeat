@@ -63,7 +63,7 @@ you can do that easily. In this example, we will add a sensor for 'My API'.
 First, create a class for the sensor wherever you like, e.g. ``src/Heartbeat/Sensor``.
 The class for this example will be named ``MyApi``.
 This class has to extend ``OrcaServices\Heartbeat\Heartbeat\Sensor``
-and implement the abstract methods ``getStatus()`` and ``getStatusMessage()``.
+and implement the abstract method ``getStatus()`` and optionally overwrite the  ``getStatusMessage()`` method.
 
 ``getStatus()`` returns `true` or `false` to imply whether the action to check was successful.
 
