@@ -15,8 +15,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Status handling now uses the `Severity` enum instead of integer values [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 
 ### Dependencies
-- cakephp/migrations updated from 3.9.0 to 5.2.4 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
-- cakephp/cakephp updated from 4.6.4 to 5.4.0 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- cakephp/migrations updated from 3.9.0 to 5.2.6 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
+- cakephp/cakephp updated from 4.6.4 to 5.4.1 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 - cakephp/cakephp-codesniffer updated from 4.7.1 to 5.3.1 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 - phpunit/phpunit updated from 9.6.34 to 10.5.64 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 
