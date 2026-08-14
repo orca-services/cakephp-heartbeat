@@ -180,11 +180,6 @@ class SensorTest extends TestCase
                 return true;
             }
 
-            protected function getStatusMessage(bool $status): string
-            {
-                return __d('Heartbeat', 'OK');
-            }
-
             public function readSetting(string $name): ?string
             {
                 return $this->getSetting($name);

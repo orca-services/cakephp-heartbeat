@@ -18,12 +18,4 @@ class DebugMode extends Sensor
     {
         return (bool)Configure::read('debug');
     }
-
-    /**
-     * @inheritDoc
-     */
-    protected function getStatusMessage(bool $status): string
-    {
-        return $status ? __d('Heartbeat', 'ENABLED') : __d('Heartbeat', 'DISABLED');
-    }
 }
