@@ -65,12 +65,12 @@ The class for this example will be named ``MyApi``.
 This class has to extend ``OrcaServices\Heartbeat\Heartbeat\Sensor``
 and implement the abstract methods ``getStatus()`` and ``getStatusMessage()``.
 
-``getStatus()`` returns true or false to imply whether the action to check was successful or not.
+``getStatus()`` returns `true` or `false` to imply whether the action to check was successful.
 
 ``getStatusMessage()`` receives the boolean result of ``getStatus()`` and returns the status message that is shown in the status column of the heartbeat table.
 
 If your sensor reads configurable settings, declare their defaults in the ``$defaultSettings`` property and read them with ``$this->getSetting('name')``.
-The settings configured under the ``settings`` key (see the [configuration](Configuration.md)) are merged on top of the defaults, so a configured value always wins:
+The [settings configured]Configuration.md) under the ``settings`` key are merged on top of the defaults, so a configured value always wins:
 
 ```php
 // In your sensor class:

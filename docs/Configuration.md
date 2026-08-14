@@ -11,7 +11,7 @@ It takes the following subkeys:
 - `layout` To override the layout (see below)
 - `Sensors` An array of sensors (see below)
 
-An example configuration would look like this:
+An example configuration for a local development environment would look like this:
 ```php
 $config['App']['Heartbeat'] = [
     'name' => 'My App',

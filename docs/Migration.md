@@ -61,7 +61,7 @@ Compare your custom sensors with the updated [sensor](../src/Heartbeat/Sensor.ph
 2. Update the Heartbeat dependency.
 3. Update Heartbeat configuration:
     - Rename `connection_name` to `connection`.
-    - Use Severity enum instead of Integer values.
+    - Use `Severity` enum instead of integer values.
 4. Install `cakephp/migrations` dependency if you use the `DBUpToDate` sensor.
 5. If you reference `OrcaServices\Heartbeat\Plugin` directly, switch to `OrcaServices\Heartbeat\HeartbeatPlugin`.
 6. Review custom sensors for API changes.
