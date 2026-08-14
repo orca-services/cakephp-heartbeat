@@ -67,10 +67,13 @@ and implement the abstract method ``getStatus()`` and optionally overwrite the  
 
 ``getStatus()`` returns `true` or `false` to imply whether the action to check was successful.
 
-``getStatusMessage()`` receives the boolean result of ``getStatus()`` and returns the status message that is shown in the status column of the heartbeat table.
+``getStatusMessage()`` receives the boolean result of ``getStatus()`` and returns the status message that is shown
+in the status column of the heartbeat table.
 
-If your sensor reads configurable settings, declare their defaults in the ``$defaultSettings`` property and read them with ``$this->getSetting('name')``.
-The [settings configured]Configuration.md) under the ``settings`` key are merged on top of the defaults, so a configured value always wins:
+If your sensor reads configurable settings, declare their defaults in the ``$defaultSettings`` property and read them
+with ``$this->getSetting('name')``.
+The [settings configured]Configuration.md) under the ``settings`` key are merged on top of the defaults,
+so a configured value always wins:
 
 ```php
 // In your sensor class:
@@ -85,7 +88,8 @@ $connectionName = $this->getSetting('connection');
 We assume that, to check the API status, we have an ``ApiClient`` class somewhere in the project
 and that class has a method called ``ping()`` which returns 'Pong' as answer from the API.
 
-In this example, the Sensor would look like this:
+In this example, the Sensor with custom status messages would look like this:
+
 ```php
 <?php
 namespace Heartbeat\Sensor;
@@ -110,7 +114,7 @@ class MyApi extends Sensor
 
     protected function getStatusMessage(bool $status): string
     {
-        return $status ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED');
+        return $status ? __d('Heartbeat', 'Woo Hoo!') : __d('Heartbeat', "D'oh");
     }
 }
 ```

@@ -165,11 +165,11 @@ abstract class Sensor
     /**
      * Get the human-readable status message
      *
-     * Implementations can optionally override this method to provide a more
-     * specific message.
+     * Implementations can optionally override this method to provide more
+     * specific status messages.
      *
      * @param bool $status The sensor status as returned by getStatus().
-     * @return string The sensor status message.
+     * @return string A human-readable sensor status message.
      */
     protected function getStatusMessage(bool $status): string
     {
