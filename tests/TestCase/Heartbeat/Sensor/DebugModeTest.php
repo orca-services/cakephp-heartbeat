@@ -12,7 +12,7 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 /**
  * Debug Mode Sensor Test
  *
- * @coversDefaultClass DebugMode
+ * @coversDefaultClass \OrcaServices\Heartbeat\Heartbeat\Sensor\DebugMode
  */
 class DebugModeTest extends TestCase
 {
@@ -36,7 +36,7 @@ class DebugModeTest extends TestCase
      * When debug mode is enabled, the sensor reports true.
      *
      * @return void
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatusReturnsOneWhenDebugIsEnabled(): void
     {
@@ -53,7 +53,7 @@ class DebugModeTest extends TestCase
      * When debug mode is disabled, the sensor reports false.
      *
      * @return void
-     * @covers ::_getStatus
+     * @covers ::getStatus
      */
     public function testGetStatusReturnsEmptyStringWhenDebugIsDisabled(): void
     {

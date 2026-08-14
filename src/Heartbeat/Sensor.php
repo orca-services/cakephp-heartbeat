@@ -23,7 +23,9 @@ abstract class Sensor
     public const CACHE_NAME = 'heartbeat';
 
     /**
-     * Default cache duration
+     * Default cache duration. Specified as a strtotime() compatible expression.
+     *
+     * @see strtotime
      */
     public const CACHE_DEFAULT_DURATION = '+30 seconds';
 
@@ -31,6 +33,14 @@ abstract class Sensor
      * The sensor config
      */
     protected Config $config;
+
+    /**
+     * Default settings for the sensor, merged with (and overridden by) the
+     * settings provided through the configuration.
+     *
+     * @var array<string, mixed>
+     */
+    protected array $defaultSettings = [];
 
     /**
      * Construct the status
@@ -71,8 +81,8 @@ abstract class Sensor
         $this->resetCacheConfig($sensorCaching);
 
         $cacheKey = self::CACHE_NAME . '_' . strtolower(Text::slug($this->config->getName()));
+        $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
         if ($sensorCaching === false) {
-            $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
             if (!empty($cachedStatus)) {
                 Cache::delete($cacheKey, self::CACHE_NAME);
             }
@@ -80,7 +90,6 @@ abstract class Sensor
             return false;
         }
 
-        $cachedStatus = Cache::read($cacheKey, self::CACHE_NAME);
         if (!empty($cachedStatus)) {
             $cachedStatus->setCheckWasCached(true);
 
@@ -103,14 +112,18 @@ abstract class Sensor
     {
         Cache::drop(self::CACHE_NAME);
 
-        $duration = self::CACHE_DEFAULT_DURATION;
         if (is_string($sensorCaching)) {
             $duration = $sensorCaching;
+        } else {
+            $duration = self::CACHE_DEFAULT_DURATION;
         }
 
         $settings = array_merge(
             (array)Cache::getConfig('default'),
-            ['duration' => $duration, 'className' => 'File'],
+            [
+                'duration' => $duration,
+                'className' => 'File',
+            ],
         );
 
         Cache::setConfig(self::CACHE_NAME, $settings);
@@ -130,12 +143,15 @@ abstract class Sensor
         $duration = $end - $start;
         $duration = round($duration, 3);
 
+        $config = $this->config;
+
         return new Status(
-            $this->config->getName(),
+            $config->getName(),
             $status,
             $duration,
             Chronos::now(),
-            $this->config->getSeverity(),
+            $config->getSeverity(),
+            $this->getStatusMessage($status),
         );
     }
 
@@ -147,6 +163,20 @@ abstract class Sensor
     abstract protected function getStatus(): bool;
 
     /**
+     * Get the human-readable status message
+     *
+     * Implementations can optionally override this method to provide more
+     * specific status messages.
+     *
+     * @param bool $status The sensor status as returned by getStatus().
+     * @return string A human-readable sensor status message.
+     */
+    protected function getStatusMessage(bool $status): string
+    {
+        return $status ? __d('Heartbeat', 'OK') : __d('Heartbeat', 'FAILED');
+    }
+
+    /**
      * Get the value of the given setting or an optional fallback default value
      *
      * @param string $name The name of the setting to retrieve.
@@ -155,7 +185,7 @@ abstract class Sensor
      */
     protected function getSetting(string $name, mixed $default = null): ?string
     {
-        $settings = $this->config->getSettings();
+        $settings = $this->config->getSettings() + $this->defaultSettings;
 
         return Hash::get($settings, $name, $default);
     }

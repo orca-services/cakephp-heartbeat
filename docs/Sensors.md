@@ -7,7 +7,7 @@ Checks whether a connection to the database server of the `default` connection c
 To check a connection other than ``default``, e.g. ``external``,
 the ``connection``setting can be used.
 
- ```php
+```php
 $config['App']['Heartbeat']['Sensors']['External DB Connection'] = [
     'enabled' => true,
     'severity' => Severity::CRITICAL,
@@ -63,17 +63,34 @@ you can do that easily. In this example, we will add a sensor for 'My API'.
 First, create a class for the sensor wherever you like, e.g. ``src/Heartbeat/Sensor``.
 The class for this example will be named ``MyApi``.
 This class has to extend ``OrcaServices\Heartbeat\Heartbeat\Sensor``
-and implement the abstract method ``_getStatus()``.
+and implement the abstract method ``getStatus()`` and optionally overwrite the  ``getStatusMessage()`` method.
 
-In most cases, this method should return true or false to imply whether the action to check was successful or not.
-It can also return other, purely informational data, e.g. the version number,
-but that only makes sense for an informational status (as defined in the [configuration](Configuration.md)).
+``getStatus()`` returns `true` or `false` to imply whether the action to check was successful.
+
+``getStatusMessage()`` receives the boolean result of ``getStatus()`` and returns the status message that is shown
+in the status column of the heartbeat table.
+
+If your sensor reads configurable settings, declare their defaults in the ``$defaultSettings`` property and read them
+with ``$this->getSetting('name')``.
+The [settings configured]Configuration.md) under the ``settings`` key are merged on top of the defaults,
+so a configured value always wins:
+
+```php
+// In your sensor class:
+protected array $defaultSettings = [
+    'connection' => 'default',
+];
+
+// Read a setting (returns 'default' unless overridden via the `settings` config):
+$connectionName = $this->getSetting('connection');
+```
 
 We assume that, to check the API status, we have an ``ApiClient`` class somewhere in the project
 and that class has a method called ``ping()`` which returns 'Pong' as answer from the API.
 
-In this example, the Sensor would look like this:
-```` php
+In this example, the Sensor with custom status messages would look like this:
+
+```php
 <?php
 namespace Heartbeat\Sensor;
 
@@ -83,7 +100,7 @@ use Api\ApiClient;
 
 class MyApi extends Sensor
 {
-    protected function getStatus()
+    protected function getStatus(): bool
     {
         try {
             $client = new ApiClient();
@@ -94,8 +111,13 @@ class MyApi extends Sensor
             return false;
         }
     }
+
+    protected function getStatusMessage(bool $status): string
+    {
+        return $status ? __d('Heartbeat', 'Woo Hoo!') : __d('Heartbeat', "D'oh");
+    }
 }
-````
+```
 
 Now we just have to load our new sensor in the [configuration](Configuration.md), e.g:
 ```php

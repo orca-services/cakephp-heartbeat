@@ -20,31 +20,34 @@ class StatusTest extends TestCase
      *
      * @return void
      * @covers ::__construct
-     * @covers ::getName
-     * @covers ::getStatus
-     * @covers ::getDuration
-     * @covers ::getLastExecuted
-     * @covers ::getSeverity
      * @covers ::wasCheckCached
      */
-    public function testStatus()
+    public function testStatus(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
 
+        $name = 'Dummy Sensor';
+        $statusBool = true;
+        $duration = 0;
+        $lastExecuted = Chronos::now();
+        $severity = Severity::INFORMATIONAL;
+        $message = __d('Heartbeat', 'OK');
+
         $status = new Status(
-            'Dummy Sensor',
-            true,
-            0,
-            Chronos::now(),
-            Severity::INFORMATIONAL,
+            $name,
+            $statusBool,
+            $duration,
+            $lastExecuted,
+            $severity,
+            $message,
         );
 
-        $this->assertInstanceOf(Status::class, $status);
-        $this->assertEquals('Dummy Sensor', $status->name);
-        $this->assertEquals(true, $status->status);
-        $this->assertEquals(0, $status->duration);
-        $this->assertEquals('2017-03-30 12:45:37', $status->lastExecuted);
-        $this->assertEquals(Severity::INFORMATIONAL, $status->severity);
+        $this->assertEquals($name, $status->name);
+        $this->assertEquals($statusBool, $status->status);
+        $this->assertEquals($duration, $status->duration);
+        $this->assertEquals($lastExecuted->toDateTimeString(), $status->lastExecuted);
+        $this->assertEquals($severity, $status->severity);
+        $this->assertEquals($message, $status->message);
         $this->assertEquals(false, $status->wasCheckCached());
     }
 
@@ -55,7 +58,7 @@ class StatusTest extends TestCase
      * @covers ::setCheckWasCached
      * @covers ::wasCheckCached
      */
-    public function testSetGetCheckWasCached()
+    public function testSetGetCheckWasCached(): void
     {
         $status = new Status(
             'Dummy Sensor',
@@ -63,6 +66,7 @@ class StatusTest extends TestCase
             0,
             Chronos::now(),
             Severity::INFORMATIONAL,
+            __d('Heartbeat', 'OK'),
         );
 
         $this->assertFalse($status->wasCheckCached());

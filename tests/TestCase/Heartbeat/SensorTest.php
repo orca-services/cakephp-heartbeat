@@ -5,6 +5,7 @@ namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat;
 
 use Cake\Chronos\Chronos;
 use Cake\TestSuite\TestCase;
+use OrcaServices\Heartbeat\Heartbeat\Sensor;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Config;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Severity;
 use OrcaServices\Heartbeat\Test\TestCase\Sensor\DummySensor;
@@ -22,9 +23,8 @@ class SensorTest extends TestCase
      *
      * @return void
      * @covers ::__construct
-     * @throws ReflectionException
      */
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $sensorName = 'Dummy Sensor';
         $sensorConfig = [
@@ -36,7 +36,7 @@ class SensorTest extends TestCase
         $sensorClassName = $sensorConfig->getClass();
         /** @var Sensor $sensor */
         $sensor = new $sensorClassName($sensorConfig);
-        $this->assertEquals($sensorConfig, $this->getProperty($sensor, 'config'));
+        $this->assertEquals($sensorConfig, self::getProperty($sensor, 'config'));
     }
 
     /**
@@ -46,7 +46,7 @@ class SensorTest extends TestCase
      * @covers ::getSensorStatus
      * @covers ::getStatus
      */
-    public function testGetStatus()
+    public function testGetStatus(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
         $sensorName = 'Dummy Sensor';
@@ -75,7 +75,7 @@ class SensorTest extends TestCase
      * @covers ::resetCacheConfig
      * @covers ::getNonCachedStatus
      */
-    public function testWasCheckCached()
+    public function testWasCheckCached(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
         $sensorName = 'Cached Sensor';
@@ -116,7 +116,7 @@ class SensorTest extends TestCase
      * @covers ::resetCacheConfig
      * @covers ::getNonCachedStatus
      */
-    public function testWasCheckCachedWhenCacheDisabled()
+    public function testWasCheckCachedWhenCacheDisabled(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
         $sensorName = 'Uncached Sensor';
@@ -144,7 +144,6 @@ class SensorTest extends TestCase
      * @param mixed $object The object
      * @param string $property The property name
      * @return mixed The value
-     * @throws ReflectionException
      */
     public static function getProperty(mixed $object, string $property): mixed
     {
@@ -152,5 +151,46 @@ class SensorTest extends TestCase
         $reflection = $reflectedClass->getProperty($property);
 
         return $reflection->getValue($object);
+    }
+
+    /**
+     * Configured settings are merged on top of the sensor's default settings.
+     *
+     * @return void
+     * @covers ::getSetting
+     */
+    public function testGetSettingMergesConfiguredSettingsOverDefaultSettings(): void
+    {
+        $connectionName = 'custom';
+        $config = new Config('Settings Sensor', [
+            'enabled' => true,
+            'severity' => Severity::INFORMATIONAL,
+            'class' => DummySensor::class,
+            'settings' => ['connection' => $connectionName],
+        ]);
+
+        $sensor = new class ($config) extends Sensor {
+            protected array $defaultSettings = [
+                'connection' => 'default',
+                'source' => 'Migrations',
+            ];
+
+            protected function getStatus(): bool
+            {
+                return true;
+            }
+
+            public function readSetting(string $name): ?string
+            {
+                return $this->getSetting($name);
+            }
+        };
+
+        // A configured value wins over the default setting.
+        $this->assertSame($connectionName, $sensor->readSetting('connection'));
+        // The default setting is used when the setting is not configured.
+        $this->assertSame('Migrations', $sensor->readSetting('source'));
+        // Neither configured nor declared as a default setting -> null.
+        $this->assertNull($sensor->readSetting('unknown'));
     }
 }

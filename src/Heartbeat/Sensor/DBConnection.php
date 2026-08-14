@@ -16,9 +16,11 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
 class DBConnection extends Sensor
 {
     /**
-     * The default connection name
+     * @inheritDoc
      */
-    protected string $defaultConnectionName = 'default';
+    protected array $defaultSettings = [
+        'connection' => 'default',
+    ];
 
     /**
      * @inheritDoc
@@ -26,7 +28,7 @@ class DBConnection extends Sensor
     protected function getStatus(): bool
     {
         try {
-            $connectionName = $this->getSetting('connection', $this->defaultConnectionName);
+            $connectionName = $this->getSetting('connection');
 
             ConnectionManager::get($connectionName)->getDriver()->connect();
 

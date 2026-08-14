@@ -23,14 +23,13 @@ class DBUpToDate extends Sensor
     public const MIGRATION_STATUS_UP = 'up';
 
     /**
-     * The default connection name. Defaults to `default`.
+     * @inheritDoc
      */
-    protected string $defaultConnectionName = 'default';
-
-    /**
-     * The default migrations source (subfolder of config). Defaults to `Migrations`.
-     */
-    protected string $defaultSource = 'Migrations';
+    protected array $defaultSettings = [
+        'connection' => 'default',
+        'source' => 'Migrations',
+        'plugin' => null,
+    ];
 
     /**
      * @inheritDoc
@@ -71,8 +70,8 @@ class DBUpToDate extends Sensor
     private function buildMigrationsOptions(): array
     {
         $options = [
-            'connection' => $this->getSetting('connection', $this->defaultConnectionName),
-            'source' => $this->getSetting('source', $this->defaultSource),
+            'connection' => $this->getSetting('connection'),
+            'source' => $this->getSetting('source'),
         ];
 
         $pluginName = $this->getSetting('plugin');

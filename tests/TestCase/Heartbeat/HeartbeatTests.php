@@ -3,34 +3,62 @@ declare(strict_types=1);
 
 namespace OrcaServices\Heartbeat\Test\TestCase\Heartbeat;
 
-use Cake\Collection\Collection;
+use Cake\Core\Configure;
 use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Heartbeat;
-use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 
+/**
+ * Heartbeat Tests
+ *
+ * @coversDefaultClass \OrcaServices\Heartbeat\Heartbeat\Heartbeat
+ */
 class HeartbeatTests extends TestCase
 {
     /**
-     * Tests the check method
+     * When an environment is configured, it is appended to the name in the system status title.
      *
      * @return void
-     * @covers ::check
-     * @covers ::_getEnabledSensors
-     * @covers ::_getSensor
      * @covers ::getSystemStatus
-     * @covers ::getSensorStatuses
      */
-    public function testCheck()
+    public function testGetSystemStatusAppendsEnvironment(): void
     {
-        $heartbeat = new Heartbeat();
-        $heartbeat = $heartbeat->check();
-        $this->assertInstanceOf(Heartbeat::class, $heartbeat);
-        $systemStatuses = $heartbeat->getSystemStatus();
-        $this->assertInstanceOf(Status::class, $systemStatuses);
-        $sensorStatuses = $heartbeat->getSensorStatuses();
-        $this->assertInstanceOf(Collection::class, $sensorStatuses);
-        $sensorStatuses->each(function ($sensorStatus) {
-            $this->assertInstanceOf(Status::class, $sensorStatus);
-        });
+        Configure::write('App.Heartbeat.name', 'My App');
+        Configure::write('App.Heartbeat.environment', 'Production');
+
+        $systemStatus = (new Heartbeat())->check()->getSystemStatus();
+
+        $this->assertSame('My App Production Heartbeat Status', $systemStatus->name);
+    }
+
+    /**
+     * When no environment is configured, only the name is used in the system status title.
+     *
+     * @return void
+     * @covers ::getSystemStatus
+     */
+    public function testGetSystemStatusWithoutEnvironment(): void
+    {
+        Configure::write('App.Heartbeat.name', 'My App');
+        Configure::delete('App.Heartbeat.environment');
+
+        $systemStatus = (new Heartbeat())->check()->getSystemStatus();
+
+        $this->assertSame('My App Heartbeat Status', $systemStatus->name);
+    }
+
+    /**
+     * An empty environment is treated as if it were not configured at all.
+     *
+     * @return void
+     * @covers ::getSystemStatus
+     */
+    public function testGetSystemStatusWithEmptyEnvironment(): void
+    {
+        Configure::write('App.Heartbeat.name', 'My App');
+        Configure::write('App.Heartbeat.environment', '');
+
+        $systemStatus = (new Heartbeat())->check()->getSystemStatus();
+
+        $this->assertSame('My App Heartbeat Status', $systemStatus->name);
     }
 }

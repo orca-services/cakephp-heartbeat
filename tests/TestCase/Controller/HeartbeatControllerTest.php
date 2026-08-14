@@ -10,6 +10,11 @@ use Cake\TestSuite\TestCase;
 use OrcaServices\Heartbeat\Heartbeat\Sensor\Status;
 use OrcaServices\Heartbeat\Test\TestApp\TestApplication;
 
+/**
+ * HeartbeatController Test
+ *
+ * @coversDefaultClass \OrcaServices\Heartbeat\Controller\HeartbeatController
+ */
 class HeartbeatControllerTest extends TestCase
 {
     use IntegrationTestTrait;
