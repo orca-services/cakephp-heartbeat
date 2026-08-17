@@ -4,6 +4,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat)
 ### Added
+
+### Changed
+
+### Dependencies
+
+### Fixed
+
+## [4.0.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/4.0.0) - 2026-08-17
+### Added
 - Add optional config setting `environment` to append the application environment to the heartbeat status page title [#45](https://github.com/orca-services/cakephp-heartbeat/issues/45)
 - Add `getStatusMessage()` method to `Sensor` so each sensor can provide its own human-readable status messages [#45](https://github.com/orca-services/cakephp-heartbeat/issues/45)
 - Add `Sensor::$defaultSettings` so sensors can declare default settings that are merged with (and overridden by) the settings from the configuration [#45](https://github.com/orca-services/cakephp-heartbeat/issues/45)
@@ -23,8 +32,6 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - cakephp/cakephp updated from 4.6.4 to 5.4.1 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 - cakephp/cakephp-codesniffer updated from 4.7.1 to 5.3.1 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
 - phpunit/phpunit updated from 9.6.34 to 10.5.64 major [#44](https://github.com/orca-services/cakephp-heartbeat/issues/44)
-
-### Fixed
 
 ## [3.2.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/3.2.0) - 2026-06-17
 ### Added
