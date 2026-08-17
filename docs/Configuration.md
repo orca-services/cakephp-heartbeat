@@ -6,7 +6,7 @@ General
 
 The configuration can be set in `App.Heartbeat`.
 It takes the following subkeys:
-- `name` The name of your application (will be used for the title of the hearbeat status page)
+- `name` The name of your application (will be used for the title of the heartbeat status page)
 - `environment` The environment of your application (optional).
 - `layout` To override the layout (see below)
 - `Sensors` An array of sensors (see below)
