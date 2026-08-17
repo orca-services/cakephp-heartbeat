@@ -49,6 +49,30 @@ class StatusTest extends TestCase
         $this->assertEquals($severity, $status->severity);
         $this->assertEquals($message, $status->message);
         $this->assertEquals(false, $status->wasCheckCached());
+        $this->assertFalse($status->wasCached);
+    }
+
+    /**
+     * Tests that the cached flag can be set through the constructor
+     *
+     * @return void
+     * @covers ::__construct
+     * @covers ::wasCheckCached
+     */
+    public function testWasCached(): void
+    {
+        $status = new Status(
+            'Dummy Sensor',
+            true,
+            0,
+            Chronos::now(),
+            Severity::INFORMATIONAL,
+            __d('Heartbeat', 'OK'),
+            true,
+        );
+
+        $this->assertTrue($status->wasCached);
+        $this->assertTrue($status->wasCheckCached());
     }
 
     /**

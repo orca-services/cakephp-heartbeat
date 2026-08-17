@@ -31,7 +31,7 @@ class Status
     public readonly float $duration;
 
     /**
-     * @var Chronos  The date/time when the sensor check was last executed
+     * @var Chronos The date/time when the sensor check was last executed
      */
     public readonly Chronos $lastExecuted;
 
@@ -41,9 +41,15 @@ class Status
     public readonly Severity $severity;
 
     /**
-     * @var bool Whether sensor status was fetched from cache
+     * @var bool Whether the sensor status was fetched from cache
+     * @deprecated Backing field for the deprecated cache accessors. Use the readonly $wasCached property instead.
      */
-    protected bool $checkCached = false;
+    protected bool $checkCached;
+
+    /**
+     * @var bool Whether the sensor status was fetched from cache
+     */
+    public readonly bool $wasCached;
 
     /**
      * Status construction
@@ -54,6 +60,7 @@ class Status
      * @param Chronos $lastExecuted The date/time when it was executed last.
      * @param Severity $severity The status severity.
      * @param string $message The human-readable status message.
+     * @param bool $wasCached Whether the status was fetched from cache.
      */
     public function __construct(
         string $name,
@@ -62,6 +69,7 @@ class Status
         Chronos $lastExecuted,
         Severity $severity,
         string $message,
+        bool $wasCached = false,
     ) {
         $this->severity = $severity;
         $this->lastExecuted = $lastExecuted;
@@ -69,6 +77,9 @@ class Status
         $this->status = $status;
         $this->name = $name;
         $this->message = $message;
+        $this->wasCached = $wasCached;
+        // Keep the deprecated backing field in sync so wasCheckCached() stays correct.
+        $this->checkCached = $wasCached;
     }
 
     /**
@@ -76,6 +87,7 @@ class Status
      *
      * @param bool $wasCached Whether status was cached
      * @return void
+     * @deprecated Pass $wasCached to the constructor instead. Will be removed in the next major version.
      */
     public function setCheckWasCached(bool $wasCached): void
     {
@@ -86,6 +98,7 @@ class Status
      * Check whether the sensor status was fetched from a cache
      *
      * @return bool Whether status was cached
+     * @deprecated Use the readonly $wasCached property instead. Will be removed in the next major version.
      */
     public function wasCheckCached(): bool
     {

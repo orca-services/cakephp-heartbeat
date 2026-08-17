@@ -4,8 +4,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat)
 ### Added
+- Add public readonly `Status::$wasCached` property to expose whether the sensor status was fetched from cache [#48](https://github.com/orca-services/cakephp-heartbeat/issues/48)
 
 ### Changed
+
+### Deprecated
+- Deprecate `Status::setCheckWasCached()` and `Status::wasCheckCached()`. Use the readonly `Status::$wasCached` property instead [#48](https://github.com/orca-services/cakephp-heartbeat/issues/48)
 
 ### Dependencies
 

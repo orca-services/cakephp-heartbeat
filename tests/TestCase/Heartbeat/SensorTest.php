@@ -93,15 +93,18 @@ class SensorTest extends TestCase
         $sensorStatus = $sensor->getSensorStatus();
 
         // Assert that result was not cached
+        $this->assertFalse($sensorStatus->wasCached);
         $this->assertFalse($sensorStatus->wasCheckCached());
 
         // Get status again and assert that result was cached
         $sensorStatus = $sensor->getSensorStatus();
+        $this->assertTrue($sensorStatus->wasCached);
         $this->assertTrue($sensorStatus->wasCheckCached());
 
         // Get status again after slightly more than a second and assert that result was not cached
         sleep(2);
         $sensorStatus = $sensor->getSensorStatus();
+        $this->assertFalse($sensorStatus->wasCached);
         $this->assertFalse($sensorStatus->wasCheckCached());
 
         //// Wait another second to let the cache be reset
@@ -133,8 +136,10 @@ class SensorTest extends TestCase
         $sensor = new $sensorClassName($sensorConfig);
         $sensorStatus = $sensor->getSensorStatus();
 
+        $this->assertFalse($sensorStatus->wasCached);
         $this->assertFalse($sensorStatus->wasCheckCached());
         $sensorStatus = $sensor->getSensorStatus();
+        $this->assertFalse($sensorStatus->wasCached);
         $this->assertFalse($sensorStatus->wasCheckCached());
     }
 

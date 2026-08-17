@@ -91,9 +91,15 @@ abstract class Sensor
         }
 
         if (!empty($cachedStatus)) {
-            $cachedStatus->setCheckWasCached(true);
-
-            return $cachedStatus;
+            return new Status(
+                $cachedStatus->name,
+                $cachedStatus->status,
+                $cachedStatus->duration,
+                $cachedStatus->lastExecuted,
+                $cachedStatus->severity,
+                $cachedStatus->message,
+                true,
+            );
         }
 
         $nonCachedStatus = $this->getNonCachedStatus();
