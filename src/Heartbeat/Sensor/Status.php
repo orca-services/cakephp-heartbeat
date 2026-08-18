@@ -91,10 +91,10 @@ class Status
      */
     public function setCheckWasCached(bool $wasCached): void
     {
-            trigger_error(
-        'Use the readonly $wasCached property instead. Will be removed in the next major version.',
-        E_USER_DEPRECATED
-    );
+        trigger_error(
+            'Use the readonly $wasCached property instead. Will be removed in the next major version.',
+            E_USER_DEPRECATED,
+        );
 
         $this->checkCached = $wasCached;
     }
@@ -107,10 +107,10 @@ class Status
      */
     public function wasCheckCached(): bool
     {
-            trigger_error(
-        'Use the readonly $wasCached property instead. Will be removed in the next major version.',
-        E_USER_DEPRECATED
-    );
+        trigger_error(
+            'Use the readonly $wasCached property instead. Will be removed in the next major version.',
+            E_USER_DEPRECATED,
+        );
 
         return $this->checkCached;
     }
