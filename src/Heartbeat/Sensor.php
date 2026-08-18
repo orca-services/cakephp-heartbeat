@@ -72,10 +72,8 @@ abstract class Sensor
      *
      * Resets the cache, if disabled.
      *
-     * @return Status|bool The cached status or false.
+     * @return Status|false The cached status or false.
      */
-    * @return Status|false The cached status or false.
-    */
 protected function getCachedStatus(): Status|false
     {
         $sensorCaching = $this->config->getCached();
