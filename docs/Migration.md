@@ -57,7 +57,8 @@ Compare your custom sensors with the updated [sensor](../src/Heartbeat/Sensor.ph
 
 ### 5. Sensor status cache flag
 
-Since 4.0.1, whether a sensor status was served from cache is exposed through the public readonly `Status::$wasCached` property. The previous accessor methods are removed:
+Since 4.0.1, whether a sensor status was served from cache is exposed through the public readonly `Status::$wasCached` property. 
+The previous getter & setter methods were removed:
 
 ```php
 // Before
