@@ -72,9 +72,9 @@ abstract class Sensor
      *
      * Resets the cache, if disabled.
      *
-     * @return Status|bool The cached status or false.
+     * @return Status|false The cached status or false.
      */
-    protected function getCachedStatus(): Status|bool
+    protected function getCachedStatus(): Status|false
     {
         $sensorCaching = $this->config->getCached();
 
@@ -91,9 +91,15 @@ abstract class Sensor
         }
 
         if (!empty($cachedStatus)) {
-            $cachedStatus->setCheckWasCached(true);
-
-            return $cachedStatus;
+            return new Status(
+                $cachedStatus->name,
+                $cachedStatus->status,
+                $cachedStatus->duration,
+                $cachedStatus->lastExecuted,
+                $cachedStatus->severity,
+                $cachedStatus->message,
+                true,
+            );
         }
 
         $nonCachedStatus = $this->getNonCachedStatus();

@@ -31,7 +31,7 @@ class Status
     public readonly float $duration;
 
     /**
-     * @var Chronos  The date/time when the sensor check was last executed
+     * @var Chronos The date/time when the sensor check was last executed
      */
     public readonly Chronos $lastExecuted;
 
@@ -41,9 +41,9 @@ class Status
     public readonly Severity $severity;
 
     /**
-     * @var bool Whether sensor status was fetched from cache
+     * @var bool Whether the sensor status was fetched from cache
      */
-    protected bool $checkCached = false;
+    public readonly bool $wasCached;
 
     /**
      * Status construction
@@ -54,6 +54,7 @@ class Status
      * @param Chronos $lastExecuted The date/time when it was executed last.
      * @param Severity $severity The status severity.
      * @param string $message The human-readable status message.
+     * @param bool $wasCached Whether the status was fetched from cache.
      */
     public function __construct(
         string $name,
@@ -62,6 +63,7 @@ class Status
         Chronos $lastExecuted,
         Severity $severity,
         string $message,
+        bool $wasCached = false,
     ) {
         $this->severity = $severity;
         $this->lastExecuted = $lastExecuted;
@@ -69,27 +71,7 @@ class Status
         $this->status = $status;
         $this->name = $name;
         $this->message = $message;
-    }
-
-    /**
-     * Set whether the sensor status was fetched from a cache
-     *
-     * @param bool $wasCached Whether status was cached
-     * @return void
-     */
-    public function setCheckWasCached(bool $wasCached): void
-    {
-        $this->checkCached = $wasCached;
-    }
-
-    /**
-     * Check whether the sensor status was fetched from a cache
-     *
-     * @return bool Whether status was cached
-     */
-    public function wasCheckCached(): bool
-    {
-        return $this->checkCached;
+        $this->wasCached = $wasCached;
     }
 
     /**

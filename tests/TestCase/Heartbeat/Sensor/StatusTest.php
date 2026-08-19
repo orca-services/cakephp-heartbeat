@@ -20,7 +20,6 @@ class StatusTest extends TestCase
      *
      * @return void
      * @covers ::__construct
-     * @covers ::wasCheckCached
      */
     public function testStatus(): void
     {
@@ -48,17 +47,16 @@ class StatusTest extends TestCase
         $this->assertEquals($lastExecuted->toDateTimeString(), $status->lastExecuted);
         $this->assertEquals($severity, $status->severity);
         $this->assertEquals($message, $status->message);
-        $this->assertEquals(false, $status->wasCheckCached());
+        $this->assertFalse($status->wasCached);
     }
 
     /**
-     * Tests setting & getting whether the check was cached
+     * Tests that the cached flag can be set through the constructor
      *
      * @return void
-     * @covers ::setCheckWasCached
-     * @covers ::wasCheckCached
+     * @covers ::__construct
      */
-    public function testSetGetCheckWasCached(): void
+    public function testWasCached(): void
     {
         $status = new Status(
             'Dummy Sensor',
@@ -67,12 +65,9 @@ class StatusTest extends TestCase
             Chronos::now(),
             Severity::INFORMATIONAL,
             __d('Heartbeat', 'OK'),
+            true,
         );
 
-        $this->assertFalse($status->wasCheckCached());
-        $status->setCheckWasCached(true);
-        $this->assertTrue($status->wasCheckCached());
-        $status->setCheckWasCached(false);
-        $this->assertFalse($status->wasCheckCached());
+        $this->assertTrue($status->wasCached);
     }
 }
