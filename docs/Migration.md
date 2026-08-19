@@ -67,7 +67,9 @@ $wasCached = $status->wasCheckCached();
 $wasCached = $status->wasCached;
 ```
 
-`Status::setCheckWasCached()` was also removed. The cache flag is now set once through the constructor and is read-only afterward. If you construct `Status` objects yourself, pass it as the final constructor argument instead of calling the setter:
+`Status::setCheckWasCached()` was also removed.
+The cache flag is now set once through the constructor and is read-only afterward.
+If you construct `Status` objects yourself, pass it as constructor argument instead of calling the setter:
 
 ```php
 $sensorStatus = new Status(
