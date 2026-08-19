@@ -55,21 +55,19 @@ If you created custom sensors, review them for API changes:
 
 Compare your custom sensors with the updated [sensor](../src/Heartbeat/Sensor.php) and [status](../src/Heartbeat/Sensor/Status.php) classes before upgrading.
 
-## Deprecations
+### 5. Sensor status cache flag
 
-### Sensor status cache flag
-
-Since 4.0.1, whether a sensor status was served from cache is exposed through the public readonly `Status::$wasCached` property. The previous accessor methods are deprecated and will be removed in the next major version, so they keep working throughout 4.x but should be migrated:
+Since 4.0.1, whether a sensor status was served from cache is exposed through the public readonly `Status::$wasCached` property. The previous accessor methods are removed:
 
 ```php
-// Before (deprecated, still works in 4.x)
+// Before
 $wasCached = $status->wasCheckCached();
 
 // After
 $wasCached = $status->wasCached;
 ```
 
-`Status::setCheckWasCached()` is likewise deprecated. The cache flag is now set once through the constructor and is read-only afterward. If you construct `Status` objects yourself, pass it as the final constructor argument instead of calling the setter:
+`Status::setCheckWasCached()` was also removed. The cache flag is now set once through the constructor and is read-only afterward. If you construct `Status` objects yourself, pass it as the final constructor argument instead of calling the setter:
 
 ```php
 $sensorStatus = new Status(
@@ -93,4 +91,4 @@ $sensorStatus = new Status(
 4. Install `cakephp/migrations` dependency if you use the `DBUpToDate` sensor.
 5. If you reference `OrcaServices\Heartbeat\Plugin` directly, switch to `OrcaServices\Heartbeat\HeartbeatPlugin`.
 6. Review custom sensors for API changes.
-7. Replace any use of `Status::wasCheckCached()` / `Status::setCheckWasCached()` with the readonly `Status::$wasCached` property (the methods are deprecated and will be removed in the next major version).
+7. Replace any use of `Status::wasCheckCached()` / `Status::setCheckWasCached()` with the readonly `Status::$wasCached` property (the methods are removed).
