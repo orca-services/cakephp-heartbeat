@@ -8,8 +8,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 
-### Deprecated
-- Deprecate `Status::setCheckWasCached()` and `Status::wasCheckCached()`. Use the readonly `Status::$wasCached` property instead [#48](https://github.com/orca-services/cakephp-heartbeat/issues/48)
+### Removed
+- Remove `Status::setCheckWasCached()` and `Status::wasCheckCached()`. Use the readonly `Status::$wasCached` property instead [#48](https://github.com/orca-services/cakephp-heartbeat/issues/48)
 
 ### Dependencies
 

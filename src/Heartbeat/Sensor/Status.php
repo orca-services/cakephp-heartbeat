@@ -42,12 +42,6 @@ class Status
 
     /**
      * @var bool Whether the sensor status was fetched from cache
-     * @deprecated 4.0.1 Backing field for the deprecated cache accessors. Use the readonly $wasCached property instead.
-     */
-    protected bool $checkCached;
-
-    /**
-     * @var bool Whether the sensor status was fetched from cache
      */
     public readonly bool $wasCached;
 
@@ -78,41 +72,6 @@ class Status
         $this->name = $name;
         $this->message = $message;
         $this->wasCached = $wasCached;
-        // Keep the deprecated backing field in sync so wasCheckCached() stays correct.
-        $this->checkCached = $wasCached;
-    }
-
-    /**
-     * Set whether the sensor status was fetched from a cache
-     *
-     * @param bool $wasCached Whether status was cached
-     * @return void
-     * @deprecated 4.0.1 Pass $wasCached to the constructor instead. Will be removed in the next major version.
-     */
-    public function setCheckWasCached(bool $wasCached): void
-    {
-        trigger_error(
-            'Use the readonly $wasCached property instead. Will be removed in the next major version.',
-            E_USER_DEPRECATED,
-        );
-
-        $this->checkCached = $wasCached;
-    }
-
-    /**
-     * Check whether the sensor status was fetched from a cache
-     *
-     * @return bool Whether status was cached
-     * @deprecated 4.0.1 Use the readonly $wasCached property instead. Will be removed in the next major version.
-     */
-    public function wasCheckCached(): bool
-    {
-        trigger_error(
-            'Use the readonly $wasCached property instead. Will be removed in the next major version.',
-            E_USER_DEPRECATED,
-        );
-
-        return $this->checkCached;
     }
 
     /**
