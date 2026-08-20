@@ -19,7 +19,7 @@ $statuses = $sensorStatuses->map(function ($sensorStatus) {
     $severity = $sensorStatus->severity;
     $duration = $sensorStatus->duration;
     $lastExecuted = $sensorStatus->lastExecuted->format('Y-m-d H:i:s');
-    $wasCheckFromCache = $sensorStatus->wasCheckCached();
+    $wasCheckFromCache = $sensorStatus->wasCached;
 
     $statusText = $sensorStatus->message;
 

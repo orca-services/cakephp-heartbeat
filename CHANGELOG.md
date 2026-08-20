@@ -10,6 +10,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Dependencies
 
 ### Fixed
+- Replace calls to caching methods that no longer exist [#48](https://github.com/orca-services/cakephp-heartbeat/issues/48)
 
 ## [4.0.1](https://github.com/orca-services/cakephp-heartbeat/releases/tag/4.0.1) - 2026-08-20
 ### Added

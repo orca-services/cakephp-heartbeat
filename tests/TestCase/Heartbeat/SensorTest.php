@@ -75,7 +75,7 @@ class SensorTest extends TestCase
      * @covers ::resetCacheConfig
      * @covers ::getNonCachedStatus
      */
-    public function testWasCheckCached(): void
+    public function testWasCached(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
         $sensorName = 'Cached Sensor';
@@ -116,7 +116,7 @@ class SensorTest extends TestCase
      * @covers ::resetCacheConfig
      * @covers ::getNonCachedStatus
      */
-    public function testWasCheckCachedWhenCacheDisabled(): void
+    public function testWasCachedWhenCacheDisabled(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
         $sensorName = 'Uncached Sensor';

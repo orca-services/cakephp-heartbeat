@@ -19,7 +19,7 @@ $sensorStatuses->some(function ($sensorStatus) {
     $severity = $sensorStatus->severity;
     $duration = $sensorStatus->duration;
     $lastExecuted = $sensorStatus->lastExecuted;
-    $wasCheckFromCache = $sensorStatus->wasCheckCached();
+    $wasCheckFromCache = $sensorStatus->wasCached;
 
     $statusText = $sensorStatus->message;
 
