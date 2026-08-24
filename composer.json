@@ -44,7 +44,7 @@
         "cakephp/cakephp": "^5.3.1"
     },
     "require-dev": {
-        "cakephp/cakephp-codesniffer": "^5.0",
+        "cakephp/cakephp-codesniffer": "^5.2.1",
         "cakephp/migrations": "^5.0",
         "phpunit/phpunit": "^10.0"
     },
