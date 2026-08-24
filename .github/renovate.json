@@ -1,0 +1,52 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": ["config:recommended"],
+    "timezone": "Europe/Zurich",
+    "schedule": ["before 5:00am"],
+    "assignees": ["ravage84", "neluxx"],
+    "baseBranchPatterns": ["cakephp-4.x", "cakephp-5.x"],
+    "dependencyDashboard": true,
+    "dependencyDashboardApproval": true,
+    "constraintsFiltering": "strict",
+    "lockFileMaintenance": {
+        "enabled": true,
+        "automerge": true,
+        "dependencyDashboardApproval": false
+    },
+    "packageRules": [
+        {
+            "description": "Ignore minor and patch updates entirely. Only majors reach the dashboard",
+            "matchUpdateTypes": ["minor", "patch"],
+            "enabled": false
+        },
+        {
+            "description": "PHP version of the cakephp-4.x branch",
+            "matchBaseBranches": ["cakephp-4.x"],
+            "constraints": { "php": "^7.4 | ^8.0" }
+        },
+        {
+            "description": "PHP version of the cakephp-5.x branch",
+            "matchBaseBranches": ["cakephp-5.x"],
+            "constraints": { "php": "^8.2" }
+        },
+        {
+            "description": "CakePHP version of the cakephp-4.x branch",
+            "matchPackageNames": ["cakephp/cakephp"],
+            "allowedVersions": "<5.0.0",
+            "matchBaseBranches": ["cakephp-4.x"]
+        },
+        {
+            "description": "CakePHP version of the cakephp-5.x branch",
+            "matchPackageNames": ["cakephp/cakephp"],
+            "allowedVersions": "<6.0.0",
+            "matchBaseBranches": ["cakephp-5.x"]
+        }
+    ],
+    "vulnerabilityAlerts": {
+        "enabled": true,
+        "dependencyDashboardApproval": false,
+        "automerge": false,
+        "labels": ["security"],
+        "rangeStrategy": "bump"
+    }
+}
