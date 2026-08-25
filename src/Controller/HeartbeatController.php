@@ -16,9 +16,9 @@ class HeartbeatController extends AppController
      * Before render callback.
      *
      * @param EventInterface $event The beforeRender event.
-     * @return Response|null|void
+     * @return void
      */
-    public function beforeRender(EventInterface $event)
+    public function beforeRender(EventInterface $event): void
     {
         parent::beforeRender($event);
         $layout = Configure::read('App.Heartbeat.layout');
