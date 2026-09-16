@@ -31,7 +31,7 @@ class Heartbeat
      *
      * @return $this
      */
-    public function check()
+    public function check(): static
     {
         $sensors = $this->getEnabledSensors();
 
