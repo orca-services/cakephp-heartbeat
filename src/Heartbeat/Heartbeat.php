@@ -31,7 +31,7 @@ class Heartbeat
      *
      * @return $this
      */
-    public function check()
+    public function check(): static
     {
         $sensors = $this->getEnabledSensors();
 
@@ -114,7 +114,7 @@ class Heartbeat
         $title = !empty($environment) ? $name . ' ' . $environment : $name;
 
         return new Status(
-            $title . ' Heartbeat Status',
+            trim($title . ' Heartbeat Status'),
             $systemStatus,
             0, // TODO Calculate the duration for the whole heartbeat
             Chronos::now(),

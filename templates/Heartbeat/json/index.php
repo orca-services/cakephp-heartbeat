@@ -2,8 +2,7 @@
 /**
  * The Heartbeat Status JSON Page
  *
- * @var Status[]|Collection $sensorStatuses The sensor
- *     statuses.
+ * @var Status[]|Collection $sensorStatuses The sensor statuses.
  * @var Status $systemStatus The system status.
  */
 
@@ -31,4 +30,4 @@ $heartbeat = [
     'sensors' => $statuses,
 ];
 
-echo json_encode($heartbeat, JSON_PRETTY_PRINT);
+echo json_encode($heartbeat, JSON_THROW_ON_ERROR);

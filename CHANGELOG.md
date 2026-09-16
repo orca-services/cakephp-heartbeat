@@ -4,6 +4,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat)
 ### Added
+- Add JSON view 
 
 ### Changed
 
