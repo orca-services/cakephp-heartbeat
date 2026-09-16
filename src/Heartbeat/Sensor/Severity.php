@@ -6,20 +6,20 @@ namespace OrcaServices\Heartbeat\Heartbeat\Sensor;
 /**
  * Heartbeat Status Severity
  */
-enum Severity
+enum Severity: string
 {
     /**
      * Critical status
      */
-    case CRITICAL;
+    case CRITICAL = 'CRITICAL';
 
     /**
      * Noncritical status
      */
-    case NONCRITICAL;
+    case NONCRITICAL = 'NONCRITICAL';
 
     /**
      * Informational status
      */
-    case INFORMATIONAL;
+    case INFORMATIONAL = 'INFORMATIONAL';
 }
