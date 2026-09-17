@@ -35,16 +35,47 @@ class HeartbeatControllerTest extends TestCase
      * @return void
      * @covers ::index
      */
-    public function testIndex()
+    public function testIndex(): void
     {
         Chronos::setTestNow('2017-03-30 12:45:37');
         $this->get('/heartbeat');
+
+        $this->assertResponseOk();
+        $this->assertHeader('Content-Type', 'text/html; charset=UTF-8');
+        $this->assertResponseContains('<title>Heartbeat</title>');
+
         $systemStatus = $this->viewVariable('systemStatus');
-        $this->assertInstanceOf(Status::class, $systemStatus);
+        static::assertInstanceOf(Status::class, $systemStatus);
         $sensorStatuses = $this->viewVariable('sensorStatuses');
-        $this->assertInstanceOf(Collection::class, $sensorStatuses);
+        static::assertInstanceOf(Collection::class, $sensorStatuses);
         $sensorStatuses->each(function ($sensorStatus) {
-            $this->assertInstanceOf(Status::class, $sensorStatus);
+            static::assertInstanceOf(Status::class, $sensorStatus);
+        });
+    }
+
+    /**
+     * Tests index with JSON extension
+     *
+     * @return void
+     * @covers ::index
+     */
+    public function testIndexJson(): void
+    {
+        Chronos::setTestNow('2017-03-30 12:45:37');
+        $this->get('/heartbeat.json');
+
+        $this->assertResponseOk();
+        $this->assertHeader('Content-Type', 'application/json');
+        $this->assertResponseContains('"Heartbeat Status": "OK"');
+        $responseBody = (string)$this->_response->getBody();
+        static::assertJson($responseBody);
+
+        $systemStatus = $this->viewVariable('systemStatus');
+        static::assertInstanceOf(Status::class, $systemStatus);
+        $sensorStatuses = $this->viewVariable('sensorStatuses');
+        static::assertInstanceOf(Collection::class, $sensorStatuses);
+        $sensorStatuses->each(function ($sensorStatus) {
+            static::assertInstanceOf(Status::class, $sensorStatus);
         });
     }
 }

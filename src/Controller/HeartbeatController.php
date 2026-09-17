@@ -5,6 +5,7 @@ namespace OrcaServices\Heartbeat\Controller;
 
 use Cake\Core\Configure;
 use Cake\Event\EventInterface;
+use Cake\View\JsonView;
 use OrcaServices\Heartbeat\Heartbeat\Heartbeat;
 
 /**
@@ -12,6 +13,12 @@ use OrcaServices\Heartbeat\Heartbeat\Heartbeat;
  */
 class HeartbeatController extends AppController
 {
+    /** @inheritDoc */
+    public function viewClasses(): array
+    {
+        return [JsonView::class];
+    }
+
     /**
      * Before render callback.
      *

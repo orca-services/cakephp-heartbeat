@@ -4,12 +4,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat)
 ### Added
+- Add JSON view 
+
+### Changed
+
+### Dependencies
+
 
 ### Changed
 
 ### Dependencies
 
 ### Fixed
+- Re-enable JSON view for heartbeat status page
 
 ## [4.0.2](https://github.com/orca-services/cakephp-heartbeat/releases/tag/4.0.2) - 2026-08-20
 ### Fixed
