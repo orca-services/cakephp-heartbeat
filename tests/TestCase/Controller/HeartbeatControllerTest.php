@@ -66,7 +66,7 @@ class HeartbeatControllerTest extends TestCase
 
         $this->assertResponseOk();
         $this->assertHeader('Content-Type', 'application/json');
-        $this->assertResponseContains('"Heartbeat Status":"OK"');
+        $this->assertResponseContains('"Heartbeat Status": "OK"');
         $responseBody = (string)$this->_response->getBody();
         static::assertJson($responseBody);
 
