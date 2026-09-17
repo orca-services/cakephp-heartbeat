@@ -30,4 +30,4 @@ $heartbeat = [
     'sensors' => $statuses,
 ];
 
-echo json_encode($heartbeat, JSON_THROW_ON_ERROR);
+echo json_encode($heartbeat, JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR);
