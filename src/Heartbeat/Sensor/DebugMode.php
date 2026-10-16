@@ -7,7 +7,7 @@ use Cake\Core\Configure;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 /**
- * Debug Level Sensor
+ * Debug Mode Sensor
  */
 class DebugMode extends Sensor
 {
