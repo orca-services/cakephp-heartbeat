@@ -4,8 +4,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat)
 ### Added
+- Add environment-aware `DebugModeByEnvironment` sensor, which checks the debug mode against the expected debug mode per environment, e.g. disabled on production
 
 ### Changed
+- `Sensor::getSetting()` now returns `mixed` instead of `?string`, so sensors can use non-string settings such as arrays
 
 ### Dependencies
 

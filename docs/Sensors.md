@@ -53,6 +53,51 @@ $config['App']['Heartbeat']['Sensors']['Plugin DB up to date'] = [
 #### Debug Mode
 Outputs the configuration for the debug mode.
 
+#### Debug Mode by Environment
+Checks whether the debug mode matches the expected debug mode of the current environment,
+e.g. that it is disabled on production. The status message shows whether the debug mode is
+currently ``ENABLED`` or ``DISABLED``, while the status itself fails if it does not match the expectation.
+
+By default, the current environment is read from the [``environment`` configuration](Configuration.md)
+(``App.Heartbeat.environment``) and the following expectations apply:
+
+| Environment              | Expected debug mode |
+|--------------------------|---------------------|
+| ``dev``, ``development`` | enabled             |
+| ``test``, ``testing``    | disabled            |
+| ``staging``              | disabled            |
+| ``prod``, ``production`` | disabled            |
+
+Environment names are matched case-insensitively, and surrounding whitespace is ignored.
+If the environment is not configured or not listed, the debug mode is expected to be disabled, to fail-safe.
+
+The following settings can be used to customize the sensor:
+
+- ``environment`` The current environment. Defaults to `null`, which means ``App.Heartbeat.environment`` is used.
+- ``environments`` A map of environment names to the expected debug mode (`true` for enabled, `false` for disabled).
+  Entries without a boolean value are ignored.
+  Note that this map **replaces** the default map entirely, so list every environment you need.
+
+To expect the debug mode to be enabled on a ``qa`` environment as well,
+while keeping it disabled on ``staging`` and ``production``, the settings can be used like this:
+
+```php
+$config['App']['Heartbeat']['Sensors']['Debug-Mode by Environment'] = [
+    'enabled' => true,
+    'severity' => Severity::CRITICAL,
+    'class' => DebugModeByEnvironment::class,
+    'settings' => [
+        'environment' => env('APP_ENV'),
+        'environments' => [
+            'development' => true,
+            'qa' => true,
+            'staging' => false,
+            'production' => false,
+        ],
+    ],
+];
+```
+
 
 How to Write a Heartbeat Sensor
 ===============================
