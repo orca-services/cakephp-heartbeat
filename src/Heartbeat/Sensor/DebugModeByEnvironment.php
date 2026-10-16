@@ -20,7 +20,9 @@ class DebugModeByEnvironment extends Sensor
         // Map of environment names (case-insensitive) to the expected debug mode.
         'environments' => [
             'dev' => true,
+            'development' => true,
             'test' => false,
+            'testing' => false,
             'staging' => false,
             'prod' => false,
             'production' => false,
