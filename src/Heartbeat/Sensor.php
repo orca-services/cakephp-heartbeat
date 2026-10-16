@@ -187,9 +187,9 @@ abstract class Sensor
      *
      * @param string $name The name of the setting to retrieve.
      * @param mixed|null $default The optional default value, if the setting is not set.
-     * @return string|null The value of the setting or the provided default, if not set.
+     * @return mixed The value of the setting or the provided default, if not set.
      */
-    protected function getSetting(string $name, mixed $default = null): ?string
+    protected function getSetting(string $name, mixed $default = null): mixed
     {
         $settings = $this->config->getSettings() + $this->defaultSettings;
 
