@@ -38,7 +38,7 @@ class DebugModeTest extends TestCase
      * @return void
      * @covers ::getStatus
      */
-    public function testGetStatusReturnsOneWhenDebugIsEnabled(): void
+    public function testStatusReturnsTrueWhenDebugModeIsEnabled(): void
     {
         Configure::write('debug', true);
 
@@ -55,7 +55,7 @@ class DebugModeTest extends TestCase
      * @return void
      * @covers ::getStatus
      */
-    public function testGetStatusReturnsEmptyStringWhenDebugIsDisabled(): void
+    public function testStatusReturnsFalseWhenDebugModeIsDisabled(): void
     {
         Configure::write('debug', false);
 
