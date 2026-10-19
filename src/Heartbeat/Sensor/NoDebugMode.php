@@ -8,6 +8,8 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 /**
  * No Debug Mode Sensor
+ *
+ * Allows to detect an enabled debug mode in environments that shouldn't.
  */
 class NoDebugMode extends Sensor
 {
