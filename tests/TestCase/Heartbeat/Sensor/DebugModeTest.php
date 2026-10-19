@@ -43,7 +43,6 @@ class DebugModeTest extends TestCase
         Configure::write('debug', true);
 
         $sensor = $this->createSensor();
-
         $sensorStatus = $sensor->getSensorStatus();
 
         $this->assertTrue($sensorStatus->status);
@@ -60,7 +59,6 @@ class DebugModeTest extends TestCase
         Configure::write('debug', false);
 
         $sensor = $this->createSensor();
-
         $sensorStatus = $sensor->getSensorStatus();
 
         $this->assertFalse($sensorStatus->status);

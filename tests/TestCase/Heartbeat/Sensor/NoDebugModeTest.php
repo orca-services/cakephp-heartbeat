@@ -23,9 +23,9 @@ class NoDebugModeTest extends TestCase
      */
     private function createSensor(): NoDebugMode
     {
-        $config = new Config('Debug-Mode', [
+        $config = new Config('No-Debug-Mode', [
             'enabled' => true,
-            'severity' => Severity::INFORMATIONAL,
+            'severity' => Severity::CRITICAL,
             'class' => NoDebugMode::class,
         ]);
 
@@ -43,7 +43,6 @@ class NoDebugModeTest extends TestCase
         Configure::write('debug', false);
 
         $sensor = $this->createSensor();
-
         $sensorStatus = $sensor->getSensorStatus();
 
         $this->assertTrue($sensorStatus->status);
@@ -60,7 +59,6 @@ class NoDebugModeTest extends TestCase
         Configure::write('debug', true);
 
         $sensor = $this->createSensor();
-
         $sensorStatus = $sensor->getSensorStatus();
 
         $this->assertFalse($sensorStatus->status);
