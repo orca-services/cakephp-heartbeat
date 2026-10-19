@@ -7,7 +7,7 @@ use Cake\Core\Configure;
 use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 /**
- * Debug Level Sensor
+ * Debug Mode Sensor
  */
 class DebugMode extends Sensor
 {
@@ -16,7 +16,7 @@ class DebugMode extends Sensor
      */
     protected function getStatus(): bool
     {
-        return (bool)Configure::read('debug');
+        return (bool)Configure::read('debug') === true;
     }
 
     /**
