@@ -60,6 +60,24 @@ The actual debug mode is shown in the status message as `ENABLED` or `DISABLED`.
 To treat an enabled debug mode as a failure, e.g. in production environments,
 use the `NoDebugMode` sensor instead.
 
+#### No Debug Mode
+Checks that the debug mode is disabled. Allows to detect an enabled debug mode
+in environments that shouldn't have it enabled, e.g. production.
+
+The sensor status is `true` (successful) when the debug mode is disabled
+and `false` (failed) when it is enabled.
+
+Choose the severity depending on how critical an enabled debug mode is
+in the given environment, e.g.:
+
+```php
+$config['App']['Heartbeat']['Sensors']['No Debug Mode'] = [
+    'enabled' => true,
+    'severity' => Severity::CRITICAL,
+    'class' => NoDebugMode::class,
+];
+```
+
 
 How to Write a Heartbeat Sensor
 ===============================
