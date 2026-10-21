@@ -8,22 +8,34 @@ use OrcaServices\Heartbeat\Heartbeat\Sensor;
 
 /**
  * Debug Mode Sensor
+ *
+ * Purely informational sensor that reports whether the debug mode is enabled.
+ *
+ * To treat an enabled debug mode as a failure, use the `NoDebugMode` sensor instead.
+ *
+ * @see NoDebugMode
  */
 class DebugMode extends Sensor
 {
     /**
+     * Always returns `true`, regardless of the debug mode.
+     *
      * @inheritDoc
      */
     protected function getStatus(): bool
     {
-        return (bool)Configure::read('debug') === true;
+        return true;
     }
 
     /**
+     * Returns whether the debug mode is enabled or disabled.
+     *
+     * The given status is ignored, as it is always `true`.
+     *
      * @inheritDoc
      */
     protected function getStatusMessage(bool $status): string
     {
-        return $status ? __d('Heartbeat', 'ENABLED') : __d('Heartbeat', 'DISABLED');
+        return Configure::read('debug') ? __d('Heartbeat', 'ENABLED') : __d('Heartbeat', 'DISABLED');
     }
 }

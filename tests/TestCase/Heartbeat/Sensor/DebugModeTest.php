@@ -33,10 +33,11 @@ class DebugModeTest extends TestCase
     }
 
     /**
-     * When debug mode is enabled, the sensor reports true.
+     * When debug mode is enabled, the sensor reports true and the message ENABLED.
      *
      * @return void
      * @covers ::getStatus
+     * @covers ::getStatusMessage
      */
     public function testStatusReturnsTrueWhenDebugModeIsEnabled(): void
     {
@@ -46,21 +47,24 @@ class DebugModeTest extends TestCase
         $sensorStatus = $sensor->getSensorStatus();
 
         $this->assertTrue($sensorStatus->status);
+        $this->assertSame('ENABLED', $sensorStatus->message);
     }
 
     /**
-     * When debug mode is disabled, the sensor reports false.
+     * When debug mode is disabled, the sensor still reports true and the message DISABLED.
      *
      * @return void
      * @covers ::getStatus
+     * @covers ::getStatusMessage
      */
-    public function testStatusReturnsFalseWhenDebugModeIsDisabled(): void
+    public function testStatusReturnsTrueWhenDebugModeIsDisabled(): void
     {
         Configure::write('debug', false);
 
         $sensor = $this->createSensor();
         $sensorStatus = $sensor->getSensorStatus();
 
-        $this->assertFalse($sensorStatus->status);
+        $this->assertTrue($sensorStatus->status);
+        $this->assertSame('DISABLED', $sensorStatus->message);
     }
 }

@@ -51,7 +51,14 @@ $config['App']['Heartbeat']['Sensors']['Plugin DB up to date'] = [
 ```
 
 #### Debug Mode
-Outputs the configuration for the debug mode.
+Purely informational sensor that outputs whether the debug mode is enabled.
+
+The sensor status is always `true` (successful), regardless of the debug mode,
+as an enabled or disabled debug mode is not a failure in itself.
+The actual debug mode is shown in the status message as `ENABLED` or `DISABLED`.
+
+To treat an enabled debug mode as a failure, e.g. in production environments,
+use the `NoDebugMode` sensor instead.
 
 
 How to Write a Heartbeat Sensor
