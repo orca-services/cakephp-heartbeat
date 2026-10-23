@@ -4,15 +4,20 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/orca-services/cakephp-heartbeat)
 ### Added
+
+### Changed
+
+### Dependencies
+
+### Changed
+
+### Dependencies
+
+### Fixed
+
+## [4.1.0](https://github.com/orca-services/cakephp-heartbeat/releases/tag/4.1.0) - 2026-10-23
+### Added
 - Add `NoDebugMode` sensor that reports success when debug mode is disabled
-
-### Changed
-
-### Dependencies
-
-### Changed
-
-### Dependencies
 
 ### Fixed
 - `DebugMode` sensor now always reports a successful status, as it is purely informational
